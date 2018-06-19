@@ -1,0 +1,21 @@
+{
+  "services": [
+    {
+      "name": "health",
+      "assembly": "LunchApplication.Api",
+      "endpoints": [
+        {
+          "name": "get",
+          "path": "health",
+          "method": "get"
+        },
+        {
+          "name": "post",
+          "path": "health",
+          "method": "post",
+          "inType": "string"
+        }
+      ]
+    }
+  ]
+}
