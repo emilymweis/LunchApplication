@@ -9,10 +9,10 @@ namespace LunchApplication.Repository.Interfaces
     /// IRepository, any implementations of the ISampleRepository interface will automatically 
     /// be registered with dependency injection.
     /// </summary>
-    public interface ISampleRepository : IRepository
+    public interface ILunchRepository : IRepository
     {
         Task<string> GetValueAsync(int validId);
-        Task<SampleDto> AddSampleAsync(SampleDto sample);
+        Task<LunchDto> AddLunchAsync(LunchDto Lunch);
         Task<int> GetIntValueAsync();
     }
 }

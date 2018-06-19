@@ -4,6 +4,6 @@ namespace LunchApplication.Common.Interfaces
 {
     public interface IAppRequestInfo : IRequestInfo
     {
-        string SampleId { get; set; }
+        string LunchId { get; set; }
     }
 }

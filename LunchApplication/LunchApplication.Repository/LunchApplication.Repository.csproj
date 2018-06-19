@@ -66,8 +66,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions\DbEntityValidationExceptionExtensions.cs" />
-    <Compile Include="Implementations\SampleRepository.cs" />
-    <Compile Include="Interfaces\ISampleRepository.cs" />
+    <Compile Include="Implementations\LunchRepository.cs" />
+    <Compile Include="Interfaces\ILunchRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

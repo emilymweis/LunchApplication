@@ -8,16 +8,16 @@ using LunchApplication.Service.Implementations;
 namespace LunchApplication.Test.Unit.Service
 {
     [TestClass]
-    public class SampleServiceTests
+    public class LunchServiceTests
     {
         [TestMethod]
         public async Task GetIntValueAsync_CallsRepo()
         {
-            var repo = new Mock<ISampleRepository>();
+            var repo = new Mock<ILunchRepository>();
             var logger = new Mock<IObjectLogger>();
             repo.Setup(x => x.GetIntValueAsync()).Returns(Task.FromResult(12));
 
-            var service = new SampleService(repo.Object, logger.Object);
+            var service = new LunchService(repo.Object, logger.Object);
             var result = await service.GetIntValueAsync();
 
             repo.Verify(x => x.GetIntValueAsync(), Times.Exactly(1));
@@ -29,11 +29,11 @@ namespace LunchApplication.Test.Unit.Service
         [TestMethod]
         public async Task GetValueAsync_CallsRepo()
         {
-            var repo = new Mock<ISampleRepository>();
+            var repo = new Mock<ILunchRepository>();
             var logger = new Mock<IObjectLogger>();
             repo.Setup(x => x.GetValueAsync(It.IsAny<int>())).Returns(Task.FromResult("some value"));
 
-            var service = new SampleService(repo.Object, logger.Object);
+            var service = new LunchService(repo.Object, logger.Object);
             var result = await service.GetValueAsync(1);
 
             repo.Verify(x => x.GetValueAsync(It.IsAny<int>()), Times.Exactly(1));

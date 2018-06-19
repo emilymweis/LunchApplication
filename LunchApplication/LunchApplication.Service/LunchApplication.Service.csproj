@@ -70,8 +70,8 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Implementations\SampleService.cs" />
-    <Compile Include="Interfaces\ISampleService.cs" />
+    <Compile Include="Implementations\LunchService.cs" />
+    <Compile Include="Interfaces\ILunchService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

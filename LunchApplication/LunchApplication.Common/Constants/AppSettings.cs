@@ -11,8 +11,8 @@
         public const string ApplicationName = "LunchApplication";
         public const string EnableSwagger = "EnableSwagger";
 
-        public const string SampleValue = "sampleValue";
-        public const string SampleIntValue = "sampleIntValue";
+        public const string LunchValue = "lunchValue";
+        public const string LunchIntValue = "lunchIntValue";
 
         //Needed for Basic Auth
         public const string BasicAuthUser = "BasicAuthUser";

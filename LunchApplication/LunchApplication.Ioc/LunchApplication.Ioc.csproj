@@ -108,8 +108,10 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
-    <Fakes Include="Fakes\System.IO.fakes" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Fakes\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -18,40 +18,40 @@ namespace LunchApplication.Api.Controllers
     //[Monitor]
     public class LunchController : ApiController
     {
-        private readonly ISampleService _sampleService;
+        private readonly ILunchService _lunchService;
         private readonly IAppRequestInfo _appRequestInfo;
 
-        public LunchController(ISampleService sampleService,
+        public LunchController(ILunchService lunchService,
             IAppRequestInfo appRequestInfo)
         {
             _appRequestInfo = appRequestInfo;
-            _sampleService = sampleService;
+            _lunchService = lunchService;
         }
 
         [AllowAnonymous]
         [HttpGet, Route("")]
         public IHttpActionResult GetInt()
         {
-            var result = await _sampleService.GetIntValueAsync();
+            //var result = await _lunchService.GetIntValueAsync();
 
-            //var result = new object[] { new { Name = "chipotle", Type = "fast", Price = "Cheap" }, new { Name = "mcdonalds", Type = "slow", Price = "medium" } };
+            var result = new object[] { new { Name = "chipotle", Type = "fast", Price = "Cheap" }, new { Name = "mcdonalds", Type = "slow", Price = "medium" } };
 
             return Ok(result);
         }
 
-        [Monitor(Name = "GetSampleValue")]
-        [HttpGet, Route("{sampleId}")]
-        public IHttpActionResult Get(int sampleId)
+        [Monitor(Name = "GetLunchValue")]
+        [HttpGet, Route("{lunchId}")]
+        public async Task<IHttpActionResult> GetAsync(string lunchId)
         {
-            var sample = await _sampleService.GetValueAsync(sampleId);
-            return Ok("sample");
+            var lunch = await _lunchService.GetValueAsync(lunchId);
+            return Ok("lunch");
         }
 
         [HttpPost, Route("")]
-        public async Task<IHttpActionResult> AddSampleAsync([FromBody] SampleDto sample)
+        public async Task<IHttpActionResult> AddLunchAsync([FromBody] LunchDto lunch)
         {
-            sample.CustomerId = _appRequestInfo.SampleId;
-            return Created(string.Empty, await _sampleService.AddSampleAsync(sample));
+            lunch.RestaurantName = _appRequestInfo.LunchId;
+            return Created(string.Empty, await _lunchService.AddLunchAsync(lunch));
         }
 }
 }

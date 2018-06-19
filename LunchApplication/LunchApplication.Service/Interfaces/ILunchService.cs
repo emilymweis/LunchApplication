@@ -8,10 +8,10 @@ namespace LunchApplication.Service.Interfaces
     /// This interface demonstrates a sample service interface.  Because it also includes IService, any implementations
     /// of the ISampleService interface will automatically be registered with dependency injection.
     /// </summary>
-    public interface ISampleService : IService
+    public interface ILunchService : IService
     {
-        Task<string> GetValueAsync(int validId);
-        Task<SampleDto> AddSampleAsync(SampleDto sample);
+        Task<string> GetValueAsync(string validId);
+        Task<LunchDto> AddLunchAsync(LunchDto lunch);
         Task<int> GetIntValueAsync();
     }
 }
