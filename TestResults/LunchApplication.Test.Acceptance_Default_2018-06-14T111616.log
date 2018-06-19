@@ -1,0 +1,58 @@
+﻿2018-06-14T11:16:15.7743110-06:00;VSTestExecutionThread;Info;SpecFlow+Runner execution started
+2018-06-14T11:16:15.9443110-06:00;VSTestExecutionThread;Info;SpecRun Evaluation Mode: Please purchase at http://www.specflow.org/plus to remove test execution delay.
+2018-06-14T11:16:15.9503110-06:00;VSTestExecutionThread;Info;SpecRun: running tests in C:\Users\eweis-SU\source\repos\LunchApplication\LunchApplication.Test.Acceptance\bin\Debug\LunchApplication.Test.Acceptance.dll
+2018-06-14T11:16:15.9503110-06:00;VSTestExecutionThread;Info;Profile: Default
+2018-06-14T11:16:22.1393110-06:00;Thread#16;Info;Discovering target: Default
+2018-06-14T11:16:22.1393110-06:00;Thread#16;Info;Discovering tests from assembly: C:\Users\eweis-SU\source\repos\LunchApplication\LunchApplication.Test.Acceptance\bin\Debug\LunchApplication.Test.Acceptance.dll
+Appdomain Disposed
+Test Suite Dump
+#0: LunchApplication.Test.Acceptance/Default - 
+#1: Default - 
+#2: LunchApplication.Test.Acceptance - 
+#3: Health - 
+#4: Calling Get Health should return Status OK with message "Service is running" - TestAssembly:LunchApplication.Test.Acceptance/Feature:Health/Scenario:Calling+Get+Health+should+return+Status+OK+with+message+%22Service+is+running%22
+End: Test Suite Dump
+Thread#0:Scheduler: get next test for thread 0
+Thread#:Scheduler: testitem #4 from normal test queue 
+Thread#0:Scheduler: considering testitem #4 for thread 0
+Thread#0:TestItem#4:testItemMatchesCurrentTestThread:UnSpecific
+Thread#0:TestItem#4:runsOnOneOtherThreadSpecific:False
+Thread#0:TestItem#4:runsOnOneOtherThreadUnspecific:False
+Thread#0:Scheduler: using testitem #4 for thread 0
+Thread#0:Scheduler: Test #4 is scheduled for thread
+Thread#0:Scheduler: with testItemExecutionIndex 0
+Thread #0: creating new test thread executor for LunchApplication.Test.Acceptance, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null (target: Default)
+Loading SpecRun type 'TechTalk.SpecRun.Framework.TestAssemblyExecutor' from: C:\Users\eweis-SU\source\repos\packages\SpecRun.Runner.1.6.3\tools\TechTalk.SpecRun.Framework.Executor.dll
+Thread#0: Test #4/0 is started on thread #0
+Thread#0:T:-> Using app.config
+Thread#0:B:Given I am calling the health api
+Thread#0:T:Environment: Local
+Thread#0:T:Starting IISExpress at location: C:\Users\eweis-SU\source\repos\LunchApplication\LunchApplication.Api
+Thread#0:T:Base Url: http://localhost:1313/
+Thread#0:T:done: WebServiceSteps.GivenIAmCallingTheXApi("health") (0.1s)
+Thread#0:B:When I call get end-point
+Thread#0:T:Request Headers: Accept: application/json
+Thread#0:T:Calling GET: http://localhost:1313/health
+Thread#0:T:Response: StatusCode: 500, ReasonPhrase: 'Internal Server Error', Version: 1.1, Content: System.Net.Http.StreamContent, Headers:
+Thread#0:T:{
+Thread#0:T:  X-SourceFiles: =?UTF-8?B?QzpcVXNlcnNcZXdlaXMtU1Vcc291cmNlXHJlcG9zXEx1bmNoQXBwbGljYXRpb25cTHVuY2hBcHBsaWNhdGlvbi5BcGlcaGVhbHRo?=
+Thread#0:T:  Cache-Control: private
+Thread#0:T:  Date: Thu, 14 Jun 2018 17:16:26 GMT
+Thread#0:T:  Server: Microsoft-IIS/10.0
+Thread#0:T:  X-AspNet-Version: 4.0.30319
+Thread#0:T:  X-Powered-By: ASP.NET
+Thread#0:T:  Content-Length: 9837
+Thread#0:T:  Content-Type: text/html; charset=utf-8
+Thread#0:T:}
+Thread#0:T:Content: <!DOCTYPE html>
+Thread#0:T:<html>
+Thread#0:T:    <head>
+Thread#0:T:        <title>Cannot load a reference assembly for execution.</title>
+Thread#0:T:        <meta name="viewport" content="width=device-width" />
+Thread#0:T:        <style>
+Thread#0:T:         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+Thread#0:T:         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+Thread#0:T:         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+Thread#0:T:         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+Thread#0:T:         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+Thread#0:T:         pre {font-family:"Consolas","Lucida Console",Monospace;font-size:11pt;margin:0;padding:0.5em;
