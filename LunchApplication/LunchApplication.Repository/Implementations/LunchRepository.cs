@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Configuration;
 using System.Data.Entity.Validation;
 using System.Data.SqlClient;
 using System.Linq;
@@ -23,17 +25,11 @@ namespace LunchApplication.Repository.Implementations
     {
         private readonly IConfigurationManager _configurationManager;
 
-        static void Main(string[] args)
+        public List<LunchDto> Test()
         {
-            using (SqlConnection connection = new SqlConnection("Integrated Security=SSPI;Persist Security Info=False"))
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.AppSettings["LunchApplication"]))
             {
-               var lunch = 
-                    connection.Query<LunchDto>("SELECT * FROM LunchDto").ToList();
-                foreach(LunchDto LunchDto in lunch)
-                {
-                    Console.WriteLine("Restaurant Name: " + LunchDto.RestaurantName);
-                    Console.WriteLine("Restaurant Type: " + LunchDto.RestaurantType);
-                }
+               return connection.Query<LunchDto>("SELECT * FROM LunchDto").ToList();
             }
         }
 

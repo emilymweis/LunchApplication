@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Chipotle.Core.Logging;
 using LunchApplication.Models.Models;
 using LunchApplication.Repository.Interfaces;
@@ -20,6 +21,11 @@ namespace LunchApplication.Service.Implementations
         {
             _lunchRepository = lunchRepository;
             _logger = logger;
+        }
+
+        public List<LunchDto> Test()
+        {
+            return _lunchRepository.Test();
         }
 
         public async Task<int> GetIntValueAsync()

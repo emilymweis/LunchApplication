@@ -32,11 +32,11 @@ namespace LunchApplication.Api.Controllers
         [HttpGet, Route("")]
         public IHttpActionResult GetInt()
         {
-            //var result = await _lunchService.GetIntValueAsync();
+            // var result = await _lunchService.GetIntValueAsync();
 
-            var result = new object[] { new { Name = "chipotle", Type = "fast", Price = "Cheap" }, new { Name = "mcdonalds", Type = "slow", Price = "medium" } };
+            // var result = new object[] { new { Name = "chipotle", Type = "fast", Price = "Cheap" }, new { Name = "mcdonalds", Type = "slow", Price = "medium" } };
 
-            return Ok(result);
+            return Ok(_lunchService.Test());
         }
 
         [Monitor(Name = "GetLunchValue")]

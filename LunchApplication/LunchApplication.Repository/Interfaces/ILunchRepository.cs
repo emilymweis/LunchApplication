@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Core.Common.Interfaces;
 using LunchApplication.Models.Models;
 
@@ -14,5 +15,6 @@ namespace LunchApplication.Repository.Interfaces
         Task<string> GetValueAsync(int validId);
         Task<LunchDto> AddLunchAsync(LunchDto Lunch);
         Task<int> GetIntValueAsync();
+        List<LunchDto> Test();
     }
 }
