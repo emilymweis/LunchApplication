@@ -2,7 +2,6 @@
   <div class="container">
     <div class="options">
       <h3>Lunch Options</h3>
-      <!--{{posts}}-->
       <table class="table">
         <thead>
           <tr>
@@ -22,7 +21,7 @@
         </tbody>
       </table>
     </div>
-    
+
     <div class="topFive">
       <h3>Your Top 5</h3>
       <table class="table serial">

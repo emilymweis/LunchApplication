@@ -16,7 +16,7 @@
   import { mapGetters } from 'vuex'
   const fetchInitialData = (store, route) => {
     let categoryId = 2
-    if (route.params.id === 'home') {
+    if (route.params.id === 'Home') {
       categoryId = 11
     }
     return store.dispatch('postsModule/updateCategory', categoryId)
