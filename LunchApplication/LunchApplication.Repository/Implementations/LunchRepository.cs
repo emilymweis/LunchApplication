@@ -28,7 +28,6 @@ namespace LunchApplication.Repository.Implementations
 
         public List<LunchOptions> Test()
         {
-            //var connect = ConfigurationManager.ConnectionStrings["LunchDB"].ConnectionString;
             using (var connection = new SqlConnection(ConfigHelper.LunchDbContextConnectionString))
             {
                 return connection.Query<LunchOptions>("SELECT * FROM LunchOptions").ToList();
