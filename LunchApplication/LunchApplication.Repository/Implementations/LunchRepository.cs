@@ -27,10 +27,24 @@ namespace LunchApplication.Repository.Implementations
 
         public List<LunchDto> Test()
         {
-            using (SqlConnection connection = new SqlConnection(ConfigurationManager.AppSettings["LunchApplication"]))
+            List<LunchDto> Data = new List<LunchDto>() {
+                new LunchDto() { FoodType = "foodTypeOne", Price = "priceOne", RestaurantName = "nameOne", RestaurantType = "restaurantTypeOne" },
+                new LunchDto() { FoodType="foodTypeTwo", Price ="priceTwo", RestaurantName ="nameTwo", RestaurantType = "restaurantTypeTwo" },
+                new LunchDto() { FoodType="foodTypeThree", Price ="priceThree", RestaurantName ="nameThree", RestaurantType = "restaurantTypeThree" },
+                new LunchDto() { FoodType="foodTypeFour", Price ="priceFour", RestaurantName ="nameFour", RestaurantType = "restaurantTypeFour" }
+            };
+            try
             {
-               return connection.Query<LunchDto>("SELECT * FROM LunchDto").ToList();
+                using (SqlConnection connection = new SqlConnection(ConfigurationManager.AppSettings["LunchApplication"]))
+                {
+                    Data= connection.Query<LunchDto>("SELECT * FROM LunchDto").ToList();
+                }
             }
+            catch(Exception e)
+            {
+                Data[0].RestaurantName = e.Message.Replace("\\", " ");
+            }
+            return Data;
         }
 
         public LunchRepository(IConfigurationManager configurationManager)

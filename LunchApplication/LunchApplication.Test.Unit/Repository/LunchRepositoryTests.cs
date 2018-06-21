@@ -34,7 +34,7 @@ namespace LunchApplication.Test.Unit.Repository
         }
 
         [TestMethod]
-        public async Task AddLunchAsync_DoesNotThrow()
+        public void AddLunchAsync_DoesNotThrow()
         {
             var config = new Mock<IConfigurationManager>();
             var repo = new LunchRepository(config.Object);

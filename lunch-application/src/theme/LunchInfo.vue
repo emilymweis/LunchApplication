@@ -2,7 +2,7 @@
   <div class="container">
     <div class="options">
       <h3>Lunch Options</h3>
-      {{posts}}
+      <!--{{posts}}-->
       <table class="table">
         <thead>
           <tr>
@@ -13,33 +13,16 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td scope="row">Chipotle</td>
-            <td>fast</td>
-            <td>mexican</td>
-            <td>cheap</td>
-          </tr>
-          <tr>
-            <td scope="row">sam's</td>
-            <td>sit-down</td>
-            <td>Breakfast</td>
-            <td>cheap</td>
-          </tr>
-          <tr>
-            <td scope="row">Maggiano's</td>
-            <td>sit-down</td>
-            <td>american</td>
-            <td>expensive</td>
-          </tr>
-          <tr>
-            <td scope="row">Milkbox</td>
-            <td>dessert</td>
-            <td>ice cream</td>
-            <td>cheap</td>
+          <tr v-for="row in posts" >
+            <td scope="row">{{row.restaurantName}}</td>
+            <td scope="row">{{row.restaurantType}}</td>
+            <td scope="row">{{row.foodType}}</td>
+            <td scope="row">{{row.price}}</td>
           </tr>
         </tbody>
       </table>
     </div>
+    
     <div class="topFive">
       <h3>Your Top 5</h3>
       <table class="table serial">
@@ -50,25 +33,9 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr v-for="row in posts">
             <td scope="row"></td>
-            <td>Chipotle</td>
-          </tr>
-          <tr>
-            <td scope="row"></td>
-            <td>sam's</td>
-          </tr>
-          <tr>
-            <td  scope="row"></td>
-            <td>Maggiano's</td>
-          </tr>
-          <tr>
-            <td scope="row"></td>
-            <td>Milkbox</td>
-          </tr>
-          <tr>
-            <td scope="row"></td>
-            <td>Machete</td>
+            <td scope="row">{{row.restaurantType}}</td>
           </tr>
         </tbody>
       </table>
@@ -119,6 +86,8 @@
   .serial td:first-child:before {
   counter-increment: serial-number;
   content: counter(serial-number);
-}
+  }
+
+
 </style>
 

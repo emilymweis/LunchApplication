@@ -35,8 +35,8 @@ namespace LunchApplication.Api.Controllers
             // var result = await _lunchService.GetIntValueAsync();
 
             // var result = new object[] { new { Name = "chipotle", Type = "fast", Price = "Cheap" }, new { Name = "mcdonalds", Type = "slow", Price = "medium" } };
-
-            return Ok(_lunchService.Test());
+            var data= Ok(_lunchService.Test()); ;
+            return data;
         }
 
         [Monitor(Name = "GetLunchValue")]
