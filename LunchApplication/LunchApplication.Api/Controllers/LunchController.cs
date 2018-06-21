@@ -48,7 +48,7 @@ namespace LunchApplication.Api.Controllers
         }
 
         [HttpPost, Route("")]
-        public async Task<IHttpActionResult> AddLunchAsync([FromBody] LunchDto lunch)
+        public async Task<IHttpActionResult> AddLunchAsync([FromBody] LunchOptions lunch)
         {
             lunch.RestaurantName = _appRequestInfo.LunchId;
             return Created(string.Empty, await _lunchService.AddLunchAsync(lunch));

@@ -38,7 +38,7 @@ namespace LunchApplication.Test.Unit.Repository
         {
             var config = new Mock<IConfigurationManager>();
             var repo = new LunchRepository(config.Object);
-            var request = new LunchDto();
+            var request = new LunchOptions();
             //var response = await repo.AddLunchAsync(request);
             //Assert.AreEqual(request.SomeRequiredValue, response.SomeRequiredValue);
         }

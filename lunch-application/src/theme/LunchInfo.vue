@@ -35,7 +35,7 @@
         <tbody>
           <tr v-for="row in posts">
             <td scope="row"></td>
-            <td scope="row">{{row.restaurantType}}</td>
+            <td scope="row">{{row.restaurantName}}</td>
           </tr>
         </tbody>
       </table>

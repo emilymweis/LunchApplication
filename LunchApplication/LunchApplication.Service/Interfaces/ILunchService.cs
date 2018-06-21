@@ -12,8 +12,8 @@ namespace LunchApplication.Service.Interfaces
     public interface ILunchService : IService
     {
         Task<string> GetValueAsync(string validId);
-        Task<LunchDto> AddLunchAsync(LunchDto lunch);
+        Task<LunchOptions> AddLunchAsync(LunchOptions lunch);
         Task<int> GetIntValueAsync();
-        List<LunchDto> Test();
+        List<LunchOptions> Test();
     }
 }

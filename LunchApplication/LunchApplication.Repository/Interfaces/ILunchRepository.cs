@@ -13,8 +13,8 @@ namespace LunchApplication.Repository.Interfaces
     public interface ILunchRepository : IRepository
     {
         Task<string> GetValueAsync(int validId);
-        Task<LunchDto> AddLunchAsync(LunchDto Lunch);
+        Task<LunchOptions> AddLunchAsync(LunchOptions Lunch);
         Task<int> GetIntValueAsync();
-        List<LunchDto> Test();
+        List<LunchOptions> Test();
     }
 }

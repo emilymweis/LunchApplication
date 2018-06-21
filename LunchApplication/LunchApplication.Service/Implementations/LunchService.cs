@@ -23,7 +23,7 @@ namespace LunchApplication.Service.Implementations
             _logger = logger;
         }
 
-        public List<LunchDto> Test()
+        public List<LunchOptions> Test()
         {
             return _lunchRepository.Test();
         }
@@ -47,7 +47,7 @@ namespace LunchApplication.Service.Implementations
             return await _lunchRepository.GetValueAsync(validId);
         }
 
-        public async Task<LunchDto> AddLunchAsync(LunchDto lunch)
+        public async Task<LunchOptions> AddLunchAsync(LunchOptions lunch)
         {
             return await _lunchRepository.AddLunchAsync(lunch);
         }
@@ -57,7 +57,7 @@ namespace LunchApplication.Service.Implementations
             throw new System.NotImplementedException();
         }
 
-        Task<LunchDto> ILunchService.AddLunchAsync(LunchDto lunch)
+        Task<LunchOptions> ILunchService.AddLunchAsync(LunchOptions lunch)
         {
             throw new System.NotImplementedException();
         }
