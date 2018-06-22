@@ -12,7 +12,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="row in restaurantData" >
+          <tr v-for="row in restaurantData" :key="row">
             <td scope="row">{{row.restaurantName}}</td>
             <td scope="row">{{row.restaurantType}}</td>
             <td scope="row">{{row.foodType}}</td>
@@ -31,7 +31,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="row in restaurantData">
+          <tr v-for="row in restaurantData" :key="row">
             <td scope="row"></td>
             <td scope="row">{{row.restaurantName}}</td>
           </tr>
