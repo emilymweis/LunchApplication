@@ -12,7 +12,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="row in posts" >
+          <tr v-for="row in restaurantData" >
             <td scope="row">{{row.restaurantName}}</td>
             <td scope="row">{{row.restaurantType}}</td>
             <td scope="row">{{row.foodType}}</td>
@@ -32,15 +32,15 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="row in posts">
+          <tr v-for="row in restaurantData">
             <td scope="row"></td>
             <td scope="row">{{row.restaurantName}}</td>
           </tr>
         </tbody>
       </table>
     </div>
-    <button type="button" class="btn">Edit Top 5</button>
-    <input class="btn btn-primary" type="submit" value="Submit">
+    <button type="button" class="btn" >Edit Top 5</button>
+    <input class="btn btn-primary" type="submit" value="Submit" v-on:click="lunchAlert()" >
   </div>
 </template>
 
@@ -50,7 +50,7 @@
   export default {
     data () {
       return {
-        posts: [],
+        restaurantData: [],
         errors: []
       }
     },
@@ -61,11 +61,21 @@
         .then(response => {
           // JSON responses are automatically parsed.
           console.log(response)
-          this.posts = response.data
+          this.restaurantData = response.data
+          return this.restaurantData
         })
         .catch(e => {
           this.errors.push(e)
         })
+    },
+
+    methods: {
+      lunchAlert: function () {
+        var random = Math.floor(Math.random() * 5)
+        console.log(random)
+        console.log('lunch today is at: ' + this.restaurantData[random].restaurantName)
+      }
+
     }
   }
 </script>
@@ -89,4 +99,3 @@
 
 
 </style>
-
