@@ -21,7 +21,6 @@
         </tbody>
       </table>
     </div>
-
     <div class="topFive">
       <h3>Your Top 5</h3>
       <table class="table serial">
@@ -38,14 +37,15 @@
           </tr>
         </tbody>
       </table>
-    </div>
     <button type="button" class="btn" >Edit Top 5</button>
     <input class="btn btn-primary" type="submit" value="Submit" v-on:click="lunchAlert()" >
+    </div>
   </div>
 </template>
 
 <script>
   import axios from 'axios'
+  import VueOnToast from 'vue-on-toast'
 
   export default {
     data () {
@@ -72,22 +72,24 @@
     methods: {
       lunchAlert: function () {
         var random = Math.floor(Math.random() * 5)
-        console.log(random)
-        console.log('lunch today is at: ' + this.restaurantData[random].restaurantName)
+        VueOnToast.ToastService.pop('success', 'test', 'lunch today is at: ' + this.restaurantData[random].restaurantName)
       }
 
     }
   }
 </script>
-
 <style scoped>
   .options{
-    width: 40%;
-    height:100%;
+    order: 1;
+    flex-basis: 40%;
+    height: 300px;
+    margin-right: 10px;
   }
   .topFive{
-    width: 40%;
-    height:100%;
+    order: 2;
+    flex-basis: 40%;
+    height: 300px;
+    margin-left: 20px;
   }
   .serial{
     counter-reset: serial-number;
@@ -96,6 +98,10 @@
   counter-increment: serial-number;
   content: counter(serial-number);
   }
-
-
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: stretch;
+}
 </style>
