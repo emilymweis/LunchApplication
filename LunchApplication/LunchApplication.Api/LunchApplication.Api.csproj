@@ -146,6 +146,7 @@
   <ItemGroup>
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="Controllers\HealthController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\LunchController.cs" />
     <Compile Include="Filters\AuthorizationFilterDispatcher.cs" />
     <Compile Include="Filters\AuthorizeFilterAttribute.cs" />

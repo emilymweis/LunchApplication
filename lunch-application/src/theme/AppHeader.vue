@@ -2,7 +2,7 @@
   <nav class="nav has-shadow">
     <div class="container">
       <router-link to="/Home" exact>
-        <!-- <img src="../assets/chi_logo-trans.png" -->
+        <!-- TODO <img src="../assets/chi_logo-trans.png" -->
           <!-- alt="Lunch App" /> -->
       </router-link>
       <router-link class="nav-item is-tab"

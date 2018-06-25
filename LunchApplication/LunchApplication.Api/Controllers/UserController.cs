@@ -14,41 +14,41 @@ namespace LunchApplication.Api.Controllers
     /// rename as necessary.
     /// </summary>
     [EnableCors(origins: "*", headers: "*", methods: "*")]
-    [RoutePrefix("lunchdata")]
+    [RoutePrefix("userdata")]
     //[Monitor]
-    public class LunchController : ApiController
+    public class UserController : ApiController
     {
-        private readonly ILunchService _lunchService;
+        private readonly IUserService _userService;
         private readonly IAppRequestInfo _appRequestInfo;
 
-        public LunchController(ILunchService lunchService,
+        public UserController(IUserService userService,
             IAppRequestInfo appRequestInfo)
         {
             _appRequestInfo = appRequestInfo;
-            _lunchService = lunchService;
+            _userService = userService;
         }
 
         [AllowAnonymous]
         [HttpGet, Route("")]
         public IHttpActionResult GetInt()
         {
-           var data= Ok(_lunchService.Test()); ;
+            var data= Ok(_userService.Test()); ;
             return data;
         }
 
-        [Monitor(Name = "GetLunchValue")]
-        [HttpGet, Route("{lunchId}")]
-        public async Task<IHttpActionResult> GetAsync(string lunchId)
+        [Monitor(Name = "GetUserValue")]
+        [HttpGet, Route("{userId}")]
+        public async Task<IHttpActionResult> GetAsync(string userId)
         {
-            var lunch = await _lunchService.GetValueAsync(lunchId);
-            return Ok("lunch");
+            var user = await _userService.GetValueAsync(userId);
+            return Ok("user");
         }
 
         [HttpPost, Route("")]
-        public async Task<IHttpActionResult> AddLunchAsync([FromBody] LunchOptions lunch)
+        public async Task<IHttpActionResult> AddUserAsync([FromBody] UserOptions user)
         {
-            lunch.RestaurantName = _appRequestInfo.LunchId;
-            return Created(string.Empty, await _lunchService.AddLunchAsync(lunch));
+            user.Username = _appRequestInfo.UserId;
+            return Created(string.Empty, await _userService.AddUserAsync(user));
         }
 }
 }

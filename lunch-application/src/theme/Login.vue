@@ -1,7 +1,7 @@
 <template>
 <div class="content">
   <div v-if="isAuthenticated">
-    Hello authenticated user!
+     authenticated user!
     <button v-on:click="logout()" class="button is-primary">
       Logout
     </button>
@@ -16,7 +16,7 @@
         <div class="field">
         <div class="control">
           <input v-model="username" class="input" type="text"
-          placeholder="Your chipotle username">
+          placeholder="Your username">
         </div>
         </div>
       </div>
@@ -29,7 +29,7 @@
         <div class="field">
         <div class="control">
           <input v-model="password" class="input" type="password"
-          placeholder="Your chipotle password">
+          placeholder="Your password">
         </div>
         </div>
       </div>

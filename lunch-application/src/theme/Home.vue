@@ -30,10 +30,26 @@
             <th scope="col">Restaurant Name</th>
           </tr>
         </thead>
-        <tbody>
-          <tr v-for="row in restaurantData" :key="row">
+        <tbody v-for="row in userData" :key="row">
+          <tr>
             <td scope="row"></td>
-            <td scope="row">{{row.restaurantName}}</td>
+            <td scope="row">{{row.restaurantOne}}</td>
+          </tr>
+          <tr>
+            <td scope="row"></td>
+            <td scope="row">{{row.restaurantTwo}}</td>
+          </tr>
+          <tr>
+            <td scope="row"></td>
+            <td scope="row">{{row.restaurantThree}}</td>
+          </tr>
+           <tr>
+            <td scope="row"></td>
+            <td scope="row">{{row.restaurantFour}}</td>
+          </tr>
+          <tr>
+            <td scope="row"></td>
+            <td scope="row">{{row.restaurantFive}}</td>
           </tr>
         </tbody>
       </table>
@@ -42,7 +58,6 @@
     </div>
   </div>
 </template>
-
 <script>
   import axios from 'axios'
   import VueOnToast from 'vue-on-toast'
@@ -51,44 +66,42 @@
     data () {
       return {
         restaurantData: [],
+        userData: [],
         errors: []
       }
     },
-
-    // Fetches posts when the component is created.
     created () {
       axios.get('http://localhost:48146/lunchdata')
         .then(response => {
-          // JSON responses are automatically parsed.
           console.log(response)
           this.restaurantData = response.data
           return this.restaurantData
+        })
+      axios.get('http://localhost:48146/userdata')
+        .then(response => {
+          console.log(response)
+          this.userData = response.data
+          return this.userData
         })
         .catch(e => {
           this.errors.push(e)
         })
     },
-
     methods: {
       lunchAlert: function () {
         var random = Math.floor(Math.random() * 5)
-        VueOnToast.ToastService.pop('success', 'test', 'lunch today is at: ' + this.restaurantData[random].restaurantName)
+        VueOnToast.ToastService.pop('success', 'Lunch Alert', 'lunch today is at: ' + this.restaurantData[random].restaurantName)
       }
-
     }
   }
 </script>
 <style scoped>
   .options{
     order: 1;
-    flex-basis: 40%;
-    height: 300px;
     margin-right: 10px;
   }
   .topFive{
     order: 2;
-    flex-basis: 40%;
-    height: 300px;
     margin-left: 20px;
   }
   .serial{
@@ -103,5 +116,7 @@
   flex-wrap: wrap;
   flex-direction: row;
   align-items: stretch;
+  flex-basis: 40%;
+  height: 300px;
 }
 </style>

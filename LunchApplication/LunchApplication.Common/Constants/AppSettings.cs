@@ -14,6 +14,9 @@
         public const string LunchValue = "lunchValue";
         public const string LunchIntValue = "lunchIntValue";
 
+        public const string UserValue = "userValue";
+        public const string UserIntValue = "userIntValue";
+
         //Needed for Basic Auth
         public const string BasicAuthUser = "BasicAuthUser";
         public const string BasicAuthPassword = "BasicAuthPassword";
