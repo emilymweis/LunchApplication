@@ -8,11 +8,6 @@ namespace LunchApplication.Models.Models
         public int Id { get; set; }
         public string Username { get; set; }
         public string PasswordHash { get; set; }
-        public string RestaurantOne { get; set; }
-        public string RestaurantTwo { get; set; }
-        public string RestaurantThree { get; set; }
-        public string RestaurantFour { get; set; }
-        public string RestaurantFive { get; set; }
     }
 }
 

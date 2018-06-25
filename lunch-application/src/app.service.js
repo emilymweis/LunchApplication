@@ -33,7 +33,7 @@ const appService = {
   },
   login (credentials) {
     return new Promise((resolve, reject) => {
-      axios.post('/services/auth.php', credentials)
+      axios.post('http://localhost:48146/userdata', credentials)
         .then(response => {
           resolve(response.data)
         }).catch(response => {

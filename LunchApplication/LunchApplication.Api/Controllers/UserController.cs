@@ -47,7 +47,7 @@ namespace LunchApplication.Api.Controllers
         [HttpPost, Route("")]
         public async Task<IHttpActionResult> AddUserAsync([FromBody] UserOptions user)
         {
-            user.Username = _appRequestInfo.UserId;
+            user.Id = _appRequestInfo.UserId;
             return Created(string.Empty, await _userService.AddUserAsync(user));
         }
 }

@@ -30,7 +30,7 @@
             <th scope="col">Restaurant Name</th>
           </tr>
         </thead>
-        <tbody v-for="row in userData" :key="row">
+        <tbody v-for="row in topFiveData" :key="row">
           <tr>
             <td scope="row"></td>
             <td scope="row">{{row.restaurantOne}}</td>
@@ -54,7 +54,7 @@
         </tbody>
       </table>
     <button type="button" class="btn" >Edit Top 5</button>
-    <input class="btn btn-primary" type="submit" value="Submit" v-on:click="lunchAlert()" >
+    <input class="btn btn-primary" type="submit" value="Submit" v-on:click="lunchLocationToast()" >
     </div>
   </div>
 </template>
@@ -66,7 +66,7 @@
     data () {
       return {
         restaurantData: [],
-        userData: [],
+        topFiveData: [],
         errors: []
       }
     },
@@ -77,18 +77,18 @@
           this.restaurantData = response.data
           return this.restaurantData
         })
-      axios.get('http://localhost:48146/userdata')
+      axios.get('http://localhost:48146/topfivedata')
         .then(response => {
           console.log(response)
-          this.userData = response.data
-          return this.userData
+          this.topFiveData = response.data
+          return this.topFiveData
         })
         .catch(e => {
           this.errors.push(e)
         })
     },
     methods: {
-      lunchAlert: function () {
+      lunchLocationToast: function () {
         var random = Math.floor(Math.random() * 5)
         VueOnToast.ToastService.pop('success', 'Lunch Alert', 'lunch today is at: ' + this.restaurantData[random].restaurantName)
       }

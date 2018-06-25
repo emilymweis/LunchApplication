@@ -14,41 +14,41 @@ namespace LunchApplication.Api.Controllers
     /// rename as necessary.
     /// </summary>
     [EnableCors(origins: "*", headers: "*", methods: "*")]
-    [RoutePrefix("lunchdata")]
+    [RoutePrefix("topfivedata")]
     //[Monitor]
-    public class LunchController : ApiController
+    public class TopFiveController : ApiController
     {
-        private readonly ILunchService _lunchService;
+        private readonly ITopFiveService _topFiveService;
         private readonly IAppRequestInfo _appRequestInfo;
 
-        public LunchController(ILunchService lunchService,
+        public TopFiveController(ITopFiveService topFiveService,
             IAppRequestInfo appRequestInfo)
         {
             _appRequestInfo = appRequestInfo;
-            _lunchService = lunchService;
+            _topFiveService = topFiveService;
         }
 
         [AllowAnonymous]
         [HttpGet, Route("")]
         public IHttpActionResult GetInt()
         {
-           var data= Ok(_lunchService.Test()); ;
+            var data= Ok(_topFiveService.Test()); ;
             return data;
         }
 
-        [Monitor(Name = "GetLunchValue")]
-        [HttpGet, Route("{lunchId}")]
-        public async Task<IHttpActionResult> GetAsync(string lunchId)
+        [Monitor(Name = "GetTopFiveValue")]
+        [HttpGet, Route("{topFiveId}")]
+        public async Task<IHttpActionResult> GetAsync(string topFiveId)
         {
-            var lunch = await _lunchService.GetValueAsync(lunchId);
-            return Ok("lunch");
+            var topFive = await _topFiveService.GetValueAsync(topFiveId);
+            return Ok("topFive");
         }
 
         [HttpPost, Route("")]
-        public async Task<IHttpActionResult> AddLunchAsync([FromBody] LunchOptions lunch)
+        public async Task<IHttpActionResult> AddTopFiveAsync([FromBody] TopFiveOptions topFive)
         {
-            lunch.Id = _appRequestInfo.LunchId;
-            return Created(string.Empty, await _lunchService.AddLunchAsync(lunch));
+            topFive.Id = _appRequestInfo.TopFiveId;
+            return Created(string.Empty, await _topFiveService.AddTopFiveAsync(topFive));
         }
 }
 }
