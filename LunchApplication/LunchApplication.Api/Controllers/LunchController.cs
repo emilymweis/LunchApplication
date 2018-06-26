@@ -32,10 +32,7 @@ namespace LunchApplication.Api.Controllers
         [HttpGet, Route("")]
         public IHttpActionResult GetInt()
         {
-            // var result = await _lunchService.GetIntValueAsync();
-
-            // var result = new object[] { new { Name = "chipotle", Type = "fast", Price = "Cheap" }, new { Name = "mcdonalds", Type = "slow", Price = "medium" } };
-            var data= Ok(_lunchService.Test()); ;
+           var data= Ok(_lunchService.Test()); ;
             return data;
         }
 
@@ -50,7 +47,7 @@ namespace LunchApplication.Api.Controllers
         [HttpPost, Route("")]
         public async Task<IHttpActionResult> AddLunchAsync([FromBody] LunchOptions lunch)
         {
-            lunch.RestaurantName = _appRequestInfo.LunchId;
+            lunch.Id = _appRequestInfo.LunchId;
             return Created(string.Empty, await _lunchService.AddLunchAsync(lunch));
         }
 }

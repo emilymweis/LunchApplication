@@ -5,6 +5,8 @@ namespace LunchApplication.Common.Implementation
 {
     public class AppRequestInfo : RequestInfo, IAppRequestInfo
     {
-        public string LunchId { get; set; }
+        public int LunchId { get; set; }
+        public int UserId { get; set; }
+        public int TopFiveId { get; set; }
     }
 }

@@ -50,6 +50,8 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\TopFiveOptions.cs" />
+    <Compile Include="Models\UserOptions.cs" />
     <Compile Include="Models\LunchOptions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

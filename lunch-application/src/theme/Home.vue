@@ -12,7 +12,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="row in restaurantData" >
+          <tr v-for="row in restaurantData" :key="row">
             <td scope="row">{{row.restaurantName}}</td>
             <td scope="row">{{row.restaurantType}}</td>
             <td scope="row">{{row.foodType}}</td>
@@ -21,7 +21,6 @@
         </tbody>
       </table>
     </div>
-
     <div class="topFive">
       <h3>Your Top 5</h3>
       <table class="table serial">
@@ -31,63 +30,79 @@
             <th scope="col">Restaurant Name</th>
           </tr>
         </thead>
-        <tbody>
-          <tr v-for="row in restaurantData">
+        <tbody v-for="row in topFiveData" :key="row">
+          <tr>
             <td scope="row"></td>
-            <td scope="row">{{row.restaurantName}}</td>
+            <td scope="row">{{row.restaurantOne}}</td>
+          </tr>
+          <tr>
+            <td scope="row"></td>
+            <td scope="row">{{row.restaurantTwo}}</td>
+          </tr>
+          <tr>
+            <td scope="row"></td>
+            <td scope="row">{{row.restaurantThree}}</td>
+          </tr>
+           <tr>
+            <td scope="row"></td>
+            <td scope="row">{{row.restaurantFour}}</td>
+          </tr>
+          <tr>
+            <td scope="row"></td>
+            <td scope="row">{{row.restaurantFive}}</td>
           </tr>
         </tbody>
       </table>
-    </div>
     <button type="button" class="btn" >Edit Top 5</button>
-    <input class="btn btn-primary" type="submit" value="Submit" v-on:click="lunchAlert()" >
+    <input class="btn btn-primary" type="submit" value="Submit" v-on:click="lunchLocationToast()" >
+    </div>
   </div>
 </template>
-
 <script>
   import axios from 'axios'
+  import VueOnToast from 'vue-on-toast'
 
   export default {
     data () {
       return {
         restaurantData: [],
+        topFiveData: [],
         errors: []
       }
     },
-
-    // Fetches posts when the component is created.
     created () {
       axios.get('http://localhost:48146/lunchdata')
         .then(response => {
-          // JSON responses are automatically parsed.
           console.log(response)
           this.restaurantData = response.data
           return this.restaurantData
+        })
+      axios.get('http://localhost:48146/topfivedata')
+        .then(response => {
+          console.log(response)
+          this.topFiveData = response.data
+          return this.topFiveData
         })
         .catch(e => {
           this.errors.push(e)
         })
     },
-
     methods: {
-      lunchAlert: function () {
+      lunchLocationToast: function () {
         var random = Math.floor(Math.random() * 5)
-        console.log(random)
-        console.log('lunch today is at: ' + this.restaurantData[random].restaurantName)
+        VueOnToast.ToastService.pop('success', 'Lunch Alert', 'lunch today is at: ' + this.restaurantData[random].restaurantName)
       }
-
     }
   }
 </script>
-
 <style scoped>
   .options{
-    width: 40%;
-    height:100%;
+    order: 1;
+    margin-right: 10px;
   }
   .topFive{
-    width: 40%;
-    height:100%;
+    order: 2;
+    margin-left: 20px;
   }
   .serial{
     counter-reset: serial-number;
@@ -96,6 +111,12 @@
   counter-increment: serial-number;
   content: counter(serial-number);
   }
-
-
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: stretch;
+  flex-basis: 40%;
+  height: 300px;
+}
 </style>

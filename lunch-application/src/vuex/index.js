@@ -28,7 +28,6 @@ const store = new Vuex.Store({
         appService.login(credentials)
           .then((data) => {
             context.commit('login', data)
-
             resolve()
           })
           .catch(() => {
