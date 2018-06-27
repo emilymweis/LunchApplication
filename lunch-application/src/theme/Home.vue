@@ -53,7 +53,7 @@
           </tr>
         </tbody>
       </table>
-    <button type="button" class="btn" >Edit Top 5</button>
+    <router-link to="/EditTopFive" tag="button" class="btn">Edit Top 5</router-link>
     <input class="btn btn-primary" type="submit" value="Submit" v-on:click="lunchLocationToast()" >
     </div>
   </div>
@@ -111,12 +111,13 @@
   counter-increment: serial-number;
   content: counter(serial-number);
   }
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  align-items: stretch;
-  flex-basis: 40%;
-  height: 300px;
-}
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: stretch;
+    flex-basis: 40%;
+    height: 300px;
+    margin: 0%;
+  }
 </style>

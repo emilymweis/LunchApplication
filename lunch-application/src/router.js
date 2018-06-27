@@ -4,6 +4,7 @@ import Category from './theme/Category.vue'
 import Login from './theme/Login.vue'
 import NotFound from './theme/NotFound.vue'
 import Home from './theme/Home.vue'
+import EditTopFive from './theme/EditTopFive.vue'
 
 Vue.use(VueRouter)
 
@@ -14,6 +15,7 @@ const router = new VueRouter({
   routes: [
     { path: '/login', component: Login },
     { path: '/Home', component: Home },
+    { path: '/EditTopFive', component: EditTopFive },
     { path: '/category/:id', name: 'category', component: Category },
     { path: '/', redirect: '/category/Home' },
     { path: '*', component: NotFound }
