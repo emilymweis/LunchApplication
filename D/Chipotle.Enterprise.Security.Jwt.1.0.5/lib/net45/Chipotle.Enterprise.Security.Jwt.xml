@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Chipotle.Enterprise.Security.Jwt</name>
+    </assembly>
+    <members>
+        <member name="T:Chipotle.Enterprise.Security.Jwt.JwtSecurity">
+            <summary>
+            This class is used to validate JWT tokens generated for Chipotle.
+            It can also be used to extract claim values.
+            </summary>
+        </member>
+        <member name="F:Chipotle.Enterprise.Security.Jwt.JwtSecurity.ClaimCustomerId">
+            <summary>
+            Name of the customer id claim (cid)
+            </summary>
+        </member>
+        <member name="F:Chipotle.Enterprise.Security.Jwt.JwtSecurity.ClaimRole">
+            <summary>
+            Name of the role claim (rol)
+            </summary>
+        </member>
+        <member name="F:Chipotle.Enterprise.Security.Jwt.JwtSecurity.ClaimEmail">
+            <summary>
+            Name of the email claim (eml)
+            </summary>
+        </member>
+        <member name="F:Chipotle.Enterprise.Security.Jwt.JwtSecurity.ClaimIsGuest">
+            <summary>
+            Name of the isGuest (igt) claim.  Valid values are true/false.
+            </summary>
+        </member>
+        <member name="F:Chipotle.Enterprise.Security.Jwt.JwtSecurity.ClaimIsAnonymous">
+            <summary>
+            Name of the isAnonymous (iay) claim. Valid values are true/false.
+            </summary>
+        </member>
+        <member name="M:Chipotle.Enterprise.Security.Jwt.JwtSecurity.InitializeWithServiceAsync(System.Func{Chipotle.Enterprise.Security.Jwt.JwtSettings})">
+            <summary>
+            Initializes the class by pulling the keys from the customer auth service.
+            The location and basic auth credentials required are extracted from appsettings
+            unless the JwtSettings callback is used.
+            </summary>
+            <param name="settingsCallback">(optional) Callback function to provide customer 
+            auth location and credentials. Needed if calling ValidateLoggedInAsync.</param>
+        </member>
+        <member name="M:Chipotle.Enterprise.Security.Jwt.JwtSecurity.InitializeWithKeys(System.String,System.String,System.Func{Chipotle.Enterprise.Security.Jwt.JwtSettings})">
+            <summary>
+            Initializes the class by supplying the necessary signing and decryption keys.  Use this
+            version of initialization if you know they keys and don't want to create dependency on
+            the customer auth service.
+            </summary>
+            <param name="signingKey">Signing key.</param>
+            <param name="decryptionKey">Decryption key.</param>
+            <param name="settingsCallback">(optional) Callback function to provide customer auth location and credentials.</param>
+        </member>
+        <member name="M:Chipotle.Enterprise.Security.Jwt.JwtSecurity.GetClaims(System.String)">
+            <summary>
+            Returns all of the claims embedded within the JWT.
+            </summary>
+            <param name="jwt">JWT to extract claims.</param>
+            <returns>An enumeration of type Claim</returns>
+        </member>
+        <member name="M:Chipotle.Enterprise.Security.Jwt.JwtSecurity.GetClaimValue(System.String,System.String)">
+            <summary>
+            Get the value of a named claim.
+            </summary>
+            <param name="jwt">The JWT to use.</param>
+            <param name="name">The name of the claim.</param>
+            <returns>String value of the claim.</returns>
+        </member>
+        <member name="M:Chipotle.Enterprise.Security.Jwt.JwtSecurity.ValidateJwt(System.String)">
+            <summary>
+            Validate the JWT.  Throws an exception if there is a problem.
+            </summary>
+            <param name="jwt">The JWT to validate.</param>
+            <exception cref="T:Chipotle.Enterprise.Security.Jwt.JwtValidationException">If the token is not valid.</exception>
+            <exception cref="T:Chipotle.Enterprise.Security.Jwt.JwtExpiredException">If the supplied token is expired.</exception>
+            <exception cref="T:System.InvalidOperationException">Missing initialization with required keys.</exception>
+        </member>
+        <member name="M:Chipotle.Enterprise.Security.Jwt.JwtSecurity.ValidateLoggedInAsync(System.String)">
+            <summary>
+            Validate against the Customer Auth service if the JWT is
+            logged in.  If logged in, simply returns.  If not logged in
+            or a problem, throws an exception.
+            </summary>
+            <param name="jwt">The JWT to validate.</param>
+            <exception cref="T:Chipotle.Enterprise.Security.Jwt.JwtLoggedOutException">Thrown if the user is logged out.  JWT should not be used.</exception>
+            <exception cref="T:System.InvalidOperationException">Unexpected return code from customer auth end-point.</exception>
+        </member>
+    </members>
+</doc>
