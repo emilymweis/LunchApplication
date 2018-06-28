@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-axios.defaults.baseURL = 'https://api.fullstackweekly.com'
+axios.defaults.baseURL = 'http://localhost:48146/lunchdata'
 
 axios.interceptors.request.use(function (config) {
   if (typeof window === 'undefined') {
