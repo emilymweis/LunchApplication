@@ -130,8 +130,7 @@ namespace LunchApplication.Api.Filters
 
                 if (_jwtRequestInfo != null)
                 {
-                    int parsedCustomerId;
-                    int.TryParse(customerId, out parsedCustomerId);
+                    int.TryParse(customerId, out int parsedCustomerId);
                     if (parsedCustomerId > 0)
                     {
                         _jwtRequestInfo.JwtInfo.CustomerId = parsedCustomerId;

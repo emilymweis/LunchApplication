@@ -14,8 +14,8 @@ const router = new VueRouter({
   scrollBehavior: (to, from, savedPosition) => ({ y: 0 }),
   routes: [
     { path: '/login', component: Login },
-    { path: '/Home', component: Home },
-    { path: '/EditTopFive', component: EditTopFive },
+    { path: '/home', component: Home },
+    { path: '/edittopfive', component: EditTopFive },
     { path: '/category/:id', name: 'category', component: Category },
     { path: '/', redirect: '/category/Home' },
     { path: '*', component: NotFound }

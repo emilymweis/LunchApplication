@@ -80,6 +80,9 @@
           this.restaurantData = response.data
           return this.restaurantData
         })
+        .catch(e => {
+          this.errors.push(e)
+        })
       axios.get('http://localhost:48146/topfivedata')
         .then(response => {
           console.log(response)

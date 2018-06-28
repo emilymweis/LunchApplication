@@ -12,7 +12,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="row in restaurantData" :key="row">
+          <tr v-for="(row, index) in restaurantData" :key="index">
             <td scope="row">{{row.restaurantName}}</td>
             <td scope="row">{{row.restaurantType}}</td>
             <td scope="row">{{row.foodType}}</td>
@@ -30,7 +30,7 @@
             <th scope="col">Restaurant Name</th>
           </tr>
         </thead>
-        <tbody v-for="row in topFiveData" :key="row">
+        <tbody v-for="(row, index) in topFiveData" :key="index">
           <tr>
             <td scope="row"></td>
             <td scope="row">{{row.restaurantOne}}</td>
