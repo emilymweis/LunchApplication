@@ -1,6 +1,7 @@
 import axios from 'axios'
 
-axios.defaults.baseURL = 'http://localhost:48146/lunchdata'
+axios.defaults.baseURL = 'http://localhost:48146'
+const baseUrl = axios.defaults.baseURL
 
 axios.interceptors.request.use(function (config) {
   if (typeof window === 'undefined') {
@@ -33,7 +34,7 @@ const appService = {
   },
   login (credentials) {
     return new Promise((resolve, reject) => {
-      axios.post('http://localhost:48146/userdata', credentials)
+      axios.post(baseUrl + '/userdata', credentials)
         .then(response => {
           resolve(response.data)
         }).catch(response => {

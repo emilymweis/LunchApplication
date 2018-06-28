@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div id="home" class="container">
     <div class="options">
       <h3>Lunch Options</h3>
       <table class="table">
@@ -61,6 +61,7 @@
 <script>
   import axios from 'axios'
   import VueOnToast from 'vue-on-toast'
+  const baseUrl = axios.defaults.baseURL
 
   export default {
     data () {
@@ -71,13 +72,13 @@
       }
     },
     created () {
-      axios.get('http://localhost:48146/lunchdata')
+      axios.get(baseUrl + '/lunchdata')
         .then(response => {
           console.log(response)
           this.restaurantData = response.data
           return this.restaurantData
         })
-      axios.get('http://localhost:48146/topfivedata')
+      axios.get(baseUrl + '/topfivedata')
         .then(response => {
           console.log(response)
           this.topFiveData = response.data
@@ -95,23 +96,23 @@
     }
   }
 </script>
-<style scoped>
-  .options{
+<style>
+  #home.options{
     order: 1;
     margin-right: 10px;
   }
-  .topFive{
+  #home.topFive{
     order: 2;
     margin-left: 20px;
   }
-  .serial{
+  #home.serial{
     counter-reset: serial-number;
   }
-  .serial td:first-child:before {
+  #home.serial td:first-child:before {
   counter-increment: serial-number;
   content: counter(serial-number);
   }
-  .container {
+  #home.container {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;

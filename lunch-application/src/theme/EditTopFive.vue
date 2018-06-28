@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div id="editTopFive" class="container">
     <div class="editTopFive">
     <h3>Edit Top Five</h3>
     <table>
@@ -64,6 +64,7 @@
 <script>
   import axios from 'axios'
   import VueOnToast from 'vue-on-toast'
+  const baseUrl = axios.defaults.baseURL
 
   export default {
     data () {
@@ -74,7 +75,7 @@
       }
     },
     created () {
-      axios.get('http://localhost:48146/lunchdata')
+      axios.get(baseUrl + '/lunchdata')
         .then(response => {
           console.log(response)
           this.restaurantData = response.data
@@ -83,7 +84,7 @@
         .catch(e => {
           this.errors.push(e)
         })
-      axios.get('http://localhost:48146/topfivedata')
+      axios.get(baseUrl + '/topfivedata')
         .then(response => {
           console.log(response)
           this.topFiveData = response.data
@@ -100,18 +101,18 @@
     }
   }
 </script>
-<style scoped>
-  table{
+<style>
+#editTopFive table{
     align-self: center;
   }
-  .form-control{
+  #editTopFive.form-control{
     width: 100%;
   }
-  .editTopFive{
+  #editTopFive.editTopFive{
     order: 1;
     -ms-flex-align: center;
   }
-  .container{
+  #editTopFive.container{
     display: flex;
     align-items: center;
     flex-wrap: wrap;
