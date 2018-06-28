@@ -1,4 +1,11 @@
-﻿using System;
+﻿using Chipotle.Core.Logging;
+using Chipotle.Enterprise.Security.Jwt;
+using Core.Common.Exceptions;
+using Core.Common.Interfaces;
+using LunchApplication.Common.Constants;
+using LunchApplication.Common.Interfaces;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -8,13 +15,6 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.Controllers;
-using Chipotle.Core.Logging;
-using Chipotle.Enterprise.Security.Jwt;
-using Core.Common.Exceptions;
-using Core.Common.Interfaces;
-using Newtonsoft.Json.Linq;
-using LunchApplication.Common.Constants;
-using LunchApplication.Common.Interfaces;
 
 namespace LunchApplication.Api.Filters
 {

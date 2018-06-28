@@ -47,6 +47,21 @@
     <DocumentationFile>bin\LunchApplication.Api.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Chipotle.Core.Logging">
+      <HintPath>..\..\D\Chipotle.Core.Logging.1.5.2\lib\net45\Chipotle.Core.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Chipotle.Enterprise.Security.Jwt">
+      <HintPath>..\..\D\Chipotle.Enterprise.Security.Jwt.1.0.5\lib\net45\Chipotle.Enterprise.Security.Jwt.dll</HintPath>
+    </Reference>
+    <Reference Include="Core.Common">
+      <HintPath>..\..\D\Chipotle.Core.Common.1.0.9\lib\net45\Core.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Core.Common.Services">
+      <HintPath>..\..\D\Chipotle.Core.Common.Services.1.0.10\lib\net45\Core.Common.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="Core.Common.Swagger">
+      <HintPath>..\..\D\Chipotle.Core.Common.Swagger.1.0.4\lib\net45\Core.Common.Swagger.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.IdentityModel.Logging, Version=1.1.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.IdentityModel.Logging.1.1.4\lib\net451\Microsoft.IdentityModel.Logging.dll</HintPath>

@@ -38,6 +38,18 @@
     <OutputPath>bin\qa\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Chipotle.Core.Logging">
+      <HintPath>..\..\D\Chipotle.Core.Logging.1.5.2\lib\net45\Chipotle.Core.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Chipotle.Logging.Splunk">
+      <HintPath>..\..\D\Chipotle.Logging.Splunk.1.2.2\lib\net45\Chipotle.Logging.Splunk.dll</HintPath>
+    </Reference>
+    <Reference Include="Core.Common">
+      <HintPath>..\..\D\Chipotle.Core.Common.1.0.9\lib\net45\Core.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Core.Common.Services">
+      <HintPath>..\..\D\Chipotle.Core.Common.Services.1.0.10\lib\net45\Core.Common.Services.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>

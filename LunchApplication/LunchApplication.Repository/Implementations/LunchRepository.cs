@@ -1,18 +1,13 @@
-﻿using System;
+﻿using Core.Common.Interfaces;
+using Dapper;
+using LunchApplication.Common;
+using LunchApplication.Common.Constants;
+using LunchApplication.Models.Models;
+using LunchApplication.Repository.Interfaces;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Data.Entity.Validation;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
-using Core.Common.Exceptions;
-using Core.Common.Interfaces;
-using Dapper;
-using LunchApplication.Common.Constants;
-using LunchApplication.Models.Models;
-using LunchApplication.Repository.Extensions;
-using LunchApplication.Repository.Interfaces;
-using LunchApplication.Common;
 
 namespace LunchApplication.Repository.Implementations
 {
