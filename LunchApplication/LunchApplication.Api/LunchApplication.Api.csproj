@@ -47,24 +47,6 @@
     <DocumentationFile>bin\LunchApplication.Api.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Chipotle.Core.Logging, Version=1.5.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Chipotle.Core.Logging.1.5.2\lib\net452\Chipotle.Core.Logging.dll</HintPath>
-    </Reference>
-    <Reference Include="Chipotle.Enterprise.Security.Jwt, Version=1.0.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Chipotle.Enterprise.Security.Jwt.1.0.5\lib\net45\Chipotle.Enterprise.Security.Jwt.dll</HintPath>
-    </Reference>
-    <Reference Include="Chipotle.Logging.Splunk, Version=1.2.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Chipotle.Logging.Splunk.1.2.2\lib\net45\Chipotle.Logging.Splunk.dll</HintPath>
-    </Reference>
-    <Reference Include="Core.Common, Version=1.0.9.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Chipotle.Core.Common.1.0.9\lib\net45\Core.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Core.Common.Services, Version=1.0.10.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Chipotle.Core.Common.Services.1.0.10\lib\net45\Core.Common.Services.dll</HintPath>
-    </Reference>
-    <Reference Include="Core.Common.Swagger, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Chipotle.Core.Common.Swagger.1.0.4\lib\net45\Core.Common.Swagger.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.IdentityModel.Logging, Version=1.1.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.IdentityModel.Logging.1.1.4\lib\net451\Microsoft.IdentityModel.Logging.dll</HintPath>
