@@ -69,13 +69,12 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "lunch-application", "lunch-
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6. Dependencies", "6. Dependencies", "{D8A4691E-5455-40F2-92E4-38F260A5371D}"
 	ProjectSection(SolutionItems) = preProject
-		D\Chipotle.Core.Logging.1.5.2\lib\net45\Chipotle.Core.Logging.dll = D\Chipotle.Core.Logging.1.5.2\lib\net45\Chipotle.Core.Logging.dll
-		D\Chipotle.Enterprise.Security.Jwt.1.0.5\lib\net45\Chipotle.Enterprise.Security.Jwt.dll = D\Chipotle.Enterprise.Security.Jwt.1.0.5\lib\net45\Chipotle.Enterprise.Security.Jwt.dll
-		D\Chipotle.Logging.Splunk.1.2.2\lib\net45\Chipotle.Logging.Splunk.dll = D\Chipotle.Logging.Splunk.1.2.2\lib\net45\Chipotle.Logging.Splunk.dll
-		D\Chipotle.Testing.SpecFlow.2.0.1\lib\net45\Chipotle.Testing.SpecFlow.Core.dll = D\Chipotle.Testing.SpecFlow.2.0.1\lib\net45\Chipotle.Testing.SpecFlow.Core.dll
-		D\Chipotle.Core.Common.1.0.9\lib\net45\Core.Common.dll = D\Chipotle.Core.Common.1.0.9\lib\net45\Core.Common.dll
-		D\Chipotle.Core.Common.Services.1.0.10\lib\net45\Core.Common.Services.dll = D\Chipotle.Core.Common.Services.1.0.10\lib\net45\Core.Common.Services.dll
-		D\Chipotle.Core.Common.Swagger.1.0.4\lib\net45\Core.Common.Swagger.dll = D\Chipotle.Core.Common.Swagger.1.0.4\lib\net45\Core.Common.Swagger.dll
+		LunchApplication\Dependencies\Chipotle.Core.Logging.1.5.2\lib\net45\Chipotle.Core.Logging.dll = LunchApplication\Dependencies\Chipotle.Core.Logging.1.5.2\lib\net45\Chipotle.Core.Logging.dll
+		LunchApplication\Dependencies\Chipotle.Enterprise.Security.Jwt.1.0.5\lib\net45\Chipotle.Enterprise.Security.Jwt.dll = LunchApplication\Dependencies\Chipotle.Enterprise.Security.Jwt.1.0.5\lib\net45\Chipotle.Enterprise.Security.Jwt.dll
+		LunchApplication\Dependencies\Chipotle.Logging.Splunk.1.2.2\lib\net45\Chipotle.Logging.Splunk.dll = LunchApplication\Dependencies\Chipotle.Logging.Splunk.1.2.2\lib\net45\Chipotle.Logging.Splunk.dll
+		LunchApplication\Dependencies\Chipotle.Core.Common.1.0.9\lib\net45\Core.Common.dll = LunchApplication\Dependencies\Chipotle.Core.Common.1.0.9\lib\net45\Core.Common.dll
+		LunchApplication\Dependencies\Chipotle.Core.Common.Services.1.0.10\lib\net45\Core.Common.Services.dll = LunchApplication\Dependencies\Chipotle.Core.Common.Services.1.0.10\lib\net45\Core.Common.Services.dll
+		LunchApplication\Dependencies\Chipotle.Core.Common.Swagger.1.0.4\lib\net45\Core.Common.Swagger.dll = LunchApplication\Dependencies\Chipotle.Core.Common.Swagger.1.0.4\lib\net45\Core.Common.Swagger.dll
 	EndProjectSection
 EndProject
 Global

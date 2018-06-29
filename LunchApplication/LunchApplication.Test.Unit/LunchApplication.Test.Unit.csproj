@@ -35,10 +35,10 @@
       <HintPath>..\..\packages\Castle.Core.4.1.0\lib\net45\Castle.Core.dll</HintPath>
     </Reference>
     <Reference Include="Chipotle.Core.Logging">
-      <HintPath>..\..\D\Chipotle.Core.Logging.1.5.2\lib\net45\Chipotle.Core.Logging.dll</HintPath>
+      <HintPath>..\Dependencies\Chipotle.Core.Logging.1.5.2\lib\net45\Chipotle.Core.Logging.dll</HintPath>
     </Reference>
     <Reference Include="Core.Common">
-      <HintPath>..\..\D\Chipotle.Core.Common.1.0.9\lib\net45\Core.Common.dll</HintPath>
+      <HintPath>..\Dependencies\Chipotle.Core.Common.1.0.9\lib\net45\Core.Common.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
