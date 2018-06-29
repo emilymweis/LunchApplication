@@ -1,0 +1,29 @@
+.accordion-header.card-header {
+    background-color: rgb(240, 231, 216);
+    border: 1px solid rgb(174, 173, 173);
+
+    button {
+        background-color: rgb(240, 231, 216);
+        color: $chipotle-brown2;
+        text-transform: uppercase;
+        font-size: 0.85em;
+        font-weight: bold;
+        text-align: left;
+        border: none;
+        cursor: pointer;
+        
+        &:focus {
+            box-shadow: none;
+        }
+
+        &:hover {
+            background-color: inherit;
+            color: lighten(rgb(79, 79, 79), 30%);
+        }
+    }
+}
+
+.accordion-body.card-body {
+    border: 1px solid rgb(174, 173, 173);
+    border-top: none;
+}

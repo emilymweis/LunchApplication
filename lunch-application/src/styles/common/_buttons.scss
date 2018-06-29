@@ -1,0 +1,45 @@
+.btn-row>div {
+    justify-content: space-between;
+}
+
+button.btn {
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 1em;
+}
+
+.btn-search {
+    background-color: $button-blue;
+    border: 1px solid $button-blue-dark;
+    &:hover {
+        background-color: darken($button-blue, 10%);
+    }
+}
+
+.btn-clear-search {
+    background-color: $button-orange;
+    border: 1px solid $button-orange-dark;
+    &:hover {
+        background-color: darken($button-orange, 10%)
+    }
+}
+
+h2 .btn-delete {
+    font-size: 0.5em !important;
+    float: right;
+}
+
+button.btn-delete {
+    background-color: $chipotle-red;
+    color: $chipotle-white;
+    cursor: initial;
+
+    &:hover:not(.disabled) {
+        background-color: $chipotle-red-hover;
+        cursor: pointer;
+    }
+}
+
+button.btn-spaced {
+  margin-right: 6px;
+}

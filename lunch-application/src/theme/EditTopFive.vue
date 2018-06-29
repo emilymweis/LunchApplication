@@ -1,5 +1,5 @@
 <template>
-  <div id="editTopFive" class="container">
+  <div id="editTopFive">
     <div class="editTopFive">
     <h3>Edit Top Five</h3>
     <table>
@@ -57,7 +57,7 @@
       </tbody>
     </table>
     <router-link to="/Home" tag="button" class="btn">Back</router-link>
-    <input class="btn btn-primary" type="submit" value="Submit" v-on:click="submitUpdate()" >
+    <button class="btn btn-primary" type="submit" v-on:click="submitUpdate()" >Submit </button>
     </div>
   </div>
 </template>
@@ -101,20 +101,20 @@
     }
   }
 </script>
-<style>
-#editTopFive table{
+<style lang="scss">
+#editTopFive{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  table{
     align-self: center;
   }
-  #editTopFive.form-control{
+  .form-control{
     width: 100%;
   }
-  #editTopFive.editTopFive{
+  .editTopFive{
     order: 1;
     -ms-flex-align: center;
   }
-  #editTopFive.container{
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    }
+}
 </style>

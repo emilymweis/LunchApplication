@@ -1,5 +1,5 @@
 <template>
-  <div id="home" class="container">
+  <div id="home">
     <div class="options">
       <h3>Lunch Options</h3>
       <table>
@@ -54,7 +54,7 @@
         </tbody>
       </table>
     <router-link to="/EditTopFive" tag="button" class="btn">Edit Top 5</router-link>
-    <input class="btn btn-primary" type="submit" value="Submit" v-on:click="lunchLocationToast()" >
+    <button class="btn" type="submit" v-on:click="lunchLocationToast()" >Submit</button>
     </div>
   </div>
 </template>
@@ -96,27 +96,28 @@
     }
   }
 </script>
-<style>
-  #home.options{
-    order: 1;
-    margin-right: 10px;
-  }
-  #home.topFive{
-    order: 2;
-    margin-left: 30px;
-    padding: 10px;
-  }
-  #home.serial td:first-child:before {
-  counter-increment: serial-number;
-  content: counter(serial-number);
-  }
-  #home.container {
+<style lang="scss">
+  #home{
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     align-items: stretch;
-    flex-basis: 40%;
+    flex-basis: content;
     height: 300px;
     margin: 0%;
+
+    .options{
+      order: 1;
+      margin-right: 10px;
+    }
+    .topFive{
+      order: 2;
+      margin-left: 30px;
+      padding: 10px;
+    }
+    .serial td:first-child:before {
+      counter-increment: serial-number;
+      content: counter(serial-number);
+    }
   }
 </style>

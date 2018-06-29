@@ -21,7 +21,7 @@
     }
   }
 </script>
-<style>
+<style lang="scss">
   #chiLogo{
     width: 55px;
     height: 55px;

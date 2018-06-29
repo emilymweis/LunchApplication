@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Category from './theme/Category.vue'
 import Login from './theme/Login.vue'
 import NotFound from './theme/NotFound.vue'
 import Home from './theme/Home.vue'
@@ -16,8 +15,7 @@ const router = new VueRouter({
     { path: '/login', component: Login },
     { path: '/home', component: Home },
     { path: '/edittopfive', component: EditTopFive },
-    { path: '/category/:id', name: 'category', component: Category },
-    { path: '/', redirect: '/category/Home' },
+    { path: '/', redirect: '/home' },
     { path: '*', component: NotFound }
   ]
 })
