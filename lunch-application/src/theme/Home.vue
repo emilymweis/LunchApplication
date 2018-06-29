@@ -2,54 +2,54 @@
   <div id="home" class="container">
     <div class="options">
       <h3>Lunch Options</h3>
-      <table class="table">
+      <table>
         <thead>
           <tr>
-            <th scope="col">Restaurant Name</th>
-            <th scope="col">Restaurant Type</th>
-            <th scope="col">Food Type</th>
-            <th scope="col">Price</th>
+            <th>Restaurant Name</th>
+            <th>Restaurant Type</th>
+            <th>Food Type</th>
+            <th>Price</th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="(row, index) in restaurantData" :key="index">
-            <td scope="row">{{row.restaurantName}}</td>
-            <td scope="row">{{row.restaurantType}}</td>
-            <td scope="row">{{row.foodType}}</td>
-            <td scope="row">{{row.price}}</td>
+            <td >{{row.restaurantName}}</td>
+            <td >{{row.restaurantType}}</td>
+            <td >{{row.foodType}}</td>
+            <td >{{row.price}}</td>
           </tr>
         </tbody>
       </table>
     </div>
     <div class="topFive">
       <h3>Your Top 5</h3>
-      <table class="table serial">
+      <table>
         <thead>
           <tr>
-            <th scope="col">Restaurant Ranking</th>
-            <th scope="col">Restaurant Name</th>
+            <th>Restaurant Ranking</th>
+            <th>Restaurant Name</th>
           </tr>
         </thead>
         <tbody v-for="(row, index) in topFiveData" :key="index">
           <tr>
-            <td scope="row"></td>
-            <td scope="row">{{row.restaurantOne}}</td>
+            <td>1</td>
+            <td>{{row.restaurantOne}}</td>
           </tr>
           <tr>
-            <td scope="row"></td>
-            <td scope="row">{{row.restaurantTwo}}</td>
+            <td>2</td>
+            <td>{{row.restaurantTwo}}</td>
           </tr>
           <tr>
-            <td scope="row"></td>
-            <td scope="row">{{row.restaurantThree}}</td>
+            <td>3</td>
+            <td>{{row.restaurantThree}}</td>
           </tr>
            <tr>
-            <td scope="row"></td>
-            <td scope="row">{{row.restaurantFour}}</td>
+            <td>4</td>
+            <td>{{row.restaurantFour}}</td>
           </tr>
           <tr>
-            <td scope="row"></td>
-            <td scope="row">{{row.restaurantFive}}</td>
+            <td>5</td>
+            <td>{{row.restaurantFive}}</td>
           </tr>
         </tbody>
       </table>
@@ -103,10 +103,8 @@
   }
   #home.topFive{
     order: 2;
-    margin-left: 20px;
-  }
-  #home.serial{
-    counter-reset: serial-number;
+    margin-left: 30px;
+    padding: 10px;
   }
   #home.serial td:first-child:before {
   counter-increment: serial-number;

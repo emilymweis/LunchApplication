@@ -2,8 +2,8 @@
   <nav class="nav has-shadow">
     <div class="container">
       <router-link to="/Home" exact>
-        <!-- TODO <img src="../assets/chi_logo-trans.png" -->
-          <!-- alt="Lunch App" /> -->
+        <img id="chiLogo" src="../assets/chi_logo-trans.png"
+          alt="Lunch App" />
       </router-link>
       <router-link class="nav-item is-tab"
         to="/Home">Home</router-link>
@@ -21,3 +21,9 @@
     }
   }
 </script>
+<style>
+  #chiLogo{
+    width: 55px;
+    height: 55px;
+  }
+  </style>

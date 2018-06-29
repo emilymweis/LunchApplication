@@ -1,11 +1,13 @@
 var webpackConfig = require('../../build/webpack.test.config.js')
+
 module.exports = function (config) {
   config.set({
     browsers: ['PhantomJS'],
-    frameworks: ['mocha', 'sinon-chai'],
+    frameworks: ['mocha', 'sinon-chai', 'phantomjs-shim'],
+    reporters: ['spec', 'coverage'],
     files: ['./index.js'],
     preprocessors: {
-      './index.js': ['webpack']
+      './index.js': ['webpack', 'sourcemap']
     },
     plugins: [
       'karma-mocha',
@@ -16,6 +18,20 @@ module.exports = function (config) {
     webpack: webpackConfig,
     webpackMiddleware: {
       noInfo: true
+    },
+    coverageReporter: {
+      dir: './coverage',
+      reporters: [
+        { type: 'lcov', subdir: '.' },
+        { type: 'text-summary' }
+      ]
+    },
+    port: 3000,
+    customLaunchers: {
+      'PhantomJS_custom': {
+          base: 'PhantomJS',
+          debug: true,
+      }
     }
   })
 }
