@@ -1,19 +1,16 @@
 <template>
   <b-navbar class="navbar" toggleable type="light">
-      <b-link class="navbar-brand" to="/home" exact>
-        <img id="chiLogo" src="../assets/chi_logo-trans.png"
+    <b-link class="navbar-brand" to="/home" exact>
+      <img id="chiLogo" src="../assets/chi_logo-trans.png"
           alt="Lunch App" />
-          <b-navbar-nav>
-            <div class="navbar-text">Lunch Application</div>
-          </b-navbar-nav>
-          <div>
-            <b-link class="nav-item" to="/login">
-              <span v-if="isAuthenticated">LOGOUT</span><span v-else>LOGIN</span>
-            </b-link>
-          </div>
-      </b-link>
+      <b-navbar-nav>
+        <div class="navbar-text">Lunch Application</div>
+      </b-navbar-nav>
+    </b-link>
+    <b-link class="nav-item" to="/login">
+      <span v-if="isAuthenticated">LOGOUT</span><span v-else>LOGIN</span>
+    </b-link>
   </b-navbar>
-
 </template>
 <script>
   import { mapGetters } from 'vuex'
@@ -63,6 +60,7 @@
     }
 
     .navbar-text {
+      order: 1;
         margin-left: 90px;
         height: 35px;
         align-items: center;
