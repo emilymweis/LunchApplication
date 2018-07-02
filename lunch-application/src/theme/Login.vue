@@ -7,11 +7,12 @@
     </button>
   </div>
   <div v-else>
-    <h2>Login</h2>
+    <h2 class="header-label">Login</h2>
     <div class="field is-horizontal">
       <div class="field-label is-normal">
         <label class="label">Username</label>
       </div>
+
       <div class="field-body">
         <div class="field">
         <div class="control">
@@ -25,6 +26,7 @@
       <div class="field-label is-normal">
         <label class="label">Password</label>
       </div>
+      <br>
       <div class="field-body">
         <div class="field">
         <div class="control">
@@ -77,3 +79,12 @@
     }
   }
 </script>
+<style lang="scss">
+  .header-label{
+    margin-left: 30px;
+    padding-top: 30px;
+  }
+  .control{
+    margin-right: 30px;
+  }
+</style>

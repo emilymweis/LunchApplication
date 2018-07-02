@@ -1,60 +1,67 @@
 <template>
   <div id="home">
-    <div class="options">
-      <h3>Lunch Options</h3>
-      <table>
-        <thead>
-          <tr>
-            <th>Restaurant Name</th>
-            <th>Restaurant Type</th>
-            <th>Food Type</th>
-            <th>Price</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="(row, index) in restaurantData" :key="index">
-            <td >{{row.restaurantName}}</td>
-            <td >{{row.restaurantType}}</td>
-            <td >{{row.foodType}}</td>
-            <td >{{row.price}}</td>
-          </tr>
-        </tbody>
-      </table>
+    <div class=card>
+      <div class="options">
+        <div class="card-header">Lunch Options</div>
+        <table>
+          <thead>
+            <tr>
+              <th>Restaurant Name</th>
+              <th>Restaurant Type</th>
+              <th>Food Type</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(row, index) in restaurantData" :key="index">
+              <td >{{row.restaurantName}}</td>
+              <td >{{row.restaurantType}}</td>
+              <td >{{row.foodType}}</td>
+              <td >{{row.price}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-    <div class="topFive">
-      <h3>Your Top 5</h3>
-      <table>
-        <thead>
-          <tr>
-            <th>Restaurant Ranking</th>
-            <th>Restaurant Name</th>
-          </tr>
-        </thead>
-        <tbody v-for="(row, index) in topFiveData" :key="index">
-          <tr>
-            <td>1</td>
-            <td>{{row.restaurantOne}}</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>{{row.restaurantTwo}}</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>{{row.restaurantThree}}</td>
-          </tr>
-           <tr>
-            <td>4</td>
-            <td>{{row.restaurantFour}}</td>
-          </tr>
-          <tr>
-            <td>5</td>
-            <td>{{row.restaurantFive}}</td>
-          </tr>
-        </tbody>
-      </table>
-    <router-link to="/EditTopFive" tag="button" class="btn">Edit Top 5</router-link>
-    <button class="btn" type="submit" v-on:click="lunchLocationToast()" >Submit</button>
+    <div class=card>
+      <div class="topFive">
+        <div class="card-header">Your Top 5</div>
+        <div class="card-main">
+          <table>
+            <thead>
+              <tr>
+                <th>Restaurant Ranking</th>
+                <th>Restaurant Name</th>
+              </tr>
+            </thead>
+            <tbody v-for="(row, index) in topFiveData" :key="index">
+              <tr>
+                <td>1</td>
+                <td>{{row.restaurantOne}}</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>{{row.restaurantTwo}}</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>{{row.restaurantThree}}</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>{{row.restaurantFour}}</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>{{row.restaurantFive}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      <router-link to="/EditTopFive" tag="button" class="btn">Edit Top 5</router-link>
+      <button class="btn" type="submit" v-on:click="lunchLocationToast()" >Submit</button>
+
+      </div>
     </div>
   </div>
 </template>
@@ -99,16 +106,11 @@
 <style lang="scss">
   #home{
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    align-items: stretch;
-    flex-basis: content;
-    height: 300px;
-    margin: 0%;
-
+    margin-left: 50px;
     .options{
       order: 1;
       margin-right: 10px;
+      padding: 10px;
     }
     .topFive{
       order: 2;
@@ -118,6 +120,25 @@
     .serial td:first-child:before {
       counter-increment: serial-number;
       content: counter(serial-number);
+    }
+    .card {
+      overflow: hidden;
+      margin: 10px;
+      flex-basis: content;
+      align-items: stretch;
+      flex-wrap: wrap;
+      border: none;
+    }
+    .card-header {
+      text-align: center;
+      font-size: 30px;
+    }
+    .card-main {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 15px 0;
     }
   }
 </style>
