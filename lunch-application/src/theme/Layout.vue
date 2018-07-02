@@ -34,24 +34,27 @@
   padding: 0;
   margin: 0;
 }
-section{
-  flex: 1;
-  height: 100%;
-}
 body{
   background-color: #e7dcc8;
   color: $chipotle-black;
   font-size: 14px;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  flex:1;
 }
-section{
+#app{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.main-section{
   flex:1;
+
 }
 footer{
   text-align: center;
   background-color: #e7dcc8;
+
 }
 
 .heading,
@@ -83,12 +86,6 @@ h4 {
   padding-bottom: 15px;
   margin-bottom: 20px;
   border-radius: 5px;
-  @media (min-width: 1200px) {
-    max-width: 900px;
-  }
-  @media (min-width: 992px) {
-    max-width: 900px;
-  }
 }
 .fade-enter-active {
   transition-property: opacity;
