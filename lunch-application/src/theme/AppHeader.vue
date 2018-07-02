@@ -8,7 +8,7 @@
       </b-navbar-nav>
     </b-link>
     <b-link class="nav-item" to="/login">
-      <span v-if="isAuthenticated">LOGOUT</span><span v-else>LOGIN</span>
+      <div v-if="isAuthenticated">LOGOUT</div><div v-else>LOGIN</div>
     </b-link>
   </b-navbar>
 </template>
@@ -32,8 +32,7 @@
     padding: 0.75rem 0 0.35rem 0;
     position: relative;
     margin-top: 0px;
-    max-height: 50px;
-    min-height: 30px;
+    height: 50px;
 
     background-color: $chipotle-white;
     color: $chipotle-dark-brown;

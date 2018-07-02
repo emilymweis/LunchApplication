@@ -28,14 +28,30 @@
   .columns{
     flex-wrap: wrap
   }
-  body {
+  html, body {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+section{
+  flex: 1;
+  height: 100%;
+}
+body{
   background-color: #e7dcc8;
   color: $chipotle-black;
   font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  flex:1;
 }
-
-footer {
+section{
+  flex:1;
+}
+footer{
   text-align: center;
+  background-color: #e7dcc8;
 }
 
 .heading,
@@ -49,32 +65,24 @@ h6 {
   font-weight: bold;
   color: $heading-black;
 }
-
 h2 {
   font-size: 2em;
 }
-
 h4 {
   font-size: 1.17em;
 }
-
 #app {
   font-family: "Roboto Condensed", "Franklin Gothic", "Arial Narrow", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  margin-top: 20px;
 }
-
 .route-content {
   padding: 20px 0px;
 }
-
 .container {
   padding-bottom: 15px;
   margin-bottom: 20px;
-  background: $chipotle-white;
   border-radius: 5px;
-
   @media (min-width: 1200px) {
     max-width: 900px;
   }
@@ -82,27 +90,18 @@ h4 {
     max-width: 900px;
   }
 }
-
 .fade-enter-active {
   transition-property: opacity;
   transition-duration: .25s;
 }
-
 .fade-leave-active {
-  transition-property: opacity; // since we have variable height content,
-  // immediately make the content invisible
-  // with a zero opacity value that takes place
-  // instantly
-  transition-duration: .0s; // set the leaving content's position to
-  // absolute to avoid dynamic resizing to
-  // include both views as the content is swapping
+  transition-property: opacity;
+  transition-duration: .0s;
   position: absolute;
 }
-
 .fade-enter-active {
   transition-delay: .15s;
 }
-
 .fade-enter,
 .fade-leave-active {
   opacity: 0;

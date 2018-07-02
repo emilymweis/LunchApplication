@@ -1,8 +1,9 @@
 <template>
-  <footer class="footer">
+  <footer>
       <div class="content has-text-centered">
-        Go to
-        <a href="https://www.chipotle.com/" target="_blank">Chipotle.com</a>
+        <p>Lunch Application - Emily Weis</p>
       </div>
   </footer>
 </template>
+
+

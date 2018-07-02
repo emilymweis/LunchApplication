@@ -3,24 +3,26 @@
     <div class=card>
       <div class="options">
         <div class="card-header">Lunch Options</div>
-        <table>
-          <thead>
-            <tr>
-              <th>Restaurant Name</th>
-              <th>Restaurant Type</th>
-              <th>Food Type</th>
-              <th>Price</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(row, index) in restaurantData" :key="index">
-              <td >{{row.restaurantName}}</td>
-              <td >{{row.restaurantType}}</td>
-              <td >{{row.foodType}}</td>
-              <td >{{row.price}}</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="card-main">
+          <table>
+            <thead>
+              <tr>
+                <th>Restaurant Name</th>
+                <th>Restaurant Type</th>
+                <th>Food Type</th>
+                <th>Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="(row, index) in restaurantData" :key="index">
+                <td >{{row.restaurantName}}</td>
+                <td >{{row.restaurantType}}</td>
+                <td >{{row.foodType}}</td>
+                <td >{{row.price}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
     <div class=card>
@@ -58,8 +60,8 @@
             </tbody>
           </table>
         </div>
-      <router-link to="/EditTopFive" tag="button" class="btn">Edit Top 5</router-link>
-      <button class="btn" type="submit" v-on:click="lunchLocationToast()" >Submit</button>
+      <router-link to="/EditTopFive" tag="button" class="button is-info">Edit Top 5</router-link>
+      <button class="button is-info" type="submit" v-on:click="lunchLocationToast()" >Submit</button>
 
       </div>
     </div>
@@ -106,20 +108,16 @@
 <style lang="scss">
   #home{
     display: flex;
-    margin-left: 50px;
+    align-items: flex-start;
     .options{
       order: 1;
-      margin-right: 10px;
-      padding: 10px;
+      margin: 20px;
+      padding: 20px;
     }
     .topFive{
       order: 2;
-      margin-left: 30px;
-      padding: 10px;
-    }
-    .serial td:first-child:before {
-      counter-increment: serial-number;
-      content: counter(serial-number);
+      margin: 20px;
+      padding: 20px;
     }
     .card {
       overflow: hidden;
@@ -132,6 +130,7 @@
     .card-header {
       text-align: center;
       font-size: 30px;
+      box-shadow: none;
     }
     .card-main {
       display: flex;

@@ -1,63 +1,67 @@
 <template>
   <div id="editTopFive">
-    <div class="editTopFive">
-    <h3>Edit Top Five</h3>
-    <table>
-      <tbody>
-        <tr>
-          <td>
-            <label id="choiceLabel" for="firstChoice">First Choice</label>
-          </td>
-          <td>
-            <select id="firstChoice" class= "form-control">
-              <option v-for="(data, index) in restaurantData" :key="index">{{data.restaurantName}}</option>
-            </select>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <label id="choiceLabel" for="secondChoice">Second Choice</label>
-          </td>
-          <td>
-            <select id="secondChoice" class= "form-control">
-              <option v-for="(data, index) in restaurantData" :key="index">{{data.restaurantName}}</option>
-            </select>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <label id="choiceLabel" for="thirdChoice">Third Choice</label>
-          </td>
-          <td>
-            <select id="thirdChoice" class= "form-control">
-              <option v-for="(data, index) in restaurantData" :key="index">{{data.restaurantName}}</option>
-            </select>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <label id="choiceLabel" for="fourthChoice">Fourth Choice</label>
-          </td>
-          <td>
-            <select id="fourthChoice" class= "form-control">
-              <option v-for="(data, index) in restaurantData" :key="index">{{data.restaurantName}}</option>
-            </select>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <label id="choiceLabel" for="fifthChoice">Fifth Choice</label>
-          </td>
-          <td>
-            <select id="fifthChoice" class= "form-control">
-              <option v-for="(data, index) in restaurantData" :key="index">{{data.restaurantName}}</option>
-            </select>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <router-link to="/Home" tag="button" class="btn">Back</router-link>
-    <button class="btn btn-primary" type="submit" v-on:click="submitUpdate()" >Submit </button>
+    <div class="card">
+      <div class="editTopFive">
+        <div class="card-header">Edit Top Five</div>
+        <div class="card-main">
+          <table>
+            <tbody>
+              <tr>
+                <td>
+                  <label id="choiceLabel" for="firstChoice">First Choice</label>
+                </td>
+                <td>
+                  <select id="firstChoice" class= "form-control">
+                    <option v-for="(data, index) in restaurantData" :key="index">{{data.restaurantName}}</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label id="choiceLabel" for="secondChoice">Second Choice</label>
+                </td>
+                <td>
+                  <select id="secondChoice" class= "form-control">
+                    <option v-for="(data, index) in restaurantData" :key="index">{{data.restaurantName}}</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label id="choiceLabel" for="thirdChoice">Third Choice</label>
+                </td>
+                <td>
+                  <select id="thirdChoice" class= "form-control">
+                    <option v-for="(data, index) in restaurantData" :key="index">{{data.restaurantName}}</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label id="choiceLabel" for="fourthChoice">Fourth Choice</label>
+                </td>
+                <td>
+                  <select id="fourthChoice" class= "form-control">
+                    <option v-for="(data, index) in restaurantData" :key="index">{{data.restaurantName}}</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label id="choiceLabel" for="fifthChoice">Fifth Choice</label>
+                </td>
+                <td>
+                  <select id="fifthChoice" class= "form-control">
+                    <option v-for="(data, index) in restaurantData" :key="index">{{data.restaurantName}}</option>
+                  </select>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      <router-link to="/Home" tag="button" class="button is-info">Back</router-link>
+      <button class="button is-info" type="submit" v-on:click="submitUpdate()" >Submit </button>
+      </div>
     </div>
   </div>
 </template>
@@ -104,17 +108,34 @@
 <style lang="scss">
 #editTopFive{
   display: flex;
-  align-items: center;
-  flex-wrap: wrap;
+  justify-content: center;
+
   table{
     align-self: center;
   }
-  .form-control{
-    width: 100%;
-  }
   .editTopFive{
-    order: 1;
-    -ms-flex-align: center;
+    margin: 20px;
+    padding: 20px;
+  }
+  .card {
+    overflow: hidden;
+    margin: 10px;
+    flex-basis: content;
+    align-items: stretch;
+    flex-wrap: wrap;
+    border: none;
+  }
+  .card-header {
+    text-align: center;
+    font-size: 30px;
+    box-shadow: none;
+  }
+  .card-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
   }
 }
 </style>
