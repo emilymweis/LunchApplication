@@ -50,7 +50,9 @@ body{
   min-height: 100vh;
 }
 .main-section{
-  flex:1;
+  flex:1 0 auto;
+  margin-top: 60px;
+  background-color: #e7dcc8;
 
 }
 footer{

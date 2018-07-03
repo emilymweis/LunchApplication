@@ -1,15 +1,17 @@
 <template>
-  <nav class="appNav">
-      <router-link to="/home" exact>
-          <img id="chiLogo" src="../assets/chi_logo-trans.png" alt="Lunch App" />
-      </router-link>
-      <router-link to="/home" exact>
-          <div class="navLeft navText">Lunch Application</div>
-      </router-link>
-        <router-link class="navText navRight" to="/login">
-            <div v-if="isAuthenticated">LOGOUT</div><div v-else>LOGIN</div>
+  <div id="headerStyle">
+    <nav class="appNav">
+        <router-link to="/home" exact>
+            <img id="chiLogo" src="../assets/chi_logo-trans.png" alt="Lunch App" />
         </router-link>
-  </nav>
+        <router-link to="/home" exact>
+            <div class="navLeft navText">Lunch Application</div>
+        </router-link>
+          <router-link class="navText navRight" to="/login">
+              <div v-if="isAuthenticated">LOGOUT</div><div v-else>LOGIN</div>
+          </router-link>
+    </nav>
+  </div>
 </template>
 <script>
   import { mapGetters } from 'vuex'
@@ -22,18 +24,18 @@
 </script>
 <style lang="scss">
   @import "../styles/_main.scss";
-  #chiLogo{
-    width: 80px;
-    height: 80px;
-    margin-left: 25px;
-    margin-top: -20px;
-    position: absolute;
-  }
+#headerStyle{
+
   .appNav{
     min-height: 50px;
     max-height: 60px;
+    position: fixed;
+    width: 100%;
+    top: 0px;
+    z-index: 50;
 
     background-color: white;
+    box-shadow: 0 3px 4px silver;
 
     display: flex;
     flex-direction: row;
@@ -56,5 +58,13 @@
     margin-top: 10px;
     color: rgba(0,0,0,.5);
   }
+  #chiLogo{
+    width: 80px;
+    height: 80px;
+    margin-left: 25px;
+    margin-top: -20px;
+    position: absolute;
+  }
+}
 
   </style>

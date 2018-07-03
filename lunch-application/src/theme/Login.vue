@@ -4,7 +4,7 @@
     <div class="login">
       <div class="card-main" v-if="isAuthenticated">
         Hello authenticated user!
-        <button v-on:click="logout()" class="button is-info">
+        <button v-on:click="logout()" class="button is-info loginButton">
           Logout
         </button>
       </div>
@@ -44,7 +44,7 @@
             <div class="field-body">
               <div class="field">
               <div class="control">
-                <button id="login" v-on:click="login()" class="button is-info">
+                <button id="login" v-on:click="login()" class="button is-info loginButton">
                 Login
                 </button>
               </div>
@@ -114,11 +114,11 @@
   .control{
     margin-right: 30px;
   }
-  #login{
-    margin-bottom: 20px;
-  }
   .login-content{
     background-color: white;
+  }
+  .loginButton{
+    margin-top: 10px;
   }
 }
 </style>
