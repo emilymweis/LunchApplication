@@ -18,13 +18,26 @@ const config = {
         loader: 'vue-loader',
         options: {
           css: 'css-loader',
-          'scss': 'css-loader|sass-loader'
+          scss: 'css-loader|sass-loader'
         }
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {}
+          }
+        ]
       },
       {
         test: /\.js$/,
         loader: 'babel-loader',
         exclude: /node_modules/
+      },
+      {
+        test: /\.css$/,
+        loader:['css-loader' ]
       }
     ]
   },

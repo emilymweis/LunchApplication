@@ -1,10 +1,19 @@
 <template>
-  <footer class="footer">
-    <div class="container">
-      <div class="content has-text-centered">
-        Go to
-        <a href="https://www.chipotle.com/" target="_blank">Chipotle.com</a>
+  <footer>
+      <div class="footStyle">
+        <p>Lunch Application - Emily Weis</p>
       </div>
-    </div>
   </footer>
 </template>
+<style lang="scss">
+.footStyle{
+  height: 35px;
+  font-size: 15px;
+  text-transform: uppercase;
+  padding: 0px;
+  color: rgba(0,0,0,.5);
+}
+</style>
+
+
+

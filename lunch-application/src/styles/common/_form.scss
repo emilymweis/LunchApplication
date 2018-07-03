@@ -1,0 +1,21 @@
+input.form-control {
+    color: rgb(119, 119, 119);
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 0.93em;
+}
+
+.form-row > .col, .form-row > [class*="col-"] {
+  display: flex;
+  align-items: center;
+}
+
+.col-form-label {
+    text-transform: uppercase;
+    font-size: 0.93em;
+}
+
+.col-form-label.col-sm-2.text-left {
+    @media (min-width: 576px) {
+        padding-left: 5%;
+    }
+}

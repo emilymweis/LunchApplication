@@ -1,60 +1,69 @@
 <template>
-  <div id="home" class="container">
-    <div class="options">
-      <h3>Lunch Options</h3>
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">Restaurant Name</th>
-            <th scope="col">Restaurant Type</th>
-            <th scope="col">Food Type</th>
-            <th scope="col">Price</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="(row, index) in restaurantData" :key="index">
-            <td scope="row">{{row.restaurantName}}</td>
-            <td scope="row">{{row.restaurantType}}</td>
-            <td scope="row">{{row.foodType}}</td>
-            <td scope="row">{{row.price}}</td>
-          </tr>
-        </tbody>
-      </table>
+  <div id="home">
+    <div class=card>
+      <div class="options">
+        <div class="card-header">Lunch Options</div>
+        <div class="card-main">
+          <table>
+            <thead>
+              <tr>
+                <th>Restaurant Name</th>
+                <th>Restaurant Type</th>
+                <th>Food Type</th>
+                <th>Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="(row, index) in restaurantData" :key="index">
+                <td >{{row.restaurantName}}</td>
+                <td >{{row.restaurantType}}</td>
+                <td >{{row.foodType}}</td>
+                <td >{{row.price}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
-    <div class="topFive">
-      <h3>Your Top 5</h3>
-      <table class="table serial">
-        <thead>
-          <tr>
-            <th scope="col">Restaurant Ranking</th>
-            <th scope="col">Restaurant Name</th>
-          </tr>
-        </thead>
-        <tbody v-for="(row, index) in topFiveData" :key="index">
-          <tr>
-            <td scope="row"></td>
-            <td scope="row">{{row.restaurantOne}}</td>
-          </tr>
-          <tr>
-            <td scope="row"></td>
-            <td scope="row">{{row.restaurantTwo}}</td>
-          </tr>
-          <tr>
-            <td scope="row"></td>
-            <td scope="row">{{row.restaurantThree}}</td>
-          </tr>
-           <tr>
-            <td scope="row"></td>
-            <td scope="row">{{row.restaurantFour}}</td>
-          </tr>
-          <tr>
-            <td scope="row"></td>
-            <td scope="row">{{row.restaurantFive}}</td>
-          </tr>
-        </tbody>
-      </table>
-    <router-link to="/EditTopFive" tag="button" class="btn">Edit Top 5</router-link>
-    <input class="btn btn-primary" type="submit" value="Submit" v-on:click="lunchLocationToast()" >
+    <div class=card>
+      <div class="topFive">
+        <div class="card-header">Your Top 5</div>
+        <div class="card-main">
+          <table>
+            <thead>
+              <tr>
+                <th>Restaurant Ranking</th>
+                <th>Restaurant Name</th>
+              </tr>
+            </thead>
+            <tbody v-for="(row, index) in topFiveData" :key="index">
+              <tr>
+                <td>1</td>
+                <td>{{row.restaurantOne}}</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>{{row.restaurantTwo}}</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>{{row.restaurantThree}}</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>{{row.restaurantFour}}</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>{{row.restaurantFive}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      <router-link to="/EditTopFive" tag="button" class="button is-info">Edit Top 5</router-link>
+      <button class="button is-info" type="submit" v-on:click="lunchLocationToast()" >Submit</button>
+
+      </div>
     </div>
   </div>
 </template>
@@ -90,35 +99,47 @@
     },
     methods: {
       lunchLocationToast: function () {
-        var random = Math.floor(Math.random() * 5)
+        var random = Math.floor(Math.random() * this.restaurantData.length)
         VueOnToast.ToastService.pop('success', 'Lunch Alert', 'lunch today is at: ' + this.restaurantData[random].restaurantName)
       }
     }
   }
 </script>
-<style>
-  #home.options{
-    order: 1;
-    margin-right: 10px;
-  }
-  #home.topFive{
-    order: 2;
-    margin-left: 20px;
-  }
-  #home.serial{
-    counter-reset: serial-number;
-  }
-  #home.serial td:first-child:before {
-  counter-increment: serial-number;
-  content: counter(serial-number);
-  }
-  #home.container {
+<style lang="scss">
+  #home{
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    align-items: stretch;
-    flex-basis: 40%;
-    height: 300px;
-    margin: 0%;
+    align-items: flex-start;
+
+    .options{
+      order: 1;
+      margin: 20px;
+      padding: 20px;
+    }
+    .topFive{
+      order: 2;
+      margin: 20px;
+      padding: 20px;
+    }
+    .card {
+      flex:1;
+      overflow: hidden;
+      margin: 10px;
+      flex-basis: content;
+      align-items: stretch;
+      flex-wrap: wrap;
+      border: none;
+    }
+    .card-header {
+      text-align: center;
+      font-size: 30px;
+      box-shadow: none;
+    }
+    .card-main {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 15px 0;
+    }
   }
 </style>
