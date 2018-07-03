@@ -1,16 +1,15 @@
 <template>
-  <b-navbar class="navbar" toggleable type="light">
-    <b-link class="navbar-brand" to="/home" exact>
-      <img id="chiLogo" src="../assets/chi_logo-trans.png"
-          alt="Lunch App" />
-      <b-navbar-nav>
-        <div class="navbar-text">Lunch Application</div>
-      </b-navbar-nav>
-    </b-link>
-    <b-link class="nav-item" to="/login">
-      <div v-if="isAuthenticated">LOGOUT</div><div v-else>LOGIN</div>
-    </b-link>
-  </b-navbar>
+  <nav class="appNav">
+      <router-link to="/home" exact>
+          <img id="chiLogo" src="../assets/chi_logo-trans.png" alt="Lunch App" />
+      </router-link>
+      <router-link to="/home" exact>
+          <div class="navLeft navText">Lunch Application</div>
+      </router-link>
+        <router-link class="navText navRight" to="/login">
+            <div v-if="isAuthenticated">LOGOUT</div><div v-else>LOGIN</div>
+        </router-link>
+  </nav>
 </template>
 <script>
   import { mapGetters } from 'vuex'
@@ -26,48 +25,36 @@
   #chiLogo{
     width: 80px;
     height: 80px;
+    margin-left: 25px;
+    margin-top: -20px;
+    position: absolute;
   }
-  .navbar {
-    // override default style to allow for positioning of image
-    padding: 0.75rem 0 0.35rem 0;
-    position: relative;
-    margin-top: 0px;
-    height: 50px;
+  .appNav{
+    min-height: 50px;
+    max-height: 60px;
 
-    background-color: $chipotle-white;
-    color: $chipotle-dark-brown;
-    a {
-        color: $chipotle-dark-brown;
-    }
-  }
-  .navbar-brand {
+    background-color: white;
+
     display: flex;
-    width: 250px;
-    height: 40px;
-    margin-left: 8px;
-
-    div {
-        display: flex;
-
-    }
-
-    img {
-        width: 80px;
-        height: 80px;
-        position: absolute;
-        margin-top: -11px;
-    }
-
-    .navbar-text {
-      order: 1;
-        margin-left: 90px;
-        height: 35px;
-        align-items: center;
-        padding: 0;
-        font-size: 17px;
-        font-weight: bold;
-        text-transform: uppercase;
-        color: #33221b;
-    }
+    flex-direction: row;
+    align-items: center;
   }
+  .navRight{
+    margin-left: auto;
+    margin-right: 20px;
+  }
+  .navLeft{
+    margin-right: 10px;
+    margin-left: 120px;
+  }
+  .navText{
+    height: 35px;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 0px;
+    margin-top: 10px;
+    color: rgba(0,0,0,.5);
+  }
+
   </style>

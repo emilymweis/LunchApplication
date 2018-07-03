@@ -38,9 +38,11 @@ body{
   background-color: #e7dcc8;
   color: $chipotle-black;
   font-size: 14px;
+  height: 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  flex:1;
 }
 #app{
   display: flex;
@@ -54,7 +56,6 @@ body{
 footer{
   text-align: center;
   background-color: #e7dcc8;
-
 }
 
 .heading,

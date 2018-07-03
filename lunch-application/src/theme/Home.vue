@@ -99,7 +99,7 @@
     },
     methods: {
       lunchLocationToast: function () {
-        var random = Math.floor(Math.random() * 5)
+        var random = Math.floor(Math.random() * this.restaurantData.length)
         VueOnToast.ToastService.pop('success', 'Lunch Alert', 'lunch today is at: ' + this.restaurantData[random].restaurantName)
       }
     }
@@ -109,6 +109,7 @@
   #home{
     display: flex;
     align-items: flex-start;
+
     .options{
       order: 1;
       margin: 20px;
@@ -120,6 +121,7 @@
       padding: 20px;
     }
     .card {
+      flex:1;
       overflow: hidden;
       margin: 10px;
       flex-basis: content;
