@@ -21,7 +21,7 @@
   }
 </script>
 <style lang="scss">
-  @import '~bulma';
+/*   @import '~bulma'; */
   @import '../../node_modules/vue-on-toast/dist/vue-on-toast.styl';
   @import "../styles/_main.scss";
 

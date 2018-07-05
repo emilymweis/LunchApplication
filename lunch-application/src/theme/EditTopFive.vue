@@ -59,8 +59,8 @@
             </tbody>
           </table>
         </div>
-      <router-link to="/Home" tag="button" class="button is-info">Back</router-link>
-      <button class="button is-info" type="submit" v-on:click="submitUpdate()" >Submit </button>
+      <router-link to="/Home" tag="button" class="button">Back</router-link>
+      <button class="button" type="submit" v-on:click="submitUpdate()" >Save </button>
       </div>
     </div>
   </div>
@@ -124,9 +124,11 @@
     align-items: stretch;
     flex-wrap: wrap;
     border: none;
+    border-radius: 5px;
+    background-color: white;
   }
   .card-header {
-    text-align: center;
+    text-align: left;
     font-size: 30px;
     box-shadow: none;
   }
@@ -137,5 +139,28 @@
     align-items: center;
     padding: 15px;
   }
+  table{
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 15px;
+      margin: 10px;
+    }
+    th, td {
+      padding: 7px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    tr:hover {background-color: #f5f5f5;}
+    .button{
+      background-color: #008CBA;
+      border-radius: 4px;
+      border: none;
+      padding: 10px;
+      color: white;
+      text-transform: uppercase;
+    }
+    .button:hover{
+      background-color: rgb(1, 110, 146);
+    }
 }
 </style>
