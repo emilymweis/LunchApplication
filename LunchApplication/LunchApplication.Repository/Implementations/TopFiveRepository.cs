@@ -34,6 +34,42 @@ namespace LunchApplication.Repository.Implementations
             }
         }
 
+        public bool SaveTopFive(int userId, string[] topFive)
+        {
+            var sql = 
+                "DECLARE @restarants TABLE(Id int NOT NULL identity(1, 1), restaurant VARCHAR(50)) " +
+                "DECLARE @user int  " +
+                "IF EXISTS(SELECT 1 FROM dbo.TopFiveOptions WHERE UserId = @user);" +
+                "BEGIN" +
+                    "UPDATE TopFiveOptions" +
+                    "SET RestaurantOne = (SELECT restaurant FROM @restarants WHERE id = 1)," +
+                    "RestaurantTwo = (SELECT restaurant FROM @restarants WHERE id = 2)," +
+                    "RestaurantThree = (SELECT restaurant FROM @restarants WHERE id = 3)," +
+                    "RestaurantFour = (SELECT restaurant FROM @restarants WHERE id = 4)," +
+                    "RestaurantFive = (SELECT restaurant FROM @restarants WHERE id = 5)" +
+                    "WHERE UserId = @user"+
+                    "end" +
+                    "ELSE" +
+                    "BEGIN" +
+                    "INSERT INTO TopFiveOptions" +
+                    "VALUES(" +
+                    "(SELECT restaurant FROM @restarants WHERE id = 1)," +
+                    "(SELECT restaurant FROM @restarants WHERE id = 2)," +
+                    "(SELECT restaurant FROM @restarants WHERE id = 3)," +
+                    "(SELECT restaurant FROM @restarants WHERE id = 4)," +
+                    "(SELECT restaurant FROM @restarants WHERE id = 5)," +
+                    "@user" +
+                    ")" +
+                    "end; "; 
+            using (var connection = new SqlConnection(ConfigHelper.LunchDbContextConnectionString))
+            {
+                connection.Open();
+                var topFiveUpdate = connection.Query<TopFiveOptions>(sql, new { restaurants = new[] { topFive }.ToList() } );
+
+            }
+            return true;
+        }
+
         public TopFiveRepository(IConfigurationManager configurationManager)
         {
             _configurationManager = configurationManager;
@@ -66,4 +102,5 @@ namespace LunchApplication.Repository.Implementations
             throw new System.NotImplementedException();
         }
     }
+    
 }
