@@ -4,14 +4,15 @@
       <div class="editTopFive">
         <div class="card-header">Edit Top Five</div>
         <div class="card-main">
-          <table>
+          <table v-if="this.topFiveData.length">
             <tbody>
               <tr>
                 <td>
                   <label id="choiceLabel" for="firstChoice">First Choice</label>
                 </td>
                 <td>
-                  <select id="firstChoice" class= "form-control">
+                  <select id="firstChoice" name="firstChoice">
+                    <option value="" hidden>{{this.topFiveData[0].restaurantOne}}</option>
                     <option v-for="(data, index) in restaurantData" :key="index">{{data.restaurantName}}</option>
                   </select>
                 </td>
@@ -21,7 +22,8 @@
                   <label id="choiceLabel" for="secondChoice">Second Choice</label>
                 </td>
                 <td>
-                  <select id="secondChoice" class= "form-control">
+                  <select id="secondChoice" name="secondChoice">
+                    <option value="" hidden>{{this.topFiveData[0].restaurantTwo}}</option>
                     <option v-for="(data, index) in restaurantData" :key="index">{{data.restaurantName}}</option>
                   </select>
                 </td>
@@ -31,7 +33,8 @@
                   <label id="choiceLabel" for="thirdChoice">Third Choice</label>
                 </td>
                 <td>
-                  <select id="thirdChoice" class= "form-control">
+                  <select id="thirdChoice" name="thirdChoice">
+                    <option value="" hidden>{{this.topFiveData[0].restaurantThree}}</option>
                     <option v-for="(data, index) in restaurantData" :key="index">{{data.restaurantName}}</option>
                   </select>
                 </td>
@@ -41,7 +44,8 @@
                   <label id="choiceLabel" for="fourthChoice">Fourth Choice</label>
                 </td>
                 <td>
-                  <select id="fourthChoice" class= "form-control">
+                  <select id="fourthChoice" name="fourthChoice">
+                   <option value="" hidden>{{this.topFiveData[0].restaurantFour}}</option>
                     <option v-for="(data, index) in restaurantData" :key="index">{{data.restaurantName}}</option>
                   </select>
                 </td>
@@ -51,7 +55,8 @@
                   <label id="choiceLabel" for="fifthChoice">Fifth Choice</label>
                 </td>
                 <td>
-                  <select id="fifthChoice" class= "form-control">
+                  <select id="fifthChoice" name="fifthChoice">
+                    <option value="" hidden>{{this.topFiveData[0].restaurantFive}}</option>
                     <option v-for="(data, index) in restaurantData" :key="index">{{data.restaurantName}}</option>
                   </select>
                 </td>
@@ -100,7 +105,29 @@
     },
     methods: {
       submitUpdate: function () {
+        console.log(this.topFiveData[0].restaurantOne)
+        console.log(document.getElementById('firstChoice').value)
+        this.topFiveData[0].restaurantOne = document.getElementById('firstChoice').value
+        console.log(this.topFiveData[0].restaurantOne)
+
+        this.topFiveData[0].restaurantTwo = document.getElementById('secondChoice').value
+        this.topFiveData[0].restaurantThree = document.getElementById('thirdChoice').value
+        this.topFiveData[0].restaurantFour = document.getElementById('fourthChoice').value
+        this.topFiveData[0].restaurantFive = document.getElementById('fifthChoice').value
+
         VueOnToast.ToastService.pop('success', 'Successful Update', 'your preferences have been saved')
+
+        return (
+          this.topFiveData[0].restaurantOne,
+          this.topFiveData[0].restaurantTwo,
+          this.topFiveData[0].restaurantThree,
+          this.topFiveData[0].restaurantFour,
+          this.topFiveData[0].restaurantFive
+        )
+        // .catch(e => {
+        //   this.errors.push(e)
+        //   VueOnToast.ToastService.pop('fail', 'fail to Update', 'your preferences have not been saved')
+        // })
       }
     }
   }
@@ -109,6 +136,7 @@
 #editTopFive{
   display: flex;
   justify-content: center;
+  margin-top: 50px;
 
   table{
     align-self: center;

@@ -111,6 +111,7 @@
     align-items: flex-start;
     margin-left: 10%;
     margin-right: 10%;
+    margin-top: 50px;
 
     .options{
       order: 1;

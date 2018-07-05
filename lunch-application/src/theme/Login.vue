@@ -17,7 +17,7 @@
             <div class="field-body">
               <div class="field">
               <div class="control">
-                <input v-model="username" id="loginInput" class="input" type="text"
+                <input v-model="username" id="loginFormInput" class="input" type="text"
                 placeholder="Your username">
               </div>
               </div>
@@ -31,7 +31,7 @@
             <div class="field-body">
               <div class="field">
               <div class="control">
-                <input v-model="password" id="loginInput" class="input" type="password"
+                <input v-model="password" id="loginFormInput" class="input" type="password"
                 placeholder="Your password">
               </div>
               </div>
@@ -86,6 +86,7 @@
 #login{
   display: flex;
   justify-content: center;
+  margin-top: 50px;
 
   .login{
     margin: 20px;
@@ -130,7 +131,7 @@
   .button:hover{
     background-color: rgb(1, 110, 146);
   }
-  input[id=loginInput] {
+  input[id=loginFormInput] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
