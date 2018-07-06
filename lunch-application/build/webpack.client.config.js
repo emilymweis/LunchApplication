@@ -1,6 +1,7 @@
 const base = require('./webpack.base.config')
 const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const config = Object.assign({}, base, {
   plugins: (base.plugins || []).concat([
@@ -29,6 +30,17 @@ if (process.env.NODE_ENV === 'production') {
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false
+      }
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: 'index.html',
+      inject: true,
+      xdomainConfig: {
+        // xdomain slave config is tokenized when deploying the app.
+        // We don't have the luxury of RM tokenization when running
+        // in a local dev configuration, so we supply the xdomain slave value here.
+        slaveDomain: '"http://localhost:48146"'
       }
     })
   )

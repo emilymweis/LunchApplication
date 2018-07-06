@@ -105,29 +105,29 @@
     },
     methods: {
       submitUpdate: function () {
-        console.log(this.topFiveData[0].restaurantOne)
-        console.log(document.getElementById('firstChoice').value)
         this.topFiveData[0].restaurantOne = document.getElementById('firstChoice').value
-        console.log(this.topFiveData[0].restaurantOne)
-
         this.topFiveData[0].restaurantTwo = document.getElementById('secondChoice').value
         this.topFiveData[0].restaurantThree = document.getElementById('thirdChoice').value
         this.topFiveData[0].restaurantFour = document.getElementById('fourthChoice').value
         this.topFiveData[0].restaurantFive = document.getElementById('fifthChoice').value
 
-        VueOnToast.ToastService.pop('success', 'Successful Update', 'your preferences have been saved')
-
-        return (
-          this.topFiveData[0].restaurantOne,
-          this.topFiveData[0].restaurantTwo,
-          this.topFiveData[0].restaurantThree,
-          this.topFiveData[0].restaurantFour,
-          this.topFiveData[0].restaurantFive
-        )
-        // .catch(e => {
-        //   this.errors.push(e)
-        //   VueOnToast.ToastService.pop('fail', 'fail to Update', 'your preferences have not been saved')
-        // })
+        axios.post(baseUrl + '/topfivedata/topfive',
+          {
+            userId: 1,
+            restaurantOne: this.topFiveData[0].restaurantOne,
+            restaurantTwo: this.topFiveData[0].restaurantTwo,
+            restaurantThree: this.topFiveData[0].restaurantThree,
+            restaurantFour: this.topFiveData[0].restaurantFour,
+            restaurantFive: this.topFiveData[0].restaurantFive
+          })
+          .then(function (response) {
+            console.log(response)
+            VueOnToast.ToastService.pop('success', 'Successful Update', 'your preferences have been saved')
+          })
+          .catch(function (error) {
+            console.log(error)
+            VueOnToast.ToastService.pop('fail', 'Unsuccessful Update', 'your preferences have not been saved ' + error)
+          })
       }
     }
   }
