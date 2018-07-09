@@ -17,8 +17,6 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.16.2",
-    "bootstrap-sass": "^3.3.7",
-    "bootstrap-vue": "^2.0.0-rc.11",
     "bulma": "^0.5.1",
     "express": "^4.15.4",
     "font-awesome": "^4.7.0",
