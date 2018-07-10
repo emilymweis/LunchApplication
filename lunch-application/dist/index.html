@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Lunch Application</title>
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/assets/styles.css" />
+
+  <script src="static/js/xdomain.conf.js"></script>
+  <script src="static/js/xdomain.js"></script>
+  <script>
+    var slaveConfig = {};
+
+    // A slave domain config value that is still in token form (wrapped with double underscores) indicates
+    // the app is in a local dev configuration. In this case retrieve the localhost slave value from the html-webpack-plugin.
+    if (xdomainConfig.SLAVE_DOMAIN.substr(0, 2) == "__") {
+      slaveConfig["http://localhost:48146"] = "/proxy.html"
+    } else {
+      slaveConfig[xdomainConfig.SLAVE_DOMAIN] = "/proxy.html";
+    }
+
+    xdomain.slaves(slaveConfig)
+    xdomain.timeout = xdomainConfig.TIMEOUT
+  </script>
+<link href="/assets/styles.css" rel="stylesheet"></head>
+
+<body>
+  {{ APP }}
+  {{ STATE }}
+  <script src="/assets/js/vendor.js"></script>
+  <script src="/assets/js/app.js"></script>
+<script type="text/javascript" src="/assets/js/vendor.js"></script><script type="text/javascript" src="/assets/js/app.js"></script></body>
+
+</html>
