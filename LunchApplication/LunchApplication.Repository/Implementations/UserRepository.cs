@@ -34,6 +34,54 @@ namespace LunchApplication.Repository.Implementations
             }
         }
 
+        public async Task<string> VerifyLogin(string Username, string PasswordHash)
+        {
+            var result = "Login Unsuccessful";
+
+            using (SqlConnection connection = new SqlConnection(ConfigHelper.LunchDbContextConnectionString))
+            using (SqlCommand command = connection.CreateCommand())
+            {
+                try
+                {
+                    command.CommandText = "BEGIN" +
+                            "DECLARE @loginCount INT = 0" +
+                            "DECLARE @loginResult BIT = NULL" +
+                        "IF @loginCount = 0" +
+                            "Begin" +
+                                "(SELECT * FROM UserOptions WHERE Username = @user AND PasswordHash = @pass)" +
+                                "SET @loginCount = 1" +
+                                "SET @loginResult = 1" +
+                            "END" +
+                        "ELSE" +
+                            "Begin" +
+                                "SET @loginCount = 0" +
+                            "END" +
+                        "IF @loginResult = 1" +
+                            "BEGIN" +
+                                "RETURN" +
+                            "END" +
+                      "END";
+    
+                    command.Parameters.AddWithValue("@user", Username);
+                    command.Parameters.AddWithValue("@pass", PasswordHash);
+
+                    connection.Open();
+                    if (command.ExecuteNonQuery().ToString() != null)
+                    {
+                        result = command.ExecuteNonQuery().ToString() + " Login Successful";
+                    }
+
+                    connection.Close();
+                }
+                catch (Exception e)
+                {
+                    result = e.Message;
+                    // result = "Unable to login due to bad input";
+                }
+            }
+            return result;
+        }
+
         public UserRepository(IConfigurationManager configurationManager)
         {
             _configurationManager = configurationManager;

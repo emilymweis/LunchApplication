@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using Core.Common.Services.Filters;
@@ -8,11 +9,6 @@ using LunchApplication.Service.Interfaces;
 
 namespace LunchApplication.Api.Controllers
 {
-    /// <summary>
-    /// This is an example of a sample controller.  In your service either delete this controller 
-    /// or start with this and
-    /// rename as necessary.
-    /// </summary>
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     [RoutePrefix("topfivedata")]
     //[Monitor]

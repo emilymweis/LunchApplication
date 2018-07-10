@@ -27,6 +27,11 @@ namespace LunchApplication.Service.Implementations
         {
             return _userRepository.Test();
         }
+        public async Task<string> VerifyLogin(string Username, string PasswordHash)
+        {
+            return await _userRepository.VerifyLogin(Username, PasswordHash);
+
+        }
 
         public async Task<int> GetIntValueAsync()
         {
