@@ -31,17 +31,6 @@ if (process.env.NODE_ENV === 'production') {
       compress: {
         warnings: false
       }
-    }),
-    new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: 'index.html',
-      inject: true,
-      xdomainConfig: {
-        // xdomain slave config is tokenized when deploying the app.
-        // We don't have the luxury of RM tokenization when running
-        // in a local dev configuration, so we supply the xdomain slave value here.
-        slaveDomain: '"http://localhost:48146"'
-      }
     })
   )
 }

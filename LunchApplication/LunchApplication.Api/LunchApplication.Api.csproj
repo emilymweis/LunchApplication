@@ -153,8 +153,6 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="proxy.html" />
-    <Content Include="Scripts\xdomain.js" />
     <Content Include="test.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
