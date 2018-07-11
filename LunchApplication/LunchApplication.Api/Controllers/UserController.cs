@@ -37,7 +37,7 @@ namespace LunchApplication.Api.Controllers
         }
 
         [AllowAnonymous]
-        [HttpPost, Route("userLogin")]
+        [HttpPost, Route("userlogin")]
         public async Task<IHttpActionResult> VerifyLogin(string Username, string PasswordHash)
         {
             var isOk = await _userService.VerifyLogin(Username, PasswordHash);
