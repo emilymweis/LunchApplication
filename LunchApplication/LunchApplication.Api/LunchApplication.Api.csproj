@@ -153,6 +153,9 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="dist\1c2130b39c0f14304f01b708489ee8c2.png" />
+    <Content Include="dist\a09166e877485e2b54541d8fa708c123.gif" />
+    <Content Include="dist\test.htm" />
     <Content Include="test.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
