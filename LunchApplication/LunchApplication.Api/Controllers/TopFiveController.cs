@@ -1,7 +1,5 @@
-﻿using System.Net.Http;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Web.Http;
-using System.Web.Http.Cors;
 using Core.Common.Services.Filters;
 using LunchApplication.Common.Interfaces;
 using LunchApplication.Models.Models;
@@ -9,7 +7,6 @@ using LunchApplication.Service.Interfaces;
 
 namespace LunchApplication.Api.Controllers
 {
-    [EnableCors(origins: "*", headers: "*", methods: "*")]
     [RoutePrefix("topfivedata")]
     //[Monitor]
     public class TopFiveController : ApiController
