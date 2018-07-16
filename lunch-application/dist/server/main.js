@@ -374,7 +374,7 @@ module.exports = require("vue-on-toast");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 
 
-__WEBPACK_IMPORTED_MODULE_0_axios___default.a.defaults.baseURL = 'http://localhost:48146';
+__WEBPACK_IMPORTED_MODULE_0_axios___default.a.defaults.baseURL = 'https://lunchapplication.azurewebsites.net';
 var baseUrl = __WEBPACK_IMPORTED_MODULE_0_axios___default.a.defaults.baseURL;
 
 __WEBPACK_IMPORTED_MODULE_0_axios___default.a.interceptors.request.use(function (config) {
@@ -1325,7 +1325,7 @@ var esExports = { render: render, staticRenderFns: staticRenderFns }
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_router___default.a);
 
 var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router___default.a({
-  mode: 'history',
+  mode: 'hash',
   linkActiveClass: 'is-active',
   scrollBehavior: function scrollBehavior(to, from, savedPosition) {
     return { y: 0 };
@@ -1545,7 +1545,7 @@ var esExports = { render: render, staticRenderFns: staticRenderFns }
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_EditTopFive_vue__ = __webpack_require__(13);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_312bf5a6_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_EditTopFive_vue__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_c1eb0ce6_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_EditTopFive_vue__ = __webpack_require__(47);
 function injectStyle (ssrContext) {
 var i
 ;(i=__webpack_require__(45),i.__inject__&&i.__inject__(ssrContext),i)
@@ -1566,7 +1566,7 @@ var __vue_scopeId__ = null
 var __vue_module_identifier__ = "04f646f2"
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_EditTopFive_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_312bf5a6_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_EditTopFive_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_c1eb0ce6_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_EditTopFive_vue__["a" /* default */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
@@ -1589,7 +1589,7 @@ if(content.locals) module.exports = content.locals;
 // add CSS to SSR context
 var add = __webpack_require__(2)
 module.exports.__inject__ = function (context) {
-  add("1eda95dc", content, true, context)
+  add("4ab1e656", content, true, context)
 };
 
 /***/ }),
