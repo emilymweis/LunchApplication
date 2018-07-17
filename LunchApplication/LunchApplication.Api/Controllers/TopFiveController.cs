@@ -20,6 +20,7 @@ namespace LunchApplication.Api.Controllers
             _appRequestInfo = appRequestInfo;
             _topFiveService = topFiveService;
         }
+        public void Options() { }
 
         [AllowAnonymous]
         [HttpPost, Route("topfive")]
