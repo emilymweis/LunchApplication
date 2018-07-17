@@ -23,9 +23,9 @@ namespace LunchApplication.Api.Controllers
 
         [AllowAnonymous]
         [HttpPost, Route("topfive")]
-        public async Task<IHttpActionResult> SaveTopFive(int userId, string restaurantOne, string restaurantTwo, string restaurantThree, string restaurantFour, string restaurantFive)
+        public async Task<IHttpActionResult> SaveTopFive([FromBody] TopFiveOptions topFive)
         {
-            var isOk = await _topFiveService.SaveTopFive(userId, restaurantOne, restaurantTwo, restaurantThree, restaurantFour, restaurantFive);
+            var isOk = await _topFiveService.SaveTopFive(topFive.UserId, topFive.RestaurantOne, topFive.RestaurantTwo, topFive.RestaurantThree, topFive.RestaurantFour, topFive.RestaurantFive);
             return Ok(isOk);
         }
 
