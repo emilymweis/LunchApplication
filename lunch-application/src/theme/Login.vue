@@ -4,7 +4,7 @@
     <div class="login">
       <div class="card-main" v-if="isAuthenticated">
         Hello authenticated user!
-        <button v-on:click="logout()" class="button is-info loginButton">
+        <button v-on:click="logout()" class="button loginButton">
           Logout
         </button>
       </div>
@@ -17,7 +17,7 @@
             <div class="field-body">
               <div class="field">
               <div class="control">
-                <input v-model="username" class="input" type="text"
+                <input v-model="username" id="loginFormInput" class="input" type="text"
                 placeholder="Your username">
               </div>
               </div>
@@ -31,7 +31,7 @@
             <div class="field-body">
               <div class="field">
               <div class="control">
-                <input v-model="password" class="input" type="password"
+                <input v-model="password" id="loginFormInput" class="input" type="password"
                 placeholder="Your password">
               </div>
               </div>
@@ -86,6 +86,7 @@
 #login{
   display: flex;
   justify-content: center;
+  margin-top: 50px;
 
   .login{
     margin: 20px;
@@ -98,6 +99,8 @@
     align-items: stretch;
     flex-wrap: wrap;
     border: none;
+    border-radius: 5px;
+    background-color: white;
   }
   .card-header {
     text-align: left;
@@ -114,11 +117,31 @@
   .control{
     margin-right: 30px;
   }
-  .login-content{
-    background-color: white;
-  }
   .loginButton{
     margin-top: 10px;
+  }
+  .button{
+      background-color: #008CBA;
+      border-radius: 4px;
+      border: none;
+      padding: 10px;
+      color: white;
+      text-transform: uppercase;
+  }
+  .button:hover{
+    background-color: rgb(1, 110, 146);
+  }
+  input[id=loginFormInput] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  .label{
+    font-size: 15px;
   }
 }
 </style>

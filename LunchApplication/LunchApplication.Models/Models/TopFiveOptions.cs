@@ -5,6 +5,7 @@ namespace LunchApplication.Models.Models
     public class TopFiveOptions
     {
         [JsonIgnore]
+        public int UserId { get; set; }
         public int Id { get; set; }
         public string RestaurantOne { get; set; }
         public string RestaurantTwo { get; set; }

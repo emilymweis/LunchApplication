@@ -4,8 +4,8 @@
         <router-link to="/home" exact>
             <img id="chiLogo" src="../assets/chi_logo-trans.png" alt="Lunch App" />
         </router-link>
-        <router-link to="/home" exact>
-            <div class="navLeft navText">Lunch Application</div>
+        <router-link class="navText navLeft" to="/home" exact>
+            <div>Lunch Application</div>
         </router-link>
           <router-link class="navText navRight" to="/login">
               <div v-if="isAuthenticated">LOGOUT</div><div v-else>LOGIN</div>
@@ -57,6 +57,7 @@
     padding: 0px;
     margin-top: 10px;
     color: rgba(0,0,0,.5);
+    text-decoration: none;
   }
   #chiLogo{
     width: 80px;
@@ -65,6 +66,7 @@
     margin-top: -20px;
     position: absolute;
   }
+
 }
 
   </style>

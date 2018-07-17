@@ -26,7 +26,7 @@ module.exports = function (config) {
         { type: 'text-summary' }
       ]
     },
-    port: 3000,
+    port: 3001,
     customLaunchers: {
       'PhantomJS_custom': {
           base: 'PhantomJS',

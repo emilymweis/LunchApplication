@@ -27,6 +27,11 @@ namespace LunchApplication.Service.Implementations
         {
             return _topFiveRepository.Test();
         }
+        public async Task<string> SaveTopFive(int userId, string restaurantOne, string restaurantTwo, string restaurantThree, string restaurantFour, string restaurantFive)
+        {
+            return await _topFiveRepository.SaveTopFive(userId, restaurantOne, restaurantTwo, restaurantThree, restaurantFour, restaurantFive);
+            
+        }
 
         public async Task<int> GetIntValueAsync()
         {

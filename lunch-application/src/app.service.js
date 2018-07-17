@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-axios.defaults.baseURL = 'http://localhost:48146'
+axios.defaults.baseURL = 'https://lunchapplication.azurewebsites.net'
 const baseUrl = axios.defaults.baseURL
 
 axios.interceptors.request.use(function (config) {

@@ -15,5 +15,6 @@ namespace LunchApplication.Service.Interfaces
         Task<TopFiveOptions> AddTopFiveAsync(TopFiveOptions TopFive);
         Task<int> GetIntValueAsync();
         List<TopFiveOptions> Test();
+        Task<string> SaveTopFive(int userId, string restaurantOne, string restaurantTwo, string restaurantThree, string restaurantFour, string restaurantFive);
     }
 }

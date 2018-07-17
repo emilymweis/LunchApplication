@@ -34,6 +34,55 @@ namespace LunchApplication.Repository.Implementations
             }
         }
 
+        public async Task<string> SaveTopFive(int userId, string restaurantOne, string restaurantTwo, string restaurantThree, string restaurantFour, string restaurantFive)
+        {
+            var result = "Update Not executed";
+
+            using (SqlConnection connection = new SqlConnection(ConfigHelper.LunchDbContextConnectionString))
+            using (SqlCommand command= connection.CreateCommand())
+            {
+                try
+                {
+                    command.CommandText = "IF EXISTS(SELECT 1 FROM TopFiveOptions WHERE UserId = @userId) " +
+                        "BEGIN  " +
+                        "	UPDATE TopFiveOptions  " +
+                        "	SET RestaurantOne = @restaurant1, " +
+                        "	RestaurantTwo = @restaurant2, " +
+                        "	RestaurantThree = @restaurant3, " +
+                        "	RestaurantFour = @restaurant4, " +
+                        "	RestaurantFive = @restaurant5 " +
+                        "	WHERE userId = @userId " +
+                        "end " +
+                        "else " +
+                        "begin " +
+                        "	insert into TopFiveOptions " +
+                        "	values (@restaurant1, @restaurant2, @restaurant3, @restaurant4, @restaurant5, @userId) " +
+                        "end ";
+
+                    
+                    
+                    command.Parameters.AddWithValue("@restaurant1", restaurantOne);
+                    command.Parameters.AddWithValue("@restaurant2", restaurantTwo);
+                    command.Parameters.AddWithValue("@restaurant3", restaurantThree);
+                    command.Parameters.AddWithValue("@restaurant4", restaurantFour);
+                    command.Parameters.AddWithValue("@restaurant5", restaurantFive);
+                    command.Parameters.AddWithValue("@userId", userId);
+
+                    connection.Open();
+
+                    result = command.ExecuteNonQuery().ToString() + " Rows updated";
+
+                    connection.Close();
+                }
+                catch(Exception e)
+                {
+                    result = e.Message;
+                    // result = "Unable to save top 5 do to bad input";
+                }
+            }
+            return result;
+        }
+
         public TopFiveRepository(IConfigurationManager configurationManager)
         {
             _configurationManager = configurationManager;
@@ -66,4 +115,5 @@ namespace LunchApplication.Repository.Implementations
             throw new System.NotImplementedException();
         }
     }
+    
 }

@@ -60,8 +60,8 @@
             </tbody>
           </table>
         </div>
-      <router-link to="/EditTopFive" tag="button" class="button is-info">Edit Top 5</router-link>
-      <button class="button is-info" type="submit" v-on:click="lunchLocationToast()" >Submit</button>
+      <router-link to="/EditTopFive" tag="button" class="button">Edit Top 5</router-link>
+      <button class="button" type="submit" v-on:click="lunchLocationToast()" >Submit</button>
 
       </div>
     </div>
@@ -109,6 +109,9 @@
   #home{
     display: flex;
     align-items: flex-start;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 50px;
 
     .options{
       order: 1;
@@ -128,18 +131,44 @@
       align-items: stretch;
       flex-wrap: wrap;
       border: none;
+      border-radius: 5px;
+      background-color: white;
     }
     .card-header {
-      text-align: center;
+      text-align: left;
       font-size: 30px;
       box-shadow: none;
     }
     .card-main {
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: stretch;
       align-items: center;
+
       padding: 15px 0;
+    }
+    table{
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 15px;
+      margin: 10px;
+    }
+    th, td {
+      padding: 7px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    tr:hover {background-color: #f5f5f5;}
+    .button{
+      background-color: #008CBA;
+      border-radius: 4px;
+      border: none;
+      padding: 10px;
+      color: white;
+      text-transform: uppercase;
+    }
+    .button:hover{
+      background-color: rgb(1, 110, 146);
     }
   }
 </style>
