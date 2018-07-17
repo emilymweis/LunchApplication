@@ -453,7 +453,7 @@ var appService = {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_AppHeader_vue__ = __webpack_require__(10);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_cd5613ea_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_AppHeader_vue__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_a50c3bfe_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_AppHeader_vue__ = __webpack_require__(25);
 function injectStyle (ssrContext) {
 var i
 ;(i=__webpack_require__(23),i.__inject__&&i.__inject__(ssrContext),i)
@@ -474,7 +474,7 @@ var __vue_scopeId__ = null
 var __vue_module_identifier__ = "021bb858"
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_AppHeader_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_cd5613ea_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_AppHeader_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_a50c3bfe_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_AppHeader_vue__["a" /* default */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
@@ -1184,7 +1184,7 @@ if(content.locals) module.exports = content.locals;
 // add CSS to SSR context
 var add = __webpack_require__(2)
 module.exports.__inject__ = function (context) {
-  add("224deac6", content, true, context)
+  add("42833a71", content, true, context)
 };
 
 /***/ }),
@@ -1206,7 +1206,7 @@ exports.push([module.i, ".accordion-header.card-header{background-color:#f0e7d8;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"headerStyle"}},[_vm._ssrNode("<nav class=\"appNav\">","</nav>",[_c('router-link',{attrs:{"to":"/home","exact":""}},[_c('img',{attrs:{"id":"chiLogo","src":__webpack_require__(26),"alt":"Lunch App"}})]),_vm._ssrNode(" "),_c('router-link',{staticClass:"navText navLeft",attrs:{"to":"/home","exact":""}},[_c('div',[_vm._v("Lunch Application")])]),_vm._ssrNode(" "),_c('router-link',{staticClass:"navText navRight",attrs:{"to":"/login"}},[(_vm.isAuthenticated)?_c('div',[_vm._v("LOGOUT")]):_c('div',[_vm._v("LOGIN")])])],2)])}
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"headerStyle"}},[_vm._ssrNode("<nav class=\"appNav\">","</nav>",[_c('router-link',{attrs:{"to":"/home","exact":""}},[_c('img',{attrs:{"id":"chiLogo","src":__webpack_require__(26),"alt":"Lunch App"}})]),_vm._ssrNode(" "),_c('router-link',{staticClass:"navText navLeft",attrs:{"to":"/home","exact":""}},[_c('div',[_vm._v("Lunchable")])]),_vm._ssrNode(" "),_c('router-link',{staticClass:"navText navRight",attrs:{"to":"/login"}},[(_vm.isAuthenticated)?_c('div',[_vm._v("LOGOUT")]):_c('div',[_vm._v("LOGIN")])])],2)])}
 var staticRenderFns = []
 var esExports = { render: render, staticRenderFns: staticRenderFns }
 /* harmony default export */ __webpack_exports__["a"] = (esExports);

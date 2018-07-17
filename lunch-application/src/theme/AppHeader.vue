@@ -5,7 +5,7 @@
             <img id="chiLogo" src="../assets/chi_logo-trans.png" alt="Lunch App" />
         </router-link>
         <router-link class="navText navLeft" to="/home" exact>
-            <div>Lunch Application</div>
+            <div>Lunchable</div>
         </router-link>
           <router-link class="navText navRight" to="/login">
               <div v-if="isAuthenticated">LOGOUT</div><div v-else>LOGIN</div>
