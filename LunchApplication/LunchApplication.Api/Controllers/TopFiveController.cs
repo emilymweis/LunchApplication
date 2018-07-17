@@ -20,9 +20,9 @@ namespace LunchApplication.Api.Controllers
             _appRequestInfo = appRequestInfo;
             _topFiveService = topFiveService;
         }
-        public void Options() { }
 
         [AllowAnonymous]
+        [HttpOptions]
         [HttpPost, Route("topfive")]
         public async Task<IHttpActionResult> SaveTopFive([FromBody] TopFiveOptions topFive)
         {
