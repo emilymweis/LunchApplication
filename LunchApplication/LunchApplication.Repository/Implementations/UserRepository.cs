@@ -43,24 +43,24 @@ namespace LunchApplication.Repository.Implementations
             {
                 try
                 {
-                    command.CommandText = "BEGIN" +
-                            "DECLARE @loginCount INT = 0" +
-                            "DECLARE @loginResult BIT = NULL" +
-                        "IF @loginCount = 0" +
-                            "Begin" +
-                                "(SELECT * FROM UserOptions WHERE Username = @user AND PasswordHash = @pass)" +
-                                "SET @loginCount = 1" +
-                                "SET @loginResult = 1" +
-                            "END" +
-                        "ELSE" +
-                            "Begin" +
-                                "SET @loginCount = 0" +
-                            "END" +
-                        "IF @loginResult = 1" +
-                            "BEGIN" +
-                                "RETURN" +
-                            "END" +
-                      "END";
+                    command.CommandText = "BEGIN " +
+                            "DECLARE @loginCount INT = 0 " +
+                            "DECLARE @loginResult BIT = NULL " +
+                        "IF @loginCount = 0 " +
+                            "Begin " +
+                                "(SELECT * FROM UserOptions WHERE Username = @user AND PasswordHash = @pass) " +
+                                "SET @loginCount = 1 " +
+                                "SET @loginResult = 1 " +
+                            "END " +
+                        "ELSE " +
+                            "Begin " +
+                                "SET @loginCount = 0 " +
+                            "END " +
+                        "IF @loginResult = 1 " +
+                            "BEGIN " +
+                                "RETURN " +
+                            "END " +
+                      "END ";
     
                     command.Parameters.AddWithValue("@user", Username);
                     command.Parameters.AddWithValue("@pass", PasswordHash);
