@@ -58,12 +58,29 @@
 </template>
 <script>
   import { mapGetters, mapActions } from 'vuex'
+  import axios from 'axios'
+  import VueOnToast from 'vue-on-toast'
+  const baseUrl = axios.defaults.baseURL
+
   export default {
     data () {
       return {
+        userData: [],
         username: '',
-        password: ''
+        password: '',
+        errors: []
       }
+    },
+    created () {
+      axios.get(baseUrl + '/userData')
+        .then(response => {
+          console.log(response)
+          this.userData = response.data
+          return this.userData
+        })
+        .catch(e => {
+          this.errors.push(e)
+        })
     },
     computed: {
       ...mapGetters(['isAuthenticated'])
@@ -72,11 +89,16 @@
       ...mapActions({
         logout: 'logout'
       }),
-      login () {
+      login: function () {
         this.$store.dispatch('login', {username: this.username, password: this.password})
           .then(() => {
             this.username = ''
             this.password = ''
+            VueOnToast.ToastService.pop('sucess', 'Sucessful Login', 'you are now logged in')
+          })
+          .catch(function (error) {
+            console.log(error)
+            VueOnToast.ToastService.pop('fail', 'Unsuccessful Update', 'you have not been logged in ' + error)
           })
       }
     }

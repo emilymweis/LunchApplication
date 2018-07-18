@@ -4,7 +4,6 @@ namespace LunchApplication.Models.Models
 {
     public class UserOptions
     {
-        [JsonIgnore]
         public int UserId { get; set; }
         public int Id { get; set; }
         public string Username { get; set; }
