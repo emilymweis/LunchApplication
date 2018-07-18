@@ -27,7 +27,7 @@ namespace LunchApplication.Service.Implementations
         {
             return _userRepository.Test();
         }
-        public async Task<string> VerifyLogin(string Username, string PasswordHash)
+        public async Task<bool> VerifyLogin(string Username, string PasswordHash)
         {
             return await _userRepository.VerifyLogin(Username, PasswordHash);
 

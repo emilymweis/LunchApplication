@@ -66,8 +66,6 @@
     data () {
       return {
         userData: [],
-        username: '',
-        password: '',
         errors: []
       }
     },
@@ -90,11 +88,19 @@
         logout: 'logout'
       }),
       login: function () {
-        this.$store.dispatch('login', {username: this.username, password: this.password})
-          .then(() => {
-            this.username = ''
-            this.password = ''
-            VueOnToast.ToastService.pop('sucess', 'Sucessful Login', 'you are now logged in')
+        // this.$store.dispatch('login', {username: this.username, password: this.password})
+        axios.post(baseUrl + '/userdata/userlogin',
+          {
+            Username: this.username,
+            PasswordHash: this.password
+          })
+          .then(function (response) {
+            console.log(response)
+            if (response.data === true) {
+              VueOnToast.ToastService.pop('sucess', 'Sucessful Login' + 'you have successfully logged on')
+            } else {
+              VueOnToast.ToastService.pop('sucess', 'Sucessful Login' + 'you have not been logged on because of wrong password or username')
+            }
           })
           .catch(function (error) {
             console.log(error)

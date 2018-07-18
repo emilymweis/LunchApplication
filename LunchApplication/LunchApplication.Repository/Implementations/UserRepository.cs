@@ -34,16 +34,16 @@ namespace LunchApplication.Repository.Implementations
             }
         }
 
-        public async Task<string> VerifyLogin(string Username, string PasswordHash)
+        public async Task<bool> VerifyLogin(string Username, string PasswordHash)
         {
-            var result = "Login Unsuccessful";
+            var result = false;
 
             using (SqlConnection connection = new SqlConnection(ConfigHelper.LunchDbContextConnectionString)) {
 
                 var login = connection.Query("SELECT 1 FROM UserOptions WHERE Username = @user AND PasswordHash = @pass", new { user=Username, pass= PasswordHash });
                 if(login.Count() == 1)
                 {
-                    result = "Login Successful";
+                    result = true;
                 }
             }
             return result;

@@ -15,6 +15,6 @@ namespace LunchApplication.Service.Interfaces
         Task<UserOptions> AddUserAsync(UserOptions user);
         Task<int> GetIntValueAsync();
         List<UserOptions> Test();
-        Task<string> VerifyLogin(string Username, string PasswordHash);
+        Task<bool> VerifyLogin(string Username, string PasswordHash);
     }
 }
