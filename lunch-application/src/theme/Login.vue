@@ -59,7 +59,12 @@
 <script>
   import { mapGetters, mapActions } from 'vuex'
   import axios from 'axios'
+  import Vue from 'vue'
+  import router from 'vue-router'
   import VueOnToast from 'vue-on-toast'
+
+  Vue.use(router)
+
   const baseUrl = axios.defaults.baseURL
 
   export default {
@@ -97,14 +102,16 @@
           .then(function (response) {
             console.log(response)
             if (response.data === true) {
-              VueOnToast.ToastService.pop('sucess', 'Sucessful Login' + 'you have successfully logged on')
+              VueOnToast.ToastService.pop('success', 'You have successfully logged on')
+              window.sessionStorage.setItem('loginSuccessMessage', 'You have successfully logged on')
+              window.location.href = '/home'
             } else {
-              VueOnToast.ToastService.pop('sucess', 'Sucessful Login' + 'you have not been logged on because of wrong password or username')
+              VueOnToast.ToastService.pop('error', 'You have not been logged in. This is because of a wrong password or username')
             }
           })
           .catch(function (error) {
             console.log(error)
-            VueOnToast.ToastService.pop('fail', 'Unsuccessful Update', 'you have not been logged in ' + error)
+            VueOnToast.ToastService.pop('error', 'you have not been logged in ' + error)
           })
       }
     }
