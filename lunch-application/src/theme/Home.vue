@@ -70,6 +70,7 @@
 <script>
   import axios from 'axios'
   import VueOnToast from 'vue-on-toast'
+
   const baseUrl = axios.defaults.baseURL
 
   export default {
@@ -101,7 +102,18 @@
       lunchLocationToast: function () {
         var random = Math.floor(Math.random() * this.restaurantData.length)
         VueOnToast.ToastService.pop('success', 'Lunch Alert', 'lunch today is at: ' + this.restaurantData[random].restaurantName)
+      },
+      successfulLoginToast: function () {
+        if (window.sessionStorage.getItem('loginSuccessMessage') === null) {
+          console.log('no authenticated user detected')
+        } else {
+          VueOnToast.ToastService.pop('success', window.sessionStorage.getItem('loginSuccessMessage'))
+          window.sessionStorage.removeItem('loginSuccessMessage')
+        }
       }
+    },
+    mounted () {
+      this.successfulLoginToast()
     }
   }
 </script>

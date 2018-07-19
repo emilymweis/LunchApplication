@@ -1,4 +1,5 @@
 import axios from 'axios'
+import VueOnToast from 'vue-on-toast'
 
 axios.defaults.baseURL = 'https://lunchapplication.azurewebsites.net'
 const baseUrl = axios.defaults.baseURL
@@ -16,29 +17,21 @@ axios.interceptors.request.use(function (config) {
 })
 
 const appService = {
-  getPosts (categoryId) {
-    return new Promise((resolve) => {
-      axios.get(`/wp-json/wp/v2/posts?categories=${categoryId}&per_page=6`)
-        .then(response => {
-          resolve(response.data)
-        })
-    })
-  },
-  getProfile () {
-    return new Promise((resolve) => {
-      axios.get('/services/profile.php')
-        .then(response => {
-          resolve(response.data)
-        })
-    })
-  },
   login (credentials) {
     return new Promise((resolve, reject) => {
-      axios.post(baseUrl + '/userdata', credentials)
-        .then(response => {
-          resolve(response.data)
-        }).catch(response => {
-          reject(response.status)
+      axios.post(baseUrl + '/userdata/userlogin', credentials)
+        .then(function (response) {
+          console.log(response)
+          if (response.data === true) {
+            window.sessionStorage.setItem('loginSuccessMessage', 'You have successfully logged on')
+            window.location.href = '/home'
+          } else {
+            VueOnToast.ToastService.pop('error', 'You have not been logged in. This is because of a wrong password or username')
+          }
+        })
+        .catch(function (error) {
+          console.log(error)
+          VueOnToast.ToastService.pop('error', 'you have not been logged in ' + error)
         })
     })
   }

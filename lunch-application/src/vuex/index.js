@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import appService from '../app.service.js'
-import postsModule from './posts'
 
 Vue.use(Vuex)
 
@@ -10,9 +9,6 @@ const state = {
 }
 
 const store = new Vuex.Store({
-  modules: {
-    postsModule
-  },
   state,
   getters: {
     isAuthenticated: (state) => {
@@ -39,15 +35,15 @@ const store = new Vuex.Store({
   mutations: {
     logout (state) {
       if (typeof window !== 'undefined') {
-        window.localStorage.setItem('token', null)
-        window.localStorage.setItem('tokenExpiration', null)
+        window.sessionStorage.setItem('token', null)
+        window.sessionStorage.setItem('tokenExpiration', null)
       }
       state.isAuthenticated = false
     },
     login (state, token) {
       if (typeof window !== 'undefined') {
-        window.localStorage.setItem('token', token.token)
-        window.localStorage.setItem('tokenExpiration', token.expiration)
+        window.sessionStorage.setItem('token', token.token)
+        window.sessionStorage.setItem('tokenExpiration', token.expiration)
       }
       state.isAuthenticated = true
     }
@@ -56,7 +52,7 @@ const store = new Vuex.Store({
 
 if (typeof window !== 'undefined') {
   document.addEventListener('DOMContentLoaded', function (event) {
-    let expiration = window.localStorage.getItem('tokenExpiration')
+    let expiration = window.sessionStorage.getItem('tokenExpiration')
     var unixTimestamp = new Date().getTime() / 1000
     if (expiration !== null && parseInt(expiration) - unixTimestamp > 0) {
       store.state.isAuthenticated = true

@@ -2,13 +2,13 @@
 <div id="login">
   <div class="card">
     <div class="login">
-      <div class="card-main" v-if="isAuthenticated">
+      <!-- <div class="card-main" v-if="isAuthenticated">
         Hello authenticated user!
         <button v-on:click="logout()" class="button loginButton">
           Logout
         </button>
-      </div>
-      <h2 class="card-header"  v-else>Login</h2>
+      </div> -->
+      <h2 class="card-header"  v-if="!isAuthenticated">Login</h2>
         <div class="card-main">
           <div class="field is-horizontal">
             <div class="field-label is-normal">
@@ -61,7 +61,7 @@
   import axios from 'axios'
   import Vue from 'vue'
   import router from 'vue-router'
-  import VueOnToast from 'vue-on-toast'
+  // import VueOnToast from 'vue-on-toast'
 
   Vue.use(router)
 
@@ -71,7 +71,9 @@
     data () {
       return {
         userData: [],
-        errors: []
+        errors: [],
+        username: '',
+        password: ''
       }
     },
     created () {
@@ -93,26 +95,7 @@
         logout: 'logout'
       }),
       login: function () {
-        // this.$store.dispatch('login', {username: this.username, password: this.password})
-        axios.post(baseUrl + '/userdata/userlogin',
-          {
-            Username: this.username,
-            PasswordHash: this.password
-          })
-          .then(function (response) {
-            console.log(response)
-            if (response.data === true) {
-              VueOnToast.ToastService.pop('success', 'You have successfully logged on')
-              window.sessionStorage.setItem('loginSuccessMessage', 'You have successfully logged on')
-              window.location.href = '/home'
-            } else {
-              VueOnToast.ToastService.pop('error', 'You have not been logged in. This is because of a wrong password or username')
-            }
-          })
-          .catch(function (error) {
-            console.log(error)
-            VueOnToast.ToastService.pop('error', 'you have not been logged in ' + error)
-          })
+        this.$store.dispatch('login', {Username: this.username, PasswordHash: this.password})
       }
     }
   }
