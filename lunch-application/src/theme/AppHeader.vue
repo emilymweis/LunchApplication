@@ -8,7 +8,8 @@
             <div>Lunchable</div>
         </router-link>
           <router-link class="navText navRight" to="/login">
-              <div v-if="isAuthenticated">LOGOUT</div><div v-else>LOGIN</div>
+              <div v-if="isAuthenticated">LOGOUT</div>
+              <div v-else>LOGIN</div>
           </router-link>
     </nav>
   </div>

@@ -34,6 +34,15 @@ const appService = {
           VueOnToast.ToastService.pop('error', 'you have not been logged in ' + error)
         })
     })
+  },
+  logout (credentials) {
+    if (credentials) {
+      window.sessionStorage.setItem('logoutSuccessMessage', 'You have successfully logged off')
+      window.location.href = '/home'
+      console.log('logged off')
+    } else {
+      VueOnToast.ToastService.pop('error', 'You have not been logged off')
+    }
   }
 }
 

@@ -401,7 +401,7 @@ module.exports = require("vuex");
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_AppHeader_vue__ = __webpack_require__(9);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_a50c3bfe_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_AppHeader_vue__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_8b7b76d6_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_AppHeader_vue__ = __webpack_require__(25);
 function injectStyle (ssrContext) {
 var i
 ;(i=__webpack_require__(23),i.__inject__&&i.__inject__(ssrContext),i)
@@ -422,7 +422,7 @@ var __vue_scopeId__ = null
 var __vue_module_identifier__ = "021bb858"
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_AppHeader_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_a50c3bfe_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_AppHeader_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_8b7b76d6_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_AppHeader_vue__["a" /* default */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
@@ -441,6 +441,7 @@ var Component = normalizeComponent(
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vuex__);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+//
 //
 //
 //
@@ -542,6 +543,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
 
 
 
@@ -575,13 +579,14 @@ var baseUrl = __WEBPACK_IMPORTED_MODULE_1_axios___default.a.defaults.baseURL;
   },
 
   computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["mapGetters"])(['isAuthenticated'])),
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["mapActions"])({
-    logout: 'logout'
-  }), {
+  methods: {
     login: function login() {
       this.$store.dispatch('login', { Username: this.username, PasswordHash: this.password });
+    },
+    logout: function logout() {
+      this.$store.dispatch('logout');
     }
-  })
+  }
 });
 
 /***/ }),
@@ -705,10 +710,19 @@ var baseUrl = __WEBPACK_IMPORTED_MODULE_0_axios___default.a.defaults.baseURL;
         __WEBPACK_IMPORTED_MODULE_1_vue_on_toast___default.a.ToastService.pop('success', window.sessionStorage.getItem('loginSuccessMessage'));
         window.sessionStorage.removeItem('loginSuccessMessage');
       }
+    },
+    successfulLogoutToast: function successfulLogoutToast() {
+      if (window.sessionStorage.getItem('logoutSuccessMessage') === null) {
+        console.log('no logoff');
+      } else {
+        __WEBPACK_IMPORTED_MODULE_1_vue_on_toast___default.a.ToastService.pop('success', window.sessionStorage.getItem('logoutSuccessMessage'));
+        window.sessionStorage.removeItem('logoutSuccessMessage');
+      }
     }
   },
   mounted: function mounted() {
     this.successfulLoginToast();
+    this.successfulLogoutToast();
   }
 });
 
@@ -965,6 +979,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_1_vuex___default.a.Store({
   },
   actions: {
     logout: function logout(context) {
+      __WEBPACK_IMPORTED_MODULE_2__app_service_js__["a" /* default */].logout(context);
       context.commit('logout');
     },
     login: function login(context, credentials) {
@@ -987,6 +1002,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_1_vuex___default.a.Store({
         window.sessionStorage.setItem('tokenExpiration', null);
       }
       state.isAuthenticated = false;
+      window.sessionStorage.setItem('isAuthenticated', null);
     },
     login: function login(state, token) {
       if (typeof window !== 'undefined') {
@@ -994,6 +1010,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_1_vuex___default.a.Store({
         window.sessionStorage.setItem('tokenExpiration', token.expiration);
       }
       state.isAuthenticated = true;
+      window.sessionStorage.setItem('isAuthenticated', true);
     }
   }
 });
@@ -1004,6 +1021,7 @@ if (typeof window !== 'undefined') {
     var unixTimestamp = new Date().getTime() / 1000;
     if (expiration !== null && parseInt(expiration) - unixTimestamp > 0) {
       store.state.isAuthenticated = true;
+      window.sessionStorage.setItem('isAuthenticated', true);
     }
   });
 }
@@ -1053,6 +1071,15 @@ var appService = {
         __WEBPACK_IMPORTED_MODULE_1_vue_on_toast___default.a.ToastService.pop('error', 'you have not been logged in ' + error);
       });
     });
+  },
+  logout: function logout(credentials) {
+    if (credentials) {
+      window.sessionStorage.setItem('logoutSuccessMessage', 'You have successfully logged off');
+      window.location.href = '/home';
+      console.log('logged off');
+    } else {
+      __WEBPACK_IMPORTED_MODULE_1_vue_on_toast___default.a.ToastService.pop('error', 'You have not been logged off');
+    }
   }
 };
 
@@ -1172,7 +1199,7 @@ if(content.locals) module.exports = content.locals;
 // add CSS to SSR context
 var add = __webpack_require__(2)
 module.exports.__inject__ = function (context) {
-  add("42833a71", content, true, context)
+  add("5c583660", content, true, context)
 };
 
 /***/ }),
@@ -1330,7 +1357,7 @@ var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router___default.a({
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Login_vue__ = __webpack_require__(11);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_e22ce0f0_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Login_vue__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_3068bf08_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Login_vue__ = __webpack_require__(36);
 function injectStyle (ssrContext) {
 var i
 ;(i=__webpack_require__(34),i.__inject__&&i.__inject__(ssrContext),i)
@@ -1351,7 +1378,7 @@ var __vue_scopeId__ = null
 var __vue_module_identifier__ = "22c5819a"
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Login_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_e22ce0f0_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Login_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_3068bf08_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Login_vue__["a" /* default */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
@@ -1374,7 +1401,7 @@ if(content.locals) module.exports = content.locals;
 // add CSS to SSR context
 var add = __webpack_require__(2)
 module.exports.__inject__ = function (context) {
-  add("191a7aee", content, true, context)
+  add("56d216b1", content, true, context)
 };
 
 /***/ }),
@@ -1386,7 +1413,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "#login{display:flex;justify-content:center;margin-top:50px}#login .login{margin:20px;padding:20px}#login .card{overflow:hidden;margin:10px;flex-basis:content;align-items:stretch;flex-wrap:wrap;border:none;border-radius:5px;background-color:#fff}#login .card-header{text-align:left;font-size:30px;box-shadow:none}#login .card-main{display:flex;flex-direction:column;justify-content:center;align-items:center;padding:15px}#login .control{margin-right:30px}#login .loginButton{margin-top:10px}#login .button{background-color:#008cba;border-radius:4px;border:none;padding:10px;color:#fff;text-transform:uppercase}#login .button:hover{background-color:#016e92}#login input[id=loginFormInput]{width:100%;padding:12px 20px;margin:8px 0;display:inline-block;border:1px solid #ccc;border-radius:4px;box-sizing:border-box}#login .label{font-size:15px}", ""]);
+exports.push([module.i, "#login{display:flex;justify-content:center;margin-top:50px}#login .login{margin:20px;padding:20px}#login .card{overflow:hidden;margin:10px;flex-basis:content;align-items:stretch;flex-wrap:wrap;border:none;border-radius:5px;background-color:#fff}#login .card-header{text-align:left;font-size:30px;box-shadow:none}#login .card-main{display:flex;flex-direction:column;justify-content:center;align-items:center;padding:15px}#login .control{margin-right:30px}#login .button{background-color:#008cba;border-radius:4px;border:none;padding:10px;color:#fff;text-transform:uppercase;margin-top:10px}#login .button:hover{background-color:#016e92}#login input[id=loginFormInput]{width:100%;padding:12px 20px;margin:8px 0;display:inline-block;border:1px solid #ccc;border-radius:4px;box-sizing:border-box}#login .label{font-size:15px}", ""]);
 
 // exports
 
@@ -1396,7 +1423,7 @@ exports.push([module.i, "#login{display:flex;justify-content:center;margin-top:5
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"login"}},[_vm._ssrNode("<div class=\"card\"><div class=\"login\">"+((!_vm.isAuthenticated)?("<h2 class=\"card-header\">Login</h2>"):"<!---->")+" <div class=\"card-main\"><div class=\"field is-horizontal\"><div class=\"field-label is-normal\"><label class=\"label\">Username</label></div> <div class=\"field-body\"><div class=\"field\"><div class=\"control\"><input id=\"loginFormInput\" type=\"text\" placeholder=\"Your username\""+(_vm._ssrAttr("value",(_vm.username)))+" class=\"input\"></div></div></div></div> <div class=\"field is-horizontal\"><div class=\"field-label is-normal\"><label class=\"label\">Password</label></div> <br> <div class=\"field-body\"><div class=\"field\"><div class=\"control\"><input id=\"loginFormInput\" type=\"password\" placeholder=\"Your password\""+(_vm._ssrAttr("value",(_vm.password)))+" class=\"input\"></div></div></div></div> <div class=\"field is-horizontal\"><div class=\"field-label\"></div> <div class=\"field-body\"><div class=\"field\"><div class=\"control\"><button id=\"login\" class=\"button is-info loginButton\">\n                Login\n                </button></div></div></div></div></div></div></div>")])}
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"login"}},[_vm._ssrNode("<div class=\"card\"><div class=\"login\">"+((!_vm.isAuthenticated)?("<h2 class=\"card-header\">Login</h2>"):"<!---->")+" <div class=\"card-main\"><div class=\"field is-horizontal\"><div class=\"field-label is-normal\"><label class=\"label\">Username</label></div> <div class=\"field-body\"><div class=\"field\"><div class=\"control\"><input id=\"loginFormInput\" type=\"text\" placeholder=\"Your username\""+(_vm._ssrAttr("value",(_vm.username)))+" class=\"input\"></div></div></div></div> <div class=\"field is-horizontal\"><div class=\"field-label is-normal\"><label class=\"label\">Password</label></div> <br> <div class=\"field-body\"><div class=\"field\"><div class=\"control\"><input id=\"loginFormInput\" type=\"password\" placeholder=\"Your password\""+(_vm._ssrAttr("value",(_vm.password)))+" class=\"input\"></div></div></div></div> <div class=\"field is-horizontal\"><div class=\"field-label\"></div> <div class=\"field-body\"><div class=\"field\"><div class=\"control\"><button class=\"button loginButton\">\n                Login\n                </button> <button class=\"button loginButton\">\n                Logout\n                </button></div></div></div></div></div></div></div>")])}
 var staticRenderFns = []
 var esExports = { render: render, staticRenderFns: staticRenderFns }
 /* harmony default export */ __webpack_exports__["a"] = (esExports);
@@ -1449,7 +1476,7 @@ var esExports = { render: render, staticRenderFns: staticRenderFns }
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Home_vue__ = __webpack_require__(12);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_10db37d8_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Home_vue__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_62a356ca_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Home_vue__ = __webpack_require__(42);
 function injectStyle (ssrContext) {
 var i
 ;(i=__webpack_require__(40),i.__inject__&&i.__inject__(ssrContext),i)
@@ -1470,7 +1497,7 @@ var __vue_scopeId__ = null
 var __vue_module_identifier__ = "ea46aff6"
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Home_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_10db37d8_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Home_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_62a356ca_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Home_vue__["a" /* default */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
@@ -1493,7 +1520,7 @@ if(content.locals) module.exports = content.locals;
 // add CSS to SSR context
 var add = __webpack_require__(2)
 module.exports.__inject__ = function (context) {
-  add("0449a3df", content, true, context)
+  add("2133ad87", content, true, context)
 };
 
 /***/ }),

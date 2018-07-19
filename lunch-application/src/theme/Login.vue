@@ -44,8 +44,11 @@
             <div class="field-body">
               <div class="field">
               <div class="control">
-                <button id="login" v-on:click="login()" class="button is-info loginButton">
+                <button v-on:click="login()" class="button loginButton">
                 Login
+                </button>
+                <button v-on:click="logout()" class="button loginButton">
+                Logout
                 </button>
               </div>
               </div>
@@ -57,7 +60,7 @@
 </div>
 </template>
 <script>
-  import { mapGetters, mapActions } from 'vuex'
+  import { mapGetters } from 'vuex'
   import axios from 'axios'
   import Vue from 'vue'
   import router from 'vue-router'
@@ -91,11 +94,11 @@
       ...mapGetters(['isAuthenticated'])
     },
     methods: {
-      ...mapActions({
-        logout: 'logout'
-      }),
       login: function () {
         this.$store.dispatch('login', {Username: this.username, PasswordHash: this.password})
+      },
+      logout: function () {
+        this.$store.dispatch('logout')
       }
     }
   }
@@ -135,9 +138,6 @@
   .control{
     margin-right: 30px;
   }
-  .loginButton{
-    margin-top: 10px;
-  }
   .button{
       background-color: #008CBA;
       border-radius: 4px;
@@ -145,6 +145,7 @@
       padding: 10px;
       color: white;
       text-transform: uppercase;
+      margin-top: 10px;
   }
   .button:hover{
     background-color: rgb(1, 110, 146);

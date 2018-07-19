@@ -110,10 +110,19 @@
           VueOnToast.ToastService.pop('success', window.sessionStorage.getItem('loginSuccessMessage'))
           window.sessionStorage.removeItem('loginSuccessMessage')
         }
+      },
+      successfulLogoutToast: function () {
+        if (window.sessionStorage.getItem('logoutSuccessMessage') === null) {
+          console.log('no logoff')
+        } else {
+          VueOnToast.ToastService.pop('success', window.sessionStorage.getItem('logoutSuccessMessage'))
+          window.sessionStorage.removeItem('logoutSuccessMessage')
+        }
       }
     },
     mounted () {
       this.successfulLoginToast()
+      this.successfulLogoutToast()
     }
   }
 </script>

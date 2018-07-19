@@ -17,6 +17,7 @@ const store = new Vuex.Store({
   },
   actions: {
     logout (context) {
+      appService.logout(context)
       context.commit('logout')
     },
     login (context, credentials) {
@@ -39,6 +40,7 @@ const store = new Vuex.Store({
         window.sessionStorage.setItem('tokenExpiration', null)
       }
       state.isAuthenticated = false
+      window.sessionStorage.setItem('isAuthenticated', null)
     },
     login (state, token) {
       if (typeof window !== 'undefined') {
@@ -46,6 +48,7 @@ const store = new Vuex.Store({
         window.sessionStorage.setItem('tokenExpiration', token.expiration)
       }
       state.isAuthenticated = true
+      window.sessionStorage.setItem('isAuthenticated', true)
     }
   }
 })
@@ -56,6 +59,7 @@ if (typeof window !== 'undefined') {
     var unixTimestamp = new Date().getTime() / 1000
     if (expiration !== null && parseInt(expiration) - unixTimestamp > 0) {
       store.state.isAuthenticated = true
+      window.sessionStorage.setItem('isAuthenticated', true)
     }
   })
 }
