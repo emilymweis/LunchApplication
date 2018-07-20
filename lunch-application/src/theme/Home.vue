@@ -70,6 +70,7 @@
 <script>
   import axios from 'axios'
   import VueOnToast from 'vue-on-toast'
+  import { mapGetters } from 'vuex'
 
   const baseUrl = axios.defaults.baseURL
 
@@ -84,19 +85,20 @@
     created () {
       axios.get(baseUrl + '/lunchdata')
         .then(response => {
-          console.log(response)
           this.restaurantData = response.data
           return this.restaurantData
         })
       axios.get(baseUrl + '/topfivedata')
         .then(response => {
-          console.log(response)
           this.topFiveData = response.data
           return this.topFiveData
         })
         .catch(e => {
           this.errors.push(e)
         })
+    },
+    computed: {
+      ...mapGetters(['authStatus'])
     },
     methods: {
       lunchLocationToast: function () {
@@ -112,11 +114,10 @@
         }
       },
       successfulLogoutToast: function () {
-        if (window.sessionStorage.getItem('logoutSuccessMessage') === null) {
-          console.log('no logoff')
+        if (window.sessionStorage.getItem('authStatus') === 'false') {
+          VueOnToast.ToastService.pop('success', 'you have been sucessfully logged off')
         } else {
-          VueOnToast.ToastService.pop('success', window.sessionStorage.getItem('logoutSuccessMessage'))
-          window.sessionStorage.removeItem('logoutSuccessMessage')
+          console.log('no logoff')
         }
       }
     },

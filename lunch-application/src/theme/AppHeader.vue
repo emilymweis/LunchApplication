@@ -8,8 +8,8 @@
             <div>Lunchable</div>
         </router-link>
           <router-link class="navText navRight" to="/login">
-              <div v-if="isAuthenticated">LOGOUT</div>
-              <div v-else>LOGIN</div>
+              <div v-if="authStatus">LOGOUT</div>
+              <div v-else-if="!authStatus">LOGIN</div>
           </router-link>
     </nav>
   </div>
@@ -19,14 +19,15 @@
   export default {
     name: 'appHeader-comp',
     computed: {
-      ...mapGetters(['isAuthenticated'])
+      ...mapGetters(['authStatus'])
     }
   }
 </script>
 <style lang="scss">
-  @import "../styles/_main.scss";
-#headerStyle{
 
+  @import "../styles/_main.scss";
+
+#headerStyle{
   .appNav{
     min-height: 50px;
     max-height: 60px;

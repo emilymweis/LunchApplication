@@ -1,34 +1,37 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import appService from '../app.service.js'
+import loginService from '../app.service.js'
 
 Vue.use(Vuex)
 
 const state = {
-  isAuthenticated: false
+  isAuthenticated: false,
+  authStatus: loginService.getters.authStatus
 }
-
 const store = new Vuex.Store({
   state,
   getters: {
     isAuthenticated: (state) => {
       return state.isAuthenticated
+    },
+    authStatus: (state) => {
+      return state.isAuthenticated
     }
   },
   actions: {
     logout (context) {
-      appService.logout(context)
+      loginService.actions.logout()
       context.commit('logout')
     },
     login (context, credentials) {
       return new Promise((resolve) => {
-        appService.login(credentials)
+        loginService.actions.login(credentials)
           .then((data) => {
             context.commit('login', data)
             resolve()
           })
           .catch(() => {
-            if (typeof window !== 'undefined') { window.alert('Could not login!') }
+            console.log('error logging in')
           })
       })
     }
@@ -40,7 +43,6 @@ const store = new Vuex.Store({
         window.sessionStorage.setItem('tokenExpiration', null)
       }
       state.isAuthenticated = false
-      window.sessionStorage.setItem('isAuthenticated', null)
     },
     login (state, token) {
       if (typeof window !== 'undefined') {
@@ -48,7 +50,6 @@ const store = new Vuex.Store({
         window.sessionStorage.setItem('tokenExpiration', token.expiration)
       }
       state.isAuthenticated = true
-      window.sessionStorage.setItem('isAuthenticated', true)
     }
   }
 })
@@ -59,7 +60,6 @@ if (typeof window !== 'undefined') {
     var unixTimestamp = new Date().getTime() / 1000
     if (expiration !== null && parseInt(expiration) - unixTimestamp > 0) {
       store.state.isAuthenticated = true
-      window.sessionStorage.setItem('isAuthenticated', true)
     }
   })
 }

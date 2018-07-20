@@ -12,15 +12,10 @@ var config = {
   exclude: []                                                                 // e.g. exclude sourcemaps
 };
 
-// add console out put
 ftpDeploy.on('uploading', function(data) {
   console.log(data.transferredFileCount + '/' + data.totalFilesCount + '\t' + data.filename);
 });
-//ftpDeploy.on('uploaded', function(data) {
-//console.log(data);                                                         // same data as uploading event
-//});
 
-// use with promises
 ftpDeploy.deploy(config)
   .then(res => console.log('finished'))
   .catch(err => console.log(err));

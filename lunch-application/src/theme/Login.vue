@@ -2,13 +2,13 @@
 <div id="login">
   <div class="card">
     <div class="login">
-      <!-- <div class="card-main" v-if="isAuthenticated">
+      <div class="card-main" v-if="authStatus">
         Hello authenticated user!
         <button v-on:click="logout()" class="button loginButton">
           Logout
         </button>
-      </div> -->
-      <h2 class="card-header"  v-if="!isAuthenticated">Login</h2>
+      </div>
+      <h2 class="card-header"  v-else-if="!authStatus">Login</h2>
         <div class="card-main">
           <div class="field is-horizontal">
             <div class="field-label is-normal">
@@ -39,16 +39,15 @@
           </div>
           <div class="field is-horizontal">
             <div class="field-label">
-              <!-- Left empty for spacing -->
             </div>
             <div class="field-body">
               <div class="field">
               <div class="control">
-                <button v-on:click="login()" class="button loginButton">
-                Login
-                </button>
-                <button v-on:click="logout()" class="button loginButton">
+                <button v-if="authStatus" v-on:click="logout()" class="button loginButton">
                 Logout
+                </button>
+                <button v-else-if="!authStatus" v-on:click="login()" class="button loginButton">
+                Login
                 </button>
               </div>
               </div>
@@ -62,11 +61,6 @@
 <script>
   import { mapGetters } from 'vuex'
   import axios from 'axios'
-  import Vue from 'vue'
-  import router from 'vue-router'
-  // import VueOnToast from 'vue-on-toast'
-
-  Vue.use(router)
 
   const baseUrl = axios.defaults.baseURL
 
@@ -82,16 +76,16 @@
     created () {
       axios.get(baseUrl + '/userData')
         .then(response => {
-          console.log(response)
           this.userData = response.data
           return this.userData
         })
         .catch(e => {
           this.errors.push(e)
         })
+      console.log(['getting', window.sessionStorage.getItem('authStatus')])
     },
     computed: {
-      ...mapGetters(['isAuthenticated'])
+      ...mapGetters(['authStatus'])
     },
     methods: {
       login: function () {
