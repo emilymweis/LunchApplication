@@ -5,8 +5,7 @@ import loginService from '../app.service.js'
 Vue.use(Vuex)
 
 const state = {
-  isAuthenticated: false,
-  authStatus: loginService.getters.authStatus
+  isAuthenticated: false
 }
 const store = new Vuex.Store({
   state,
@@ -14,8 +13,9 @@ const store = new Vuex.Store({
     isAuthenticated: (state) => {
       return state.isAuthenticated
     },
-    authStatus: (state) => {
-      return state.isAuthenticated
+    authStatus: () => {
+      console.log('index getter ' + loginService.getters.authStatus)
+      return loginService.getters.authStatus
     }
   },
   actions: {

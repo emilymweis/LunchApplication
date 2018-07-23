@@ -9,7 +9,7 @@
         </router-link>
           <router-link class="navText navRight" to="/login">
               <div v-if="authStatus">LOGOUT</div>
-              <div v-else-if="!authStatus">LOGIN</div>
+              <div v-else>LOGIN</div>
           </router-link>
     </nav>
   </div>
@@ -70,5 +70,4 @@
   }
 
 }
-
   </style>

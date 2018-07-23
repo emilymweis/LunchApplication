@@ -28,6 +28,7 @@ const loginService = {
   state,
   getters: {
     authStatus: (state) => {
+      console.log('service getter: ' + state.authStatus)
       return state.authStatus
     }
   },
@@ -41,9 +42,7 @@ const loginService = {
               window.sessionStorage.setItem('authStatus', true)
               if (window.sessionStorage.getItem('authStatus') === 'true') {
                 state.authStatus = true
-                console.log(['setting status1', window.sessionStorage.getItem('authStatus')])
               }
-              console.log(['setting', window.sessionStorage.getItem('authStatus')])
               window.location.href = '/home'
             } else {
               VueOnToast.ToastService.pop('error', 'You have not been logged in. This is because of a wrong password or username')
@@ -59,9 +58,7 @@ const loginService = {
       window.sessionStorage.setItem('authStatus', false)
       if (window.sessionStorage.getItem('authStatus') === 'false') {
         state.authStatus = false
-        console.log(['setting status1', window.sessionStorage.getItem('authStatus')])
       }
-      console.log(['setting', window.sessionStorage.getItem('authStatus')])
       window.location.href = '/home'
     }
   }

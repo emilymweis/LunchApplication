@@ -8,7 +8,7 @@
           Logout
         </button>
       </div>
-      <h2 class="card-header"  v-else-if="!authStatus">Login</h2>
+      <h2 class="card-header"  v-else>Login</h2>
         <div class="card-main">
           <div class="field is-horizontal">
             <div class="field-label is-normal">
@@ -46,7 +46,7 @@
                 <button v-if="authStatus" v-on:click="logout()" class="button loginButton">
                 Logout
                 </button>
-                <button v-else-if="!authStatus" v-on:click="login()" class="button loginButton">
+                <button v-else v-on:click="login()" class="button loginButton">
                 Login
                 </button>
               </div>
