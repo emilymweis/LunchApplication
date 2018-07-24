@@ -15,11 +15,13 @@
   </div>
 </template>
 <script>
-  import { mapGetters } from 'vuex'
+  import loginService from '../app.service.js'
   export default {
     name: 'appHeader-comp',
     computed: {
-      ...mapGetters(['authStatus'])
+      authStatus () {
+        return loginService.authStatus()
+      }
     }
   }
 </script>

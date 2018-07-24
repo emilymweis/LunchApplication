@@ -8,7 +8,8 @@
           Logout
         </button>
       </div>
-      <h2 class="card-header"  v-else>Login</h2>
+      <div v-else>
+        <h2 class="card-header" >Login</h2>
         <div class="card-main">
           <div class="field is-horizontal">
             <div class="field-label is-normal">
@@ -17,7 +18,7 @@
             <div class="field-body">
               <div class="field">
               <div class="control">
-                <input v-model="username" id="loginFormInput" class="input" type="text"
+                <input v-model="username" id="loginUserInput" class="input" type="text"
                 placeholder="Your username">
               </div>
               </div>
@@ -31,7 +32,7 @@
             <div class="field-body">
               <div class="field">
               <div class="control">
-                <input v-model="password" id="loginFormInput" class="input" type="password"
+                <input v-model="password" id="loginPassInput" class="input" type="password"
                 placeholder="Your password">
               </div>
               </div>
@@ -46,7 +47,7 @@
                 <button v-if="authStatus" v-on:click="logout()" class="button loginButton">
                 Logout
                 </button>
-                <button v-else v-on:click="login()" class="button loginButton">
+                <button v-on:click="login()" class="button loginButton">
                 Login
                 </button>
               </div>
@@ -55,11 +56,12 @@
           </div>
         </div>
     </div>
+    </div>
   </div>
 </div>
 </template>
 <script>
-  import { mapGetters } from 'vuex'
+  import loginService from '../app.service.js'
   import axios from 'axios'
 
   const baseUrl = axios.defaults.baseURL
@@ -82,10 +84,11 @@
         .catch(e => {
           this.errors.push(e)
         })
-      console.log(['getting', window.sessionStorage.getItem('authStatus')])
     },
     computed: {
-      ...mapGetters(['authStatus'])
+      authStatus () {
+        return loginService.authStatus()
+      }
     },
     methods: {
       login: function () {
@@ -144,7 +147,16 @@
   .button:hover{
     background-color: rgb(1, 110, 146);
   }
-  input[id=loginFormInput] {
+  input[id=loginUserInput] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  input[id=loginPassInput] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;

@@ -12,10 +12,6 @@ const store = new Vuex.Store({
   getters: {
     isAuthenticated: (state) => {
       return state.isAuthenticated
-    },
-    authStatus: () => {
-      console.log('index getter ' + loginService.getters.authStatus)
-      return loginService.getters.authStatus
     }
   },
   actions: {
@@ -25,7 +21,7 @@ const store = new Vuex.Store({
     },
     login (context, credentials) {
       return new Promise((resolve) => {
-        loginService.actions.login(credentials)
+        loginService.login(credentials)
           .then((data) => {
             context.commit('login', data)
             resolve()

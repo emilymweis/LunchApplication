@@ -69,8 +69,8 @@
 </template>
 <script>
   import axios from 'axios'
+  import loginService from '../app.service.js'
   import VueOnToast from 'vue-on-toast'
-  import { mapGetters } from 'vuex'
 
   const baseUrl = axios.defaults.baseURL
 
@@ -98,7 +98,9 @@
         })
     },
     computed: {
-      ...mapGetters(['authStatus'])
+      authStatus () {
+        return loginService.authStatus()
+      }
     },
     methods: {
       lunchLocationToast: function () {
