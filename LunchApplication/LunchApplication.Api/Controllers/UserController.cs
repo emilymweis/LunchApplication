@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using Core.Common.Services.Filters;
 using LunchApplication.Common.Interfaces;
 using LunchApplication.Models.Models;
@@ -12,6 +13,7 @@ namespace LunchApplication.Api.Controllers
     /// or start with this and
     /// rename as necessary.
     /// </summary>
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     [RoutePrefix("userdata")]
     //[Monitor]
     public class UserController : ApiController

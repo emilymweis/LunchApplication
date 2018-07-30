@@ -16,7 +16,7 @@ const store = new Vuex.Store({
   },
   actions: {
     logout (context) {
-      loginService.actions.logout()
+      loginService.logout()
       context.commit('logout')
     },
     login (context, credentials) {

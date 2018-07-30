@@ -6,7 +6,8 @@ import memoryService from './memory.service'
 
 Vue.use(Vuex)
 
-axios.defaults.baseURL = 'https://lunchapplication.azurewebsites.net'
+// axios.defaults.baseURL = 'https://lunchapplication.azurewebsites.net'
+axios.defaults.baseURL = 'http://localhost:48146'
 const baseUrl = axios.defaults.baseURL
 
 axios.interceptors.request.use(function (config) {
@@ -23,9 +24,7 @@ axios.interceptors.request.use(function (config) {
 
 var loginService = (function () {
   function authStatus () {
-    // var state = memoryService.getAuthStatus()
-    // console.log(['state: ', state])
-    return false // state
+    return memoryService.getAuthStatus()
   }
 
   function login (credentials) {

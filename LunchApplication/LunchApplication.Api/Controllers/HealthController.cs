@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using Chipotle.Core.Logging;
 using LunchApplication.Common.Constants;
 
@@ -11,6 +12,7 @@ namespace LunchApplication.Api.Controllers
     /// The HealthController is used as a convenience method for checking that the service is running.
     /// </summary>
     /// <seealso cref="System.Web.Http.ApiController" />
+    [EnableCors(origins: "http://localhost:3001", headers: "*", methods: "*")]
     [RoutePrefix("health")]
     public class HealthController : ApiController
     {

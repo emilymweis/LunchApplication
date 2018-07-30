@@ -2,6 +2,7 @@ const memoryService = (function () {
   const authStatus = 'authStatus'
 
   function getAuthStatus () {
+    // console.log(['window', window])
     console.log(['getting auth status'])
     console.log(['getValue value: ', getValue(authStatus)])
     return getValue(authStatus)
@@ -11,6 +12,7 @@ const memoryService = (function () {
     console.log(['setting auth status', value])
     window.sessionStorage.setItem(authStatus, value)
     console.log(['setter auth status', window.sessionStorage.getItem(authStatus)])
+    console.log(['get: ', getValue(authStatus)])
   }
 
   function getValue (key) {
