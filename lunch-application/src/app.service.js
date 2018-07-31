@@ -48,12 +48,33 @@ var loginService = (function () {
 
   function logout () {
     memoryService.setAuthStatus(false)
+    window.sessionStorage.setItem('logoutSuccessMessage', 'You have successfully logged off')
     window.location.href = '/home'
+  }
+
+  function save (credentials) {
+    return new Promise((resolve, reject) => {
+      axios.post(baseUrl + '/userdata', credentials)
+        .then(function (response) {
+          if (response.data === true) {
+            window.sessionStorage.setItem('createSuccessMessage', 'You have successfully created an account')
+            memoryService.setAuthStatus(true)
+            window.location.href = '/home'
+          } else {
+            VueOnToast.ToastService.pop('error', 'You have not created an account. This is because of a wrong password or username')
+          }
+        })
+        .catch(function (error) {
+          console.log(error)
+          VueOnToast.ToastService.pop('error', 'you have not created an account ' + error)
+        })
+    })
   }
 
   return {
     login: login,
     logout: logout,
+    save: save,
     authStatus: authStatus
   }
 })()

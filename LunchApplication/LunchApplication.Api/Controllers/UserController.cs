@@ -38,9 +38,9 @@ namespace LunchApplication.Api.Controllers
 
         [AllowAnonymous]
         [HttpPost, Route("userlogin")]
-        public async Task<IHttpActionResult> VerifyLogin(UserOptions userOptions)
+        public async Task<IHttpActionResult> VerifyLoginAsync(UserCredentials userCredentials)
         {
-            var isOk = await _userService.VerifyLogin(userOptions.Username, userOptions.PasswordHash);
+            var isOk = await _userService.VerifyLoginAsync(userCredentials.Username, userCredentials.PasswordHash);
             return Ok(isOk);
         }
 
@@ -52,11 +52,12 @@ namespace LunchApplication.Api.Controllers
             return Ok("user");
         }
 
+        [AllowAnonymous]
         [HttpPost, Route("")]
-        public async Task<IHttpActionResult> AddUserAsync([FromBody] UserOptions user)
+        public async Task<IHttpActionResult> AddUserAsync(UserOptions userOptions)
         {
-            user.Id = _appRequestInfo.UserId;
-            return Created(string.Empty, await _userService.AddUserAsync(user));
+            var isOk = await _userService.AddUserAsync(userOptions.Username, userOptions.PasswordHash);
+            return Ok(isOk);
         }
 }
 }

@@ -1,5 +1,5 @@
-var FtpDeploy = require('ftp-deploy');
-var ftpDeploy = new FtpDeploy();
+var FtpDeploy = require('ftp-deploy')
+var ftpDeploy = new FtpDeploy()
 
 var config = {
   user: 'LunchApplication__dev\\$LunchApplication__dev',                      // NOTE that this was username in 1.x
@@ -12,7 +12,7 @@ var config = {
   exclude: []                                                                 // e.g. exclude sourcemaps
 };
 
-ftpDeploy.on('uploading', function(data) {
+ftpDeploy.on('uploading', function (data) {
   console.log(data.transferredFileCount + '/' + data.totalFilesCount + '\t' + data.filename);
 });
 

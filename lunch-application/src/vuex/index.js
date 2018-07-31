@@ -23,11 +23,23 @@ const store = new Vuex.Store({
       return new Promise((resolve) => {
         loginService.login(credentials)
           .then((data) => {
-            context.commit('login', data)
+            context.commit('save', data)
             resolve()
           })
           .catch(() => {
             console.log('error logging in')
+          })
+      })
+    },
+    save (context, credentials) {
+      return new Promise((resolve) => {
+        loginService.save(credentials)
+          .then((data) => {
+            context.commit('login', data)
+            resolve()
+          })
+          .catch(() => {
+            console.log('error creating an account')
           })
       })
     }
@@ -41,6 +53,13 @@ const store = new Vuex.Store({
       state.isAuthenticated = false
     },
     login (state, token) {
+      if (typeof window !== 'undefined') {
+        window.sessionStorage.setItem('token', token.token)
+        window.sessionStorage.setItem('tokenExpiration', token.expiration)
+      }
+      state.isAuthenticated = true
+    },
+    save (state, token) {
       if (typeof window !== 'undefined') {
         window.sessionStorage.setItem('token', token.token)
         window.sessionStorage.setItem('tokenExpiration', token.expiration)

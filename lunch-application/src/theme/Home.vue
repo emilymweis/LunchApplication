@@ -109,15 +109,15 @@
       },
       successfulLoginToast: function () {
         if (window.sessionStorage.getItem('loginSuccessMessage') === null) {
-          console.log('no authenticated user detected')
         } else {
           VueOnToast.ToastService.pop('success', window.sessionStorage.getItem('loginSuccessMessage'))
           window.sessionStorage.removeItem('loginSuccessMessage')
         }
       },
       successfulLogoutToast: function () {
-        if (window.sessionStorage.getItem('authStatus') === 'false') {
-          VueOnToast.ToastService.pop('success', 'you have been sucessfully logged off')
+        if (window.sessionStorage.getItem('logoutSuccessMessage') !== null) {
+          VueOnToast.ToastService.pop('success', window.sessionStorage.getItem('logoutSuccessMessage'))
+          window.sessionStorage.removeItem('logoutSuccessMessage')
         } else {
           console.log('no logoff')
         }
