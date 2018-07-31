@@ -5,12 +5,10 @@ import router from './router'
 
 import VueOnToast from 'vue-on-toast'
 import AppHeader from './theme/AppHeader.vue'
-import LoadingIndicator from './theme/LoadingIndicator.vue'
 
 Vue.use(VueOnToast)
 
 Vue.component('appHeader-comp', AppHeader)
-Vue.component('loading-indicator', LoadingIndicator)
 
 const app = new Vue({
   router,

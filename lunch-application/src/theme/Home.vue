@@ -25,7 +25,7 @@
         </div>
       </div>
     </div>
-    <div class=card>
+    <div v-if="authStatus" class=card>
       <div class="topFive">
         <div class="card-header">Your Top 5</div>
         <div class="card-main">
@@ -68,7 +68,7 @@
   </div>
 </template>
 <script>
-  import axios from 'axios'
+  import axios from '../axiosInterceptor'
   import loginService from '../app.service.js'
   import VueOnToast from 'vue-on-toast'
 
@@ -79,7 +79,8 @@
       return {
         restaurantData: [],
         topFiveData: [],
-        errors: []
+        errors: [],
+        authStatus: false
       }
     },
     created () {
@@ -96,11 +97,6 @@
         .catch(e => {
           this.errors.push(e)
         })
-    },
-    computed: {
-      authStatus () {
-        return loginService.authStatus()
-      }
     },
     methods: {
       lunchLocationToast: function () {
@@ -124,6 +120,7 @@
       }
     },
     mounted () {
+      this.authStatus = loginService.authStatus()
       this.successfulLoginToast()
       this.successfulLogoutToast()
     }

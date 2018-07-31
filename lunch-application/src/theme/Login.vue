@@ -64,7 +64,7 @@
 </template>
 <script>
   import loginService from '../app.service.js'
-  import axios from 'axios'
+  import axios from '../axiosInterceptor'
 
   const baseUrl = axios.defaults.baseURL
 

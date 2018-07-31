@@ -71,7 +71,7 @@
   </div>
 </template>
 <script>
-  import axios from 'axios'
+  import axios from '../axiosInterceptor'
   import VueOnToast from 'vue-on-toast'
   const baseUrl = axios.defaults.baseURL
 

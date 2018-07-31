@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <loading-indicator></loading-indicator>
+    <loading-pepper v-show="loadingState"></loading-pepper>
     <toast-container></toast-container>
     <app-header></app-header>
     <section class="main-section section">
@@ -14,10 +14,25 @@
 <script>
   import AppHeader from './AppHeader.vue'
   import AppFooter from './AppFooter.vue'
+  import LoadingPepper from './LoadingPepper.vue'
+  import memoryService from '../memory.service'
+
   export default {
     components: {
       'app-header': AppHeader,
-      'app-footer': AppFooter
+      'app-footer': AppFooter,
+      LoadingPepper
+    },
+    data: {
+      loadingState: false
+    },
+    methods: {
+      mem: function () {
+        this.loadingState = memoryService.isLoading() === 'true'
+      }
+    },
+    mounted: function () {
+      memoryService.setCallback(this.mem)
     }
   }
 </script>

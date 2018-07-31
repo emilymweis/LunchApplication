@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from './axiosInterceptor'
 import VueOnToast from 'vue-on-toast'
 import Vue from 'vue'
 import Vuex from 'vuex'
