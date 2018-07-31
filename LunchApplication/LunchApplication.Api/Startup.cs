@@ -20,6 +20,7 @@ using System.Diagnostics;
 using System.Net.Http;
 using System.Reflection;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 [assembly: OwinStartup(typeof(Startup))]
 namespace LunchApplication.Api
@@ -55,8 +56,8 @@ namespace LunchApplication.Api
 
             app.UseWebApi(config);
 
-            //var cors = new EnableCorsAttribute("*", "*", "*");
-            //config.EnableCors(cors);
+            var cors = new EnableCorsAttribute("*", "*", "*");
+            config.EnableCors(cors);
         }
 
         private static void RegisterFilters(Container container)

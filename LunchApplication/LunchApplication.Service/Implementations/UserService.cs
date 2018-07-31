@@ -27,12 +27,16 @@ namespace LunchApplication.Service.Implementations
         {
             return _userRepository.Test();
         }
-        public async Task<string> VerifyLogin(string Username, string PasswordHash)
+        public async Task<bool> VerifyLoginAsync(string Username, string PasswordHash)
         {
-            return await _userRepository.VerifyLogin(Username, PasswordHash);
+            return await _userRepository.VerifyLoginAsync(Username, PasswordHash);
 
         }
+        public async Task<bool> AddUserAsync(string username, string passwordHash)
+        {
+            return await _userRepository.AddUserAsync(username, passwordHash);
 
+        }
         public async Task<int> GetIntValueAsync()
         {
             if (_logger.IsDebugEnabled)
@@ -52,17 +56,7 @@ namespace LunchApplication.Service.Implementations
             return await _userRepository.GetValueAsync(validId);
         }
 
-        public async Task<UserOptions> AddUserAsync(UserOptions user)
-        {
-            return await _userRepository.AddUserAsync(user);
-        }
-
         Task<string> IUserService.GetValueAsync(string validId)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        Task<UserOptions> IUserService.AddUserAsync(UserOptions user)
         {
             throw new System.NotImplementedException();
         }

@@ -86,7 +86,6 @@
     created () {
       axios.get(baseUrl + '/lunchdata')
         .then(response => {
-          console.log(response)
           this.restaurantData = response.data
           return this.restaurantData
         })
@@ -95,7 +94,6 @@
         })
       axios.get(baseUrl + '/topfivedata')
         .then(response => {
-          console.log(response)
           this.topFiveData = response.data
           return this.topFiveData
         })
@@ -121,7 +119,6 @@
             restaurantFive: this.topFiveData[0].restaurantFive
           })
           .then(function (response) {
-            console.log(response)
             VueOnToast.ToastService.pop('success', 'Successful Update', 'your preferences have been saved')
           })
           .catch(function (error) {

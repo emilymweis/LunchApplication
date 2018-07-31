@@ -1,18 +1,13 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import appService from '../app.service.js'
-import postsModule from './posts'
+import loginService from '../app.service.js'
 
 Vue.use(Vuex)
 
 const state = {
   isAuthenticated: false
 }
-
 const store = new Vuex.Store({
-  modules: {
-    postsModule
-  },
   state,
   getters: {
     isAuthenticated: (state) => {
@@ -21,17 +16,30 @@ const store = new Vuex.Store({
   },
   actions: {
     logout (context) {
+      loginService.logout()
       context.commit('logout')
     },
     login (context, credentials) {
       return new Promise((resolve) => {
-        appService.login(credentials)
+        loginService.login(credentials)
+          .then((data) => {
+            context.commit('save', data)
+            resolve()
+          })
+          .catch(() => {
+            console.log('error logging in')
+          })
+      })
+    },
+    save (context, credentials) {
+      return new Promise((resolve) => {
+        loginService.save(credentials)
           .then((data) => {
             context.commit('login', data)
             resolve()
           })
           .catch(() => {
-            if (typeof window !== 'undefined') { window.alert('Could not login!') }
+            console.log('error creating an account')
           })
       })
     }
@@ -39,15 +47,22 @@ const store = new Vuex.Store({
   mutations: {
     logout (state) {
       if (typeof window !== 'undefined') {
-        window.localStorage.setItem('token', null)
-        window.localStorage.setItem('tokenExpiration', null)
+        window.sessionStorage.setItem('token', null)
+        window.sessionStorage.setItem('tokenExpiration', null)
       }
       state.isAuthenticated = false
     },
     login (state, token) {
       if (typeof window !== 'undefined') {
-        window.localStorage.setItem('token', token.token)
-        window.localStorage.setItem('tokenExpiration', token.expiration)
+        window.sessionStorage.setItem('token', token.token)
+        window.sessionStorage.setItem('tokenExpiration', token.expiration)
+      }
+      state.isAuthenticated = true
+    },
+    save (state, token) {
+      if (typeof window !== 'undefined') {
+        window.sessionStorage.setItem('token', token.token)
+        window.sessionStorage.setItem('tokenExpiration', token.expiration)
       }
       state.isAuthenticated = true
     }
@@ -56,7 +71,7 @@ const store = new Vuex.Store({
 
 if (typeof window !== 'undefined') {
   document.addEventListener('DOMContentLoaded', function (event) {
-    let expiration = window.localStorage.getItem('tokenExpiration')
+    let expiration = window.sessionStorage.getItem('tokenExpiration')
     var unixTimestamp = new Date().getTime() / 1000
     if (expiration !== null && parseInt(expiration) - unixTimestamp > 0) {
       store.state.isAuthenticated = true

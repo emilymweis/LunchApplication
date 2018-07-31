@@ -2,10 +2,8 @@
 
 namespace LunchApplication.Models.Models
 {
-    public class UserOptions
+    public class UserCredentials
     {
-        public int UserId { get; set; }
-        public int Id { get; set; }
         public string Username { get; set; }
         public string PasswordHash { get; set; }
     }

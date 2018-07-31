@@ -12,9 +12,10 @@ namespace LunchApplication.Service.Interfaces
     public interface IUserService : IService
     {
         Task<string> GetValueAsync(string validId);
-        Task<UserOptions> AddUserAsync(UserOptions user);
+        Task<bool> AddUserAsync(string username, string passwordHash);
         Task<int> GetIntValueAsync();
         List<UserOptions> Test();
-        Task<string> VerifyLogin(string Username, string PasswordHash);
+        Task<bool> VerifyLoginAsync(string Username, string PasswordHash);
+
     }
 }

@@ -13,6 +13,8 @@ using LunchApplication.Models.Models;
 using LunchApplication.Repository.Extensions;
 using LunchApplication.Repository.Interfaces;
 using LunchApplication.Common;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace LunchApplication.Repository.Implementations
 {
@@ -34,54 +36,44 @@ namespace LunchApplication.Repository.Implementations
             }
         }
 
-        public async Task<string> VerifyLogin(string Username, string PasswordHash)
+        public async Task<bool> VerifyLoginAsync(string username, string passwordHash)
         {
-            var result = "Login Unsuccessful";
+            var result = false;
+            var hashed = GetHash(username + passwordHash);
 
-            using (SqlConnection connection = new SqlConnection(ConfigHelper.LunchDbContextConnectionString))
-            using (SqlCommand command = connection.CreateCommand())
-            {
-                try
-                {
-                    command.CommandText = "BEGIN" +
-                            "DECLARE @loginCount INT = 0" +
-                            "DECLARE @loginResult BIT = NULL" +
-                        "IF @loginCount = 0" +
-                            "Begin" +
-                                "(SELECT * FROM UserOptions WHERE Username = @user AND PasswordHash = @pass)" +
-                                "SET @loginCount = 1" +
-                                "SET @loginResult = 1" +
-                            "END" +
-                        "ELSE" +
-                            "Begin" +
-                                "SET @loginCount = 0" +
-                            "END" +
-                        "IF @loginResult = 1" +
-                            "BEGIN" +
-                                "RETURN" +
-                            "END" +
-                      "END";
-    
-                    command.Parameters.AddWithValue("@user", Username);
-                    command.Parameters.AddWithValue("@pass", PasswordHash);
+            using (SqlConnection connection = new SqlConnection(ConfigHelper.LunchDbContextConnectionString)) {
 
-                    connection.Open();
-                    if (command.ExecuteNonQuery().ToString() != null)
-                    {
-                        result = command.ExecuteNonQuery().ToString() + " Login Successful";
-                    }
-
-                    connection.Close();
-                }
-                catch (Exception e)
-                {
-                    result = e.Message;
-                    // result = "Unable to login due to bad input";
-                }
+                var login = await connection.QueryAsync("SELECT 1 FROM UserOptions WHERE Username = @user AND PasswordHash = @pass", new { user=username, pass= hashed });
+                result = login.Count() == 1 ? true : false;
             }
             return result;
         }
+        public async Task<bool> AddUserAsync(string username, string passwordHash)
+        {
+            var result = false;
+            var hashed = GetHash(username + passwordHash);
 
+            using (SqlConnection connection = new SqlConnection(ConfigHelper.LunchDbContextConnectionString))
+            {
+                var sql = "IF EXISTS(SELECT 1 FROM dbo.UserOptions WHERE Username = @user) " +
+                "BEGIN " +
+                    "SELECT 0 " +
+                "END " +
+                "ELSE " +
+                    "BEGIN " +
+                        "INSERT INTO dbo.UserOptions " +
+                        "(Username, PasswordHash) " +
+                        "VALUES (@user, @password) " +
+                        "SELECT 1 " +
+                    "END ";
+
+                var addUser = await connection.QueryAsync(sql, new { user = username, password = hashed });
+
+                result = addUser.Count() == 1 ? true : false;
+            }
+
+            return result;
+        }
         public UserRepository(IConfigurationManager configurationManager)
         {
             _configurationManager = configurationManager;
@@ -103,15 +95,26 @@ namespace LunchApplication.Repository.Implementations
             throw new System.NotImplementedException();
         }
 
-        Task<UserOptions> IUserRepository.AddUserAsync(UserOptions User)
-        {
-            throw new System.NotImplementedException();
-        }
-
-
         Task<int> IUserRepository.GetIntValueAsync()
         {
             throw new System.NotImplementedException();
         }
+
+        private string GetHash(string text)
+        {
+            // SHA512 is disposable by inheritance.  
+            using (var sha256 = SHA256.Create())
+            {
+                // Send a sample text to hash.  
+                var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(text));
+                // Get the hashed string.  
+                return BitConverter.ToString(hashedBytes);
+            }
+        }
+
+        //public Task<bool> AddUserAsync(string Username, string Password)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

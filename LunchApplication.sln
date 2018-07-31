@@ -44,29 +44,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LunchApplication.Test.Integ
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LunchApplication.Test.Unit", "LunchApplication\LunchApplication.Test.Unit\LunchApplication.Test.Unit.csproj", "{3263D0DE-42F4-4033-9F56-2B4B567F0140}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0. Web", "0. Web", "{E3AC21BB-5959-4E5F-9518-DAE9A3437D0B}"
-EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "lunch-application", "lunch-application\", "{EF15EE4B-59FF-4F30-ACAA-DFA358C952C9}"
-	ProjectSection(WebsiteProperties) = preProject
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
-		Debug.AspNetCompiler.VirtualPath = "/localhost_54066"
-		Debug.AspNetCompiler.PhysicalPath = "lunch-application\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_54066\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/localhost_54066"
-		Release.AspNetCompiler.PhysicalPath = "lunch-application\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_54066\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "54066"
-		SlnRelativePath = "lunch-application\"
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6. Dependencies", "6. Dependencies", "{D8A4691E-5455-40F2-92E4-38F260A5371D}"
 	ProjectSection(SolutionItems) = preProject
 		LunchApplication\Dependencies\Chipotle.Core.Logging.1.5.2\lib\net45\Chipotle.Core.Logging.dll = LunchApplication\Dependencies\Chipotle.Core.Logging.1.5.2\lib\net45\Chipotle.Core.Logging.dll
@@ -157,14 +134,6 @@ Global
 		{3263D0DE-42F4-4033-9F56-2B4B567F0140}.qa|Any CPU.Build.0 = Release|Any CPU
 		{3263D0DE-42F4-4033-9F56-2B4B567F0140}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3263D0DE-42F4-4033-9F56-2B4B567F0140}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EF15EE4B-59FF-4F30-ACAA-DFA358C952C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EF15EE4B-59FF-4F30-ACAA-DFA358C952C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EF15EE4B-59FF-4F30-ACAA-DFA358C952C9}.DebugInternal|Any CPU.ActiveCfg = Debug|Any CPU
-		{EF15EE4B-59FF-4F30-ACAA-DFA358C952C9}.DebugInternal|Any CPU.Build.0 = Debug|Any CPU
-		{EF15EE4B-59FF-4F30-ACAA-DFA358C952C9}.qa|Any CPU.ActiveCfg = Debug|Any CPU
-		{EF15EE4B-59FF-4F30-ACAA-DFA358C952C9}.qa|Any CPU.Build.0 = Debug|Any CPU
-		{EF15EE4B-59FF-4F30-ACAA-DFA358C952C9}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{EF15EE4B-59FF-4F30-ACAA-DFA358C952C9}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -179,7 +148,6 @@ Global
 		{1EBA97CA-BA81-4B5A-A411-5F96F956680B} = {96656879-4307-48A7-B401-6F663B636163}
 		{79AAEA9D-2114-405F-876D-61FC2DA0BA7B} = {96656879-4307-48A7-B401-6F663B636163}
 		{3263D0DE-42F4-4033-9F56-2B4B567F0140} = {96656879-4307-48A7-B401-6F663B636163}
-		{EF15EE4B-59FF-4F30-ACAA-DFA358C952C9} = {E3AC21BB-5959-4E5F-9518-DAE9A3437D0B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {88B202F1-E41D-41C4-B1DF-0E9FBE2A8EDE}

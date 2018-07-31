@@ -1,25 +1,18 @@
 <template>
-<div id="login">
+<div id="create">
   <div class="card">
-    <div class="login">
-      <div class="card-main" v-if="authStatus">
-        Hello authenticated user!
-        <button v-on:click="logout()" class="button loginButton">
-          Logout
-        </button>
-      </div>
-      <div v-else>
-        <h2 class="card-header" >Login</h2>
-        <div class="card-main">
-          <div class="field is-horizontal">
+    <div class="create">
+      <h2 class="card-header" >Create an Account</h2>
+      <div class="card-main">
+        <div class="field is-horizontal">
             <div class="field-label is-normal">
-              <label class="label">Username</label>
+              <label class="label">Email (this will be your username)</label>
             </div>
             <div class="field-body">
               <div class="field">
               <div class="control">
-                <input v-model="username" id="loginUserInput" class="input" type="text"
-                placeholder="Your username">
+                <input v-model="email" id="createUserInput" class="input" type="text"
+                placeholder="example@email.com">
               </div>
               </div>
             </div>
@@ -32,7 +25,7 @@
             <div class="field-body">
               <div class="field">
               <div class="control">
-                <input v-model="password" id="loginPassInput" class="input" type="password"
+                <input v-model="password" id="createPassInput" class="input" type="password"
                 placeholder="Your password">
               </div>
               </div>
@@ -44,71 +37,42 @@
             <div class="field-body">
               <div class="field">
               <div class="control">
-                <button v-on:click="login()" class="button loginButton">
-                Login
+                <button v-on:click="save()" class="button">
+                Save
                 </button>
-                <router-link to="/create">
-                  <button class="button loginButton">
-                    Create
-                  </button>
-                </router-link>
               </div>
               </div>
             </div>
           </div>
-        </div>
-    </div>
+      </div>
     </div>
   </div>
 </div>
 </template>
 <script>
-  import loginService from '../app.service.js'
-  import axios from 'axios'
-
-  const baseUrl = axios.defaults.baseURL
-
   export default {
     data () {
       return {
         userData: [],
         errors: [],
-        username: '',
+        email: '',
         password: ''
       }
     },
-    created () {
-      axios.get(baseUrl + '/userData')
-        .then(response => {
-          this.userData = response.data
-          return this.userData
-        })
-        .catch(e => {
-          this.errors.push(e)
-        })
-    },
-    computed: {
-      authStatus () {
-        return loginService.authStatus()
-      }
-    },
     methods: {
-      login: function () {
-        this.$store.dispatch('login', {Username: this.username, PasswordHash: this.password})
-      },
-      logout: function () {
-        this.$store.dispatch('logout')
+      save: function () {
+        this.$store.dispatch('save', {Username: this.email, PasswordHash: this.password})
       }
     }
   }
 </script>
 <style lang="scss">
-#login{
+#create{
   display: flex;
   justify-content: center;
   margin-top: 50px;
 
-  .login{
+  .create{
     margin: 20px;
     padding: 20px;
   }
@@ -149,7 +113,7 @@
   .button:hover{
     background-color: rgb(1, 110, 146);
   }
-  input[id=loginUserInput] {
+  input[id=createUserInput] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -158,7 +122,7 @@
     border-radius: 4px;
     box-sizing: border-box;
   }
-  input[id=loginPassInput] {
+  input[id=createPassInput] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
