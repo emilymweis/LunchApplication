@@ -69,7 +69,9 @@
 </template>
 <script>
   import axios from 'axios'
+  import loginService from '../app.service.js'
   import VueOnToast from 'vue-on-toast'
+
   const baseUrl = axios.defaults.baseURL
 
   export default {
@@ -83,13 +85,11 @@
     created () {
       axios.get(baseUrl + '/lunchdata')
         .then(response => {
-          console.log(response)
           this.restaurantData = response.data
           return this.restaurantData
         })
       axios.get(baseUrl + '/topfivedata')
         .then(response => {
-          console.log(response)
           this.topFiveData = response.data
           return this.topFiveData
         })
@@ -97,11 +97,35 @@
           this.errors.push(e)
         })
     },
+    computed: {
+      authStatus () {
+        return loginService.authStatus()
+      }
+    },
     methods: {
       lunchLocationToast: function () {
         var random = Math.floor(Math.random() * this.restaurantData.length)
         VueOnToast.ToastService.pop('success', 'Lunch Alert', 'lunch today is at: ' + this.restaurantData[random].restaurantName)
+      },
+      successfulLoginToast: function () {
+        if (window.sessionStorage.getItem('loginSuccessMessage') === null) {
+        } else {
+          VueOnToast.ToastService.pop('success', window.sessionStorage.getItem('loginSuccessMessage'))
+          window.sessionStorage.removeItem('loginSuccessMessage')
+        }
+      },
+      successfulLogoutToast: function () {
+        if (window.sessionStorage.getItem('logoutSuccessMessage') !== null) {
+          VueOnToast.ToastService.pop('success', window.sessionStorage.getItem('logoutSuccessMessage'))
+          window.sessionStorage.removeItem('logoutSuccessMessage')
+        } else {
+          console.log('no logoff')
+        }
       }
+    },
+    mounted () {
+      this.successfulLoginToast()
+      this.successfulLogoutToast()
     }
   }
 </script>

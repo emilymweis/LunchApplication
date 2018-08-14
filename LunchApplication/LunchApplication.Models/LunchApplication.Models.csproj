@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\TopFiveOptions.cs" />
+    <Compile Include="Models\UserCredentials.cs" />
     <Compile Include="Models\UserOptions.cs" />
     <Compile Include="Models\LunchOptions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

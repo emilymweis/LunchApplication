@@ -13,9 +13,9 @@ namespace LunchApplication.Repository.Interfaces
     public interface IUserRepository : IRepository
     {
         Task<string> GetValueAsync(int validId);
-        Task<UserOptions> AddUserAsync(UserOptions User);
+        Task<bool> AddUserAsync(string username, string passwordHash);
         Task<int> GetIntValueAsync();
         List<UserOptions> Test();
-        Task<string> VerifyLogin(string Username, string PasswordHash);
+        Task<bool> VerifyLoginAsync(string Username, string PasswordHash);
     }
 }

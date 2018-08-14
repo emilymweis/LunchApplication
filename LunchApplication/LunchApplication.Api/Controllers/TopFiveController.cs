@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using Core.Common.Services.Filters;
 using LunchApplication.Common.Interfaces;
 using LunchApplication.Models.Models;
@@ -7,6 +8,7 @@ using LunchApplication.Service.Interfaces;
 
 namespace LunchApplication.Api.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     [RoutePrefix("topfivedata")]
     //[Monitor]
     public class TopFiveController : ApiController
@@ -23,9 +25,9 @@ namespace LunchApplication.Api.Controllers
 
         [AllowAnonymous]
         [HttpPost, Route("topfive")]
-        public async Task<IHttpActionResult> SaveTopFive(int userId, string restaurantOne, string restaurantTwo, string restaurantThree, string restaurantFour, string restaurantFive)
+        public async Task<IHttpActionResult> SaveTopFive(TopFiveOptions topFive)
         {
-            var isOk = await _topFiveService.SaveTopFive(userId, restaurantOne, restaurantTwo, restaurantThree, restaurantFour, restaurantFive);
+            var isOk = await _topFiveService.SaveTopFive(topFive.UserId, topFive.RestaurantOne, topFive.RestaurantTwo, topFive.RestaurantThree, topFive.RestaurantFour, topFive.RestaurantFive);
             return Ok(isOk);
         }
 

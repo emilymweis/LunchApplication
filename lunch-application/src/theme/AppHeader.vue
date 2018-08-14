@@ -5,27 +5,34 @@
             <img id="chiLogo" src="../assets/chi_logo-trans.png" alt="Lunch App" />
         </router-link>
         <router-link class="navText navLeft" to="/home" exact>
-            <div>Lunch Application</div>
+            <div>Lunchable</div>
         </router-link>
           <router-link class="navText navRight" to="/login">
-              <div v-if="isAuthenticated">LOGOUT</div><div v-else>LOGIN</div>
+              <div v-if="authStatus">LOGOUT</div>
+              <div v-else>LOGIN</div>
           </router-link>
     </nav>
   </div>
 </template>
 <script>
-  import { mapGetters } from 'vuex'
+  import loginService from '../app.service.js'
   export default {
     name: 'appHeader-comp',
-    computed: {
-      ...mapGetters(['isAuthenticated'])
+    data () {
+      return {
+        authStatus: false
+      }
+    },
+    mounted () {
+      this.authStatus = loginService.authStatus()
     }
   }
 </script>
 <style lang="scss">
-  @import "../styles/_main.scss";
-#headerStyle{
 
+  @import "../styles/_main.scss";
+
+#headerStyle{
   .appNav{
     min-height: 50px;
     max-height: 60px;
@@ -68,5 +75,4 @@
   }
 
 }
-
   </style>

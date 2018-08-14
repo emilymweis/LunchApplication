@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <loading-indicator></loading-indicator>
     <toast-container></toast-container>
     <app-header></app-header>
     <section class="main-section section">

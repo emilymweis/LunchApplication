@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using Core.Common.Services.Filters;
 using LunchApplication.Common.Interfaces;
 using LunchApplication.Models.Models;
@@ -12,6 +13,7 @@ namespace LunchApplication.Api.Controllers
     /// or start with this and
     /// rename as necessary.
     /// </summary>
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     [RoutePrefix("userdata")]
     //[Monitor]
     public class UserController : ApiController
@@ -36,9 +38,9 @@ namespace LunchApplication.Api.Controllers
 
         [AllowAnonymous]
         [HttpPost, Route("userlogin")]
-        public async Task<IHttpActionResult> VerifyLogin(string Username, string PasswordHash)
+        public async Task<IHttpActionResult> VerifyLoginAsync(UserCredentials userCredentials)
         {
-            var isOk = await _userService.VerifyLogin(Username, PasswordHash);
+            var isOk = await _userService.VerifyLoginAsync(userCredentials.Username, userCredentials.PasswordHash);
             return Ok(isOk);
         }
 
@@ -50,11 +52,12 @@ namespace LunchApplication.Api.Controllers
             return Ok("user");
         }
 
+        [AllowAnonymous]
         [HttpPost, Route("")]
-        public async Task<IHttpActionResult> AddUserAsync([FromBody] UserOptions user)
+        public async Task<IHttpActionResult> AddUserAsync(UserOptions userOptions)
         {
-            user.Id = _appRequestInfo.UserId;
-            return Created(string.Empty, await _userService.AddUserAsync(user));
+            var isOk = await _userService.AddUserAsync(userOptions.Username, userOptions.PasswordHash);
+            return Ok(isOk);
         }
 }
 }

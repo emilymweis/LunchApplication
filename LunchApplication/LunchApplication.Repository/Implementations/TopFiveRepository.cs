@@ -70,7 +70,7 @@ namespace LunchApplication.Repository.Implementations
 
                     connection.Open();
 
-                    result = command.ExecuteNonQuery().ToString() + " Rows updated";
+                    result = (await command.ExecuteNonQueryAsync()).ToString() + " Rows updated";
 
                     connection.Close();
                 }
